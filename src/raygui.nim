@@ -1,6 +1,375 @@
 from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
+const
+  RayguiVersion* = (4, 0, 0)
+
+type
+  GuiState* {.size: sizeof(int32).} = enum ## Gui control state
+    Normal
+    Focused
+    Pressed
+    Disabled
+
+  GuiTextAlignment* {.size: sizeof(int32).} = enum ## Gui control text alignment
+    Left
+    Center
+    Right
+
+  GuiControl* {.size: sizeof(int32).} = enum ## Gui controls
+    Default
+    Label ## Used also for: LABELBUTTON
+    Button
+    Toggle ## Used also for: TOGGLEGROUP
+    Slider ## Used also for: SLIDERBAR
+    Progressbar
+    Checkbox
+    Combobox
+    Dropdownbox
+    Textbox ## Used also for: TEXTBOXMULTI
+    Valuebox
+    Spinner ## Uses: BUTTON, VALUEBOX
+    Listview
+    Colorpicker
+    Scrollbar
+    Statusbar
+
+  GuiControlProperty* {.size: sizeof(int32).} = enum ## Gui base properties for every control
+    BorderColorNormal
+    BaseColorNormal
+    TextColorNormal
+    BorderColorFocused
+    BaseColorFocused
+    TextColorFocused
+    BorderColorPressed
+    BaseColorPressed
+    TextColorPressed
+    BorderColorDisabled
+    BaseColorDisabled
+    TextColorDisabled
+    BorderWidth
+    TextPadding
+    TextAlignment
+    Reserved
+
+  GuiDefaultProperty* {.size: sizeof(int32).} = enum ## DEFAULT extended properties
+    TextSize = 16 ## Text size (glyphs max height)
+    TextSpacing ## Text spacing between glyphs
+    LineColor ## Line control color
+    BackgroundColor ## Background color
+    TextLineSpacing ## Text spacing between lines
+
+  GuiToggleProperty* {.size: sizeof(int32).} = enum ## Toggle/ToggleGroup
+    GroupPadding = 16 ## ToggleGroup separation between toggles
+
+  GuiSliderProperty* {.size: sizeof(int32).} = enum ## Slider/SliderBar
+    SliderWidth = 16 ## Slider size of internal bar
+    SliderPadding ## Slider/SliderBar internal bar padding
+
+  GuiProgressBarProperty* {.size: sizeof(int32).} = enum ## ProgressBar
+    ProgressPadding = 16 ## ProgressBar internal padding
+
+  GuiScrollBarProperty* {.size: sizeof(int32).} = enum ## ScrollBar
+    ArrowsSize = 16
+    ArrowsVisible
+    ScrollSliderPadding ## (SLIDERBAR, SLIDER_PADDING)
+    ScrollSliderSize
+    ScrollPadding
+    ScrollSpeed
+
+  GuiCheckBoxProperty* {.size: sizeof(int32).} = enum ## CheckBox
+    CheckPadding = 16 ## CheckBox internal check padding
+
+  GuiComboBoxProperty* {.size: sizeof(int32).} = enum ## ComboBox
+    ComboButtonWidth = 16 ## ComboBox right button width
+    ComboButtonSpacing ## ComboBox button separation
+
+  GuiDropdownBoxProperty* {.size: sizeof(int32).} = enum ## DropdownBox
+    ArrowPadding = 16 ## DropdownBox arrow separation from border and items
+    DropdownItemsSpacing ## DropdownBox items separation
+
+  GuiTextBoxProperty* {.size: sizeof(int32).} = enum ## TextBox/TextBoxMulti/ValueBox/Spinner
+    TextInnerPadding = 16 ## TextBox/TextBoxMulti/ValueBox/Spinner inner text padding
+    TextLinesSpacing ## TextBoxMulti lines separation
+    TextAlignmentVertical ## TextBoxMulti vertical alignment: 0-CENTERED, 1-UP, 2-DOWN
+    TextMultiline ## TextBox supports multiple lines
+    TextWrapMode ## TextBox wrap mode for multiline: 0-NO_WRAP, 1-CHAR_WRAP, 2-WORD_WRAP
+
+  GuiSpinnerProperty* {.size: sizeof(int32).} = enum ## Spinner
+    SpinButtonWidth = 16 ## Spinner left/right buttons width
+    SpinButtonSpacing ## Spinner buttons separation
+
+  GuiListViewProperty* {.size: sizeof(int32).} = enum ## ListView
+    ListItemsHeight = 16 ## ListView items height
+    ListItemsSpacing ## ListView items separation
+    ScrollbarWidth ## ListView scrollbar size (usually width)
+    ScrollbarSide ## ListView scrollbar side (0-left, 1-right)
+
+  GuiColorPickerProperty* {.size: sizeof(int32).} = enum ## ColorPicker
+    ColorSelectorSize = 16
+    HuebarWidth ## ColorPicker right hue bar width
+    HuebarPadding ## ColorPicker right hue bar separation from panel
+    HuebarSelectorHeight ## ColorPicker right hue bar selector height
+    HuebarSelectorOverflow ## ColorPicker right hue bar selector overflow
+
+  GuiIconName* {.size: sizeof(int32).} = enum
+    None
+    FolderFileOpen
+    FileSaveClassic
+    FolderOpen
+    FolderSave
+    FileOpen
+    FileSave
+    FileExport
+    FileAdd
+    FileDelete
+    FiletypeText
+    FiletypeAudio
+    FiletypeImage
+    FiletypePlay
+    FiletypeVideo
+    FiletypeInfo
+    FileCopy
+    FileCut
+    FilePaste
+    CursorHand
+    CursorPointer
+    CursorClassic
+    Pencil
+    PencilBig
+    BrushClassic
+    BrushPainter
+    WaterDrop
+    ColorPicker
+    Rubber
+    ColorBucket
+    TextT
+    TextA
+    Scale
+    Resize
+    FilterPoint
+    FilterBilinear
+    Crop
+    CropAlpha
+    SquareToggle
+    Symmetry
+    SymmetryHorizontal
+    SymmetryVertical
+    Lens
+    LensBig
+    EyeOn
+    EyeOff
+    FilterTop
+    Filter
+    TargetPoint
+    TargetSmall
+    TargetBig
+    TargetMove
+    CursorMove
+    CursorScale
+    CursorScaleRight
+    CursorScaleLeft
+    Undo
+    Redo
+    Reredo
+    Mutate
+    Rotate
+    Repeat
+    Shuffle
+    Emptybox
+    Target
+    TargetSmallFill
+    TargetBigFill
+    TargetMoveFill
+    CursorMoveFill
+    CursorScaleFill
+    CursorScaleRightFill
+    CursorScaleLeftFill
+    UndoFill
+    RedoFill
+    ReredoFill
+    MutateFill
+    RotateFill
+    RepeatFill
+    ShuffleFill
+    EmptyboxSmall
+    IconBox
+    BoxTop
+    BoxTopRight
+    BoxRight
+    BoxBottomRight
+    BoxBottom
+    BoxBottomLeft
+    BoxLeft
+    BoxTopLeft
+    BoxCenter
+    BoxCircleMask
+    IconPot
+    AlphaMultiply
+    AlphaClear
+    Dithering
+    Mipmaps
+    BoxGrid
+    Grid
+    BoxCornersSmall
+    BoxCornersBig
+    FourBoxes
+    GridFill
+    BoxMultisize
+    ZoomSmall
+    ZoomMedium
+    ZoomBig
+    ZoomAll
+    ZoomCenter
+    BoxDotsSmall
+    BoxDotsBig
+    BoxConcentric
+    BoxGridBig
+    OkTick
+    Cross
+    ArrowLeft
+    ArrowRight
+    ArrowDown
+    ArrowUp
+    ArrowLeftFill
+    ArrowRightFill
+    ArrowDownFill
+    ArrowUpFill
+    Audio
+    Fx
+    Wave
+    WaveSinus
+    WaveSquare
+    WaveTriangular
+    CrossSmall
+    PlayerPrevious
+    PlayerPlayBack
+    PlayerPlay
+    PlayerPause
+    PlayerStop
+    PlayerNext
+    PlayerRecord
+    Magnet
+    LockClose
+    LockOpen
+    Clock
+    Tools
+    Gear
+    GearBig
+    IconBin
+    HandPointer
+    Laser
+    Coin
+    Explosion
+    Icon1up
+    Player
+    PlayerJump
+    IconKey
+    Demon
+    TextPopup
+    GearEx
+    Crack
+    CrackPoints
+    Star
+    Door
+    Exit
+    Mode2d
+    Mode3d
+    Cube
+    CubeFaceTop
+    CubeFaceLeft
+    CubeFaceFront
+    CubeFaceBottom
+    CubeFaceRight
+    CubeFaceBack
+    Camera
+    Special
+    LinkNet
+    LinkBoxes
+    LinkMulti
+    Link
+    LinkBroke
+    TextNotes
+    Notebook
+    Suitcase
+    SuitcaseZip
+    Mailbox
+    Monitor
+    Printer
+    PhotoCamera
+    PhotoCameraFlash
+    House
+    Heart
+    Corner
+    VerticalBars
+    VerticalBarsFill
+    LifeBars
+    Info
+    Crossline
+    Help
+    FiletypeAlpha
+    FiletypeHome
+    LayersVisible
+    Layers
+    Window
+    Hidpi
+    FiletypeBinary
+    IconHex
+    Shield
+    FileNew
+    FolderAdd
+    Alarm
+    IconCpu
+    IconRom
+    StepOver
+    StepInto
+    StepOut
+    Restart
+    BreakpointOn
+    BreakpointOff
+    BurgerMenu
+    CaseSensitive
+    RegExp
+    Folder
+    File
+    SandTimer
+    Icon220
+    Icon221
+    Icon222
+    Icon223
+    Icon224
+    Icon225
+    Icon226
+    Icon227
+    Icon228
+    Icon229
+    Icon230
+    Icon231
+    Icon232
+    Icon233
+    Icon234
+    Icon235
+    Icon236
+    Icon237
+    Icon238
+    Icon239
+    Icon240
+    Icon241
+    Icon242
+    Icon243
+    Icon244
+    Icon245
+    Icon246
+    Icon247
+    Icon248
+    Icon249
+    Icon250
+    Icon251
+    Icon252
+    Icon253
+    Icon254
+    Icon255
+
 type
   GuiStyleProp* {.bycopy.} = object ## Style property
     controlId*: uint16

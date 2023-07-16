@@ -3,9 +3,12 @@ when defined(nimPreviewSlimSystem):
   import std/syncio
 
 const
-  raymathHeader = """
+  rayguiHeader = """
 from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
+
+const
+  RayguiVersion* = (4, 0, 0)
 """
   excludedTypes = [
     "Vector2",
@@ -25,6 +28,32 @@ proc genBindings(t: TopLevel, fname: string, header, footer: string) =
   try:
     otp = openFileStream(fname, fmWrite)
     lit header
+    # Generate enum definitions
+    lit "\ntype"
+    scope:
+      for enm in items(t.enums):
+        spaces
+        ident enm.name
+        lit "* {.size: sizeof(int32).} = enum"
+        doc enm
+        scope:
+          var prev = -1
+          for i, val in pairs(enm.values):
+            if val.value == prev: continue
+            spaces
+            var valName = val.name
+            removePrefix(valName, "STATE_")
+            removePrefix(valName, "TEXT_ALIGN_")
+            if startsWith(valName, "ICON_") and
+                valName.len != 8 and not valName[^1].isDigit:
+              removePrefix(valName, "ICON_")
+            ident camelCaseAscii(valName)
+            if prev + 1 != val.value:
+              lit " = "
+              lit $val.value
+            doc val
+            prev = val.value
+          lit "\n"
     # Generate type definitions
     lit "\ntype"
     scope:
@@ -93,11 +122,11 @@ proc genBindings(t: TopLevel, fname: string, header, footer: string) =
     if otp != nil: otp.close()
 
 const
-  raymathApi = "../api/raygui.json"
+  rayguiApi = "../api/raygui.json"
   outputname = "../src/raygui.nim"
 
 proc main =
-  var t = parseApi(raymathApi)
-  genBindings(t, outputname, raymathHeader, "")
+  var t = parseApi(rayguiApi)
+  genBindings(t, outputname, rayguiHeader, "")
 
 main()
