@@ -1,0 +1,4 @@
+[submodule "src/raygui"]
+	path = src/raygui
+	url = https://github.com/raysan5/raygui.git
+	shallow = true
