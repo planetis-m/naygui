@@ -33,13 +33,10 @@
 #
 # ****************************************************************************************
 
-import raylib, std/[strutils, strformat]
-
 # {.passC: "-DRAYGUI_CUSTOM_ICONS".} # It requires providing gui_icons.h in the same directory
 # include gui_icons # External icons data provided, it can be generated with rGuiIcons tool
 
-import
-  ../../../raygui
+import raylib, raygui, std/[strutils, strformat]
 
 # raygui embedded styles
 
