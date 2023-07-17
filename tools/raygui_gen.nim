@@ -39,7 +39,10 @@ proc genBindings(t: TopLevel, fname: string, header, footer: string) =
     scope:
       for enm in items(t.enums):
         spaces
-        ident enm.name
+        var enmName = enm.name
+        # if enmName == "GuiState": enmName = "ControlState"
+        # else: removePrefix(enmName, "Gui")
+        ident enmName
         lit "* {.size: sizeof(int32).} = enum"
         doc enm
         scope:
@@ -92,6 +95,8 @@ proc genBindings(t: TopLevel, fname: string, header, footer: string) =
       if name.endsWith("Pro") or name.endsWith("Ex"):
         removeSuffix(name, "Ex")
         removeSuffix(name, "Pro")
+      # if name notin ["GuiEnable", "GuiDisable", "GuiLock", "GuiUnlock", "GuiIsLocked", "GuiFade"]:
+      #   removePrefix(name, "Gui")
       ident uncapitalizeAscii(name)
       lit "*("
       var hasVarargs = false
