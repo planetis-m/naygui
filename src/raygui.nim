@@ -1,6 +1,12 @@
 from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
+import std/os
+const rayguiDir = currentSourcePath().parentDir / "raygui/src"
+
+{.passC: "-I" & rayguiDir.}
+{.passC: "-DRAYGUI_IMPLEMENTATION".}
+
 const
   RayguiVersion* = (4, 0, 0)
 
