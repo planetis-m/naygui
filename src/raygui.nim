@@ -376,6 +376,12 @@ type
     Icon254
     Icon255
 
+  AnyProperty = GuiControlProperty|GuiDefaultProperty|GuiToggleProperty|
+    GuiSliderProperty|GuiProgressBarProperty|GuiScrollBarProperty|
+    GuiCheckBoxProperty|GuiComboBoxProperty|GuiDropdownBoxProperty|
+    GuiTextBoxProperty|GuiSpinnerProperty|GuiListViewProperty|
+    GuiColorPickerProperty
+
 type
   GuiStyleProp* {.bycopy.} = object ## Style property
     controlId*: uint16
@@ -395,17 +401,17 @@ proc guiIsLocked*(): bool {.importc: "GuiIsLocked".}
   ## Check if gui is locked (global state)
 proc guiFade*(alpha: float32) {.importc: "GuiFade".}
   ## Set gui controls alpha (global state), alpha goes from 0.0f to 1.0f
-proc guiSetState*(state: int32) {.importc: "GuiSetState".}
+proc guiSetState*(state: GuiState) {.importc: "GuiSetState".}
   ## Set gui state (global state)
-proc guiGetState*(): int32 {.importc: "GuiGetState".}
+proc guiGetState*(): GuiState {.importc: "GuiGetState".}
   ## Get gui state (global state)
 proc guiSetFont*(font: Font) {.importc: "GuiSetFont".}
   ## Set gui custom font (global state)
 proc guiGetFont*(): Font {.importc: "GuiGetFont".}
   ## Get gui custom font (global state)
-proc guiSetStyle*(control: int32, property: int32, value: int32) {.importc: "GuiSetStyle".}
+proc guiSetStyle*(control: GuiControl, property: AnyProperty, value: int32) {.importc: "GuiSetStyle".}
   ## Set one style property
-proc guiGetStyle*(control: int32, property: int32): int32 {.importc: "GuiGetStyle".}
+proc guiGetStyle*(control: GuiControl, property: AnyProperty): int32 {.importc: "GuiGetStyle".}
   ## Get one style property
 proc guiLoadStyle*(fileName: cstring) {.importc: "GuiLoadStyle".}
   ## Load style file over global style variable (.rgs)
@@ -417,7 +423,7 @@ proc guiDisableTooltip*() {.importc: "GuiDisableTooltip".}
   ## Disable gui tooltips (global state)
 proc guiSetTooltip*(tooltip: cstring) {.importc: "GuiSetTooltip".}
   ## Set tooltip string
-proc guiIconText*(iconId: int32, text: cstring): cstring {.importc: "GuiIconText".}
+proc guiIconText*(iconId: GuiIconName, text: cstring): cstring {.importc: "GuiIconText".}
   ## Get text with icon id prepended (if supported)
 proc guiSetIconScale*(scale: int32) {.importc: "GuiSetIconScale".}
   ## Set default icon drawing size
@@ -425,7 +431,7 @@ proc guiGetIcons*(): var uint32 {.importc: "GuiGetIcons".}
   ## Get raygui icons data pointer
 proc guiLoadIcons*(fileName: cstring, loadIconsName: bool): cstringArray {.importc: "GuiLoadIcons".}
   ## Load raygui icons file (.rgi) into internal icons data
-proc guiDrawIcon*(iconId: int32, posX: int32, posY: int32, pixelSize: int32, color: Color) {.importc: "GuiDrawIcon".}
+proc guiDrawIcon*(iconId: GuiIconName, posX: int32, posY: int32, pixelSize: int32, color: Color) {.importc: "GuiDrawIcon".}
   ## Draw icon using pixel size at specified position
 proc guiWindowBox*(bounds: Rectangle, title: cstring): int32 {.importc: "GuiWindowBox".}
   ## Window Box control, shows a window that can be closed

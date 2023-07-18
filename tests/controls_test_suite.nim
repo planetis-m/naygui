@@ -52,13 +52,6 @@ const
 # Program main entry point
 # ----------------------------------------------------------------------------------------
 
-converter Control2int32*(x: GuiControl): int32 = x.int32
-converter DefaultProperty2int32*(x: GuiDefaultProperty): int32 = x.int32
-converter ControlProperty2int32*(x: GuiControlProperty): int32 = x.int32
-converter TextAlignment2int32*(x: GuiTextAlignment): int32 = x.int32
-converter IconName2int32*(x: GuiIconName): int32 = x.int32
-converter State2int32*(x: GuiState): int32 = x.int32
-
 proc main =
   # Initialization
   # --------------------------------------------------------------------------------------
@@ -74,7 +67,8 @@ proc main =
   var spinnerEditMode: bool = false
   var valueBox002Value: int32 = 0
   var valueBoxEditMode: bool = false
-  let textBoxText = "Text box"
+  var textBoxText = newStringOfCap(64)
+  textBoxText.add("Text box")
   var textBoxEditMode: bool = false
   var listViewScrollIndex: int32 = 0
   var listViewActive: int32 = -1
@@ -149,14 +143,14 @@ proc main =
     #   guiSetStyle(Label, TextAlignment, Left)
     #   prevVisualStyleActive = visualStyleActive
     beginDrawing()
-    clearBackground(getColor(guiGetStyle(Default.int32, BackgroundColor).uint32))
+    clearBackground(getColor(guiGetStyle(Default, BackgroundColor).uint32))
     # raygui: controls drawing
     # ----------------------------------------------------------------------------------
     # Check all possible events that require GuiLock
     if dropDown000EditMode or dropDown001EditMode:
       guiLock()
     discard guiCheckBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
-    guiSetStyle(TextBox, TextAlignment, Center)
+    guiSetStyle(TextBox, TextAlignment, Center.int32)
     # guiSetStyle(ValueBox, TextAlignment, Left)
     if guiSpinner(Rectangle(x: 25, y: 135, width: 125, height: 30), nil, spinner001Value, 0, 100, spinnerEditMode) != 0:
       spinnerEditMode = not spinnerEditMode
@@ -165,12 +159,12 @@ proc main =
     guiSetStyle(TextBox, TextAlignment, Left.int32)
     if guiTextBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, 64, textBoxEditMode) != 0:
       textBoxEditMode = not textBoxEditMode
-    guiSetStyle(Button, TextAlignment, Center)
+    guiSetStyle(Button, TextAlignment, Center.int32)
     if guiButton(Rectangle(x: 25, y: 255, width: 125, height: 30), guiIconText(FileSave, "Save File")) != 0:
       showTextInputBox = true
     discard guiGroupBox(Rectangle(x: 25, y: 310, width: 125, height: 150), "STATES")
     # guiLock()
-    guiSetState(Normal.int32)
+    guiSetState(Normal)
     if guiButton(Rectangle(x: 30, y: 320, width: 115, height: 30), "NORMAL") != 0:
       discard
     guiSetState(Focused)
@@ -182,7 +176,7 @@ proc main =
     guiSetState(Disabled)
     if guiButton(Rectangle(x: 30, y: 425, width: 115, height: 30), "DISABLED") != 0:
       discard
-    guiSetState(Normal.int32)
+    guiSetState(Normal)
     # guiUnlock()
     discard guiComboBox(Rectangle(x: 25, y: 470, width: 125, height: 30),
         "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal", visualStyleActive)
@@ -192,7 +186,7 @@ proc main =
     if guiDropdownBox(Rectangle(x: 25, y: 65, width: 125, height: 30),
         "#01#ONE;#02#TWO;#03#THREE;#04#FOUR", dropdownBox001Active, dropDown001EditMode) != 0:
       dropDown001EditMode = not dropDown001EditMode
-    guiSetStyle(Dropdownbox, TextAlignment, Center)
+    guiSetStyle(Dropdownbox, TextAlignment, Center.int32)
     if guiDropdownBox(Rectangle(x: 25, y: 25, width: 125, height: 30), "ONE;TWO;THREE",
         dropdownBox000Active, dropDown000EditMode) != 0:
       dropDown000EditMode = not dropDown000EditMode
@@ -247,8 +241,8 @@ proc main =
         textInputFileName = textInput
       if result == 0 or result == 1 or result == 2:
         showTextInputBox = false
-        textInput.reset()
-        textInput[0] = '\x00'
+        # textInput.reset()
+        textInput[0] = '\0'
     endDrawing()
     # ----------------------------------------------------------------------------------
   # De-Initialization
