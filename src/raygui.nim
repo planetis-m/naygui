@@ -1,4 +1,4 @@
-from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
+from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font, colorToInt
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
 import std/os
@@ -376,7 +376,7 @@ type
     Icon254
     Icon255
 
-  AnyProperty = GuiControlProperty|GuiDefaultProperty|GuiToggleProperty|
+  AnyProperty* = GuiControlProperty|GuiDefaultProperty|GuiToggleProperty|
     GuiSliderProperty|GuiProgressBarProperty|GuiScrollBarProperty|
     GuiCheckBoxProperty|GuiComboBoxProperty|GuiDropdownBoxProperty|
     GuiTextBoxProperty|GuiSpinnerProperty|GuiListViewProperty|
@@ -410,7 +410,6 @@ proc guiSetFont*(font: Font) {.importc: "GuiSetFont".}
 proc guiGetFont*(): Font {.importc: "GuiGetFont".}
   ## Get gui custom font (global state)
 proc guiSetStyle*(control: GuiControl, property: AnyProperty, value: int32) {.importc: "GuiSetStyle".}
-  ## Set one style property
 proc guiGetStyle*(control: GuiControl, property: AnyProperty): int32 {.importc: "GuiGetStyle".}
   ## Get one style property
 proc guiLoadStyle*(fileName: cstring) {.importc: "GuiLoadStyle".}
@@ -499,3 +498,11 @@ proc guiColorPickerHSV*(bounds: Rectangle, text: cstring, colorHsv: var Vector3)
   ## Color Picker control that avoids conversion to RGB on each call (multiple color controls)
 proc guiColorPanelHSV*(bounds: Rectangle, text: cstring, colorHsv: var Vector3): int32 {.importc: "GuiColorPanelHSV".}
   ## Color Panel control that returns HSV color value, used by GuiColorPickerHSV()
+
+# proc guiSetStyle*(control: GuiControl, property: AnyProperty, value: Color) =
+#   ## Set one style property
+#   guiSetStyleImpl(control, property, value.colorToInt)
+
+# proc guiSetStyle*(control: GuiControl, property: AnyProperty, value: bool|int32|enum) =
+#   ## Set one style property
+#   guiSetStyleImpl(control, property, value.int32)

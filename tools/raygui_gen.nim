@@ -40,8 +40,8 @@ proc genBindings(t: TopLevel, fname: string, header, footer: string) =
       for enm in items(t.enums):
         spaces
         var enmName = enm.name
-        # if enmName == "GuiState": enmName = "ControlState"
-        # else: removePrefix(enmName, "Gui")
+        # if enmName notin ["GuiState", "GuiTextAlignment"]:
+        #   removePrefix(enmName, "Gui")
         ident enmName
         lit "* {.size: sizeof(int32).} = enum"
         doc enm
