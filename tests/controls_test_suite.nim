@@ -45,8 +45,8 @@ import raylib, raygui, std/[strutils, strformat]
 #   ../styles/style_dark, ../styles/style_bluish, ../styles/style_terminal
 
 const
-  screenWidth = 800
-  screenHeight = 450
+  screenWidth = 700
+  screenHeight = 550
 
 # ----------------------------------------------------------------------------------------
 # Program main entry point
@@ -143,24 +143,24 @@ proc main =
     #   guiSetStyle(Label, TextAlignment, Left)
     #   prevVisualStyleActive = visualStyleActive
     beginDrawing()
-    clearBackground(getColor(guiGetStyle(Default, BackgroundColor).uint32))
+    clearBackground(getColor(guiGetStyle(Default, BackgroundColor.int32).uint32))
     # raygui: controls drawing
     # ----------------------------------------------------------------------------------
     # Check all possible events that require GuiLock
     if dropDown000EditMode or dropDown001EditMode:
       guiLock()
     discard guiCheckBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
-    guiSetStyle(TextBox, TextAlignment, Center.int32)
+    guiSetStyle(TextBox, TextAlignment.int32, Center.int32)
     # guiSetStyle(Scrollbar, ArrowsVisible, true)
     # guiSetStyle(ValueBox, TextAlignment, Left)
     if guiSpinner(Rectangle(x: 25, y: 135, width: 125, height: 30), nil, spinner001Value, 0, 100, spinnerEditMode) != 0:
       spinnerEditMode = not spinnerEditMode
     if guiValueBox(Rectangle(x: 25, y: 175, width: 125, height: 30), nil, valueBox002Value, 0, 100, valueBoxEditMode) != 0:
       valueBoxEditMode = not valueBoxEditMode
-    guiSetStyle(TextBox, TextAlignment, Left.int32)
+    guiSetStyle(TextBox, TextAlignment.int32, Left.int32)
     if guiTextBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, 64, textBoxEditMode) != 0:
       textBoxEditMode = not textBoxEditMode
-    guiSetStyle(Button, TextAlignment, Center.int32)
+    guiSetStyle(Button, TextAlignment.int32, Center.int32)
     if guiButton(Rectangle(x: 25, y: 255, width: 125, height: 30), guiIconText(FileSave, "Save File")) != 0:
       showTextInputBox = true
     discard guiGroupBox(Rectangle(x: 25, y: 310, width: 125, height: 150), "STATES")
@@ -183,11 +183,11 @@ proc main =
         "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal", visualStyleActive)
     # NOTE: GuiDropdownBox must draw after any other control that can be covered on unfolding
     guiUnlock()
-    guiSetStyle(Dropdownbox, TextAlignment, Left.int32)
+    guiSetStyle(Dropdownbox, TextAlignment.int32, Left.int32)
     if guiDropdownBox(Rectangle(x: 25, y: 65, width: 125, height: 30),
         "#01#ONE;#02#TWO;#03#THREE;#04#FOUR", dropdownBox001Active, dropDown001EditMode) != 0:
       dropDown001EditMode = not dropDown001EditMode
-    guiSetStyle(Dropdownbox, TextAlignment, Center.int32)
+    guiSetStyle(Dropdownbox, TextAlignment.int32, Center.int32)
     if guiDropdownBox(Rectangle(x: 25, y: 25, width: 125, height: 30), "ONE;TWO;THREE",
         dropdownBox000Active, dropDown000EditMode) != 0:
       dropDown000EditMode = not dropDown000EditMode
