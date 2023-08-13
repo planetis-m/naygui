@@ -121,7 +121,7 @@ proc getReplacement*(x, y: string, replacements: openarray[(string, string, stri
 
 proc camelCaseAscii*(s: string): string
 
-proc convertType*(s: string, pattern: string, many, isVar: bool, baseKind: var string): string =
+proc convertType*(s: string, pattern: string, many, isOut, isVar: bool, baseKind: var string): string =
   ## Converts a C type to the equivalent Nim type.
   ## Should work with function parameters, return, and struct fields types.
   ## If a `pattern` is provided, it substitutes the found base type and returns it.
@@ -197,7 +197,9 @@ proc convertType*(s: string, pattern: string, many, isVar: bool, baseKind: var s
     elif many:
       result = "ptr UncheckedArray[" & result & "]"
     else:
-      if isVar:
+      if isOut:
+        result = "out " & result
+      elif isVar:
         result = "var " & result
       else: result = "ptr " & result
   elif isDoublePointer:

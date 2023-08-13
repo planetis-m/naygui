@@ -83,7 +83,7 @@ proc genBindings(t: TopLevel, fname: string, header, footer: string) =
             #   lit kind
             #   continue
             var baseKind = ""
-            let kind = convertType(fld.`type`, "", false, false, baseKind)
+            let kind = convertType(fld.`type`, "", false, false, false, baseKind)
             lit kind
             doc fld
         lit "\n"
@@ -108,13 +108,13 @@ proc genBindings(t: TopLevel, fname: string, header, footer: string) =
           ident param.name
           lit ": "
           var baseKind = ""
-          let kind = convertType(param.`type`, "", false, true, baseKind)
+          let kind = convertType(param.`type`, "", false, true, true, baseKind)
           lit kind
       lit ")"
       if fnc.returnType != "void":
         lit ": "
         var baseKind = ""
-        let kind = convertType(fnc.returnType, "", false, true, baseKind)
+        let kind = convertType(fnc.returnType, "", false, false, true, baseKind)
         lit kind
       lit " {.importc: \""
       ident fnc.name

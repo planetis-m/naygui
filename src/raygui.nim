@@ -1,4 +1,4 @@
-from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font, colorToInt
+from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
 import std/os
@@ -376,12 +376,6 @@ type
     Icon254
     Icon255
 
-  AnyProperty* = GuiControlProperty|GuiDefaultProperty|GuiToggleProperty|
-    GuiSliderProperty|GuiProgressBarProperty|GuiScrollBarProperty|
-    GuiCheckBoxProperty|GuiComboBoxProperty|GuiDropdownBoxProperty|
-    GuiTextBoxProperty|GuiSpinnerProperty|GuiListViewProperty|
-    GuiColorPickerProperty
-
 type
   GuiStyleProp* {.bycopy.} = object ## Style property
     controlId*: uint16
@@ -409,8 +403,9 @@ proc guiSetFont*(font: Font) {.importc: "GuiSetFont".}
   ## Set gui custom font (global state)
 proc guiGetFont*(): Font {.importc: "GuiGetFont".}
   ## Get gui custom font (global state)
-proc guiSetStyle*(control: GuiControl, property: AnyProperty, value: int32) {.importc: "GuiSetStyle".}
-proc guiGetStyle*(control: GuiControl, property: AnyProperty): int32 {.importc: "GuiGetStyle".}
+proc guiSetStyle*(control: GuiControl, property: int32, value: int32) {.importc: "GuiSetStyle".}
+  ## Set one style property
+proc guiGetStyle*(control: GuiControl, property: int32): int32 {.importc: "GuiGetStyle".}
   ## Get one style property
 proc guiLoadStyle*(fileName: cstring) {.importc: "GuiLoadStyle".}
   ## Load style file over global style variable (.rgs)
@@ -440,9 +435,9 @@ proc guiLine*(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLine".}
   ## Line separator control, could contain text
 proc guiPanel*(bounds: Rectangle, text: cstring): int32 {.importc: "GuiPanel".}
   ## Panel control, useful to group controls
-proc guiTabBar*(bounds: Rectangle, text: cstringArray, count: int32, active: var int32): int32 {.importc: "GuiTabBar".}
+proc guiTabBar*(bounds: Rectangle, text: cstringArray, count: int32, active: out int32): int32 {.importc: "GuiTabBar".}
   ## Tab Bar control, returns TAB to be closed or -1
-proc guiScrollPanel*(bounds: Rectangle, text: cstring, content: Rectangle, scroll: var Vector2, view: var Rectangle): int32 {.importc: "GuiScrollPanel".}
+proc guiScrollPanel*(bounds: Rectangle, text: cstring, content: Rectangle, scroll: out Vector2, view: out Rectangle): int32 {.importc: "GuiScrollPanel".}
   ## Scroll Panel control
 proc guiLabel*(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabel".}
   ## Label control, shows text
@@ -450,59 +445,51 @@ proc guiButton*(bounds: Rectangle, text: cstring): int32 {.importc: "GuiButton".
   ## Button control, returns true when clicked
 proc guiLabelButton*(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabelButton".}
   ## Label button control, show true when clicked
-proc guiToggle*(bounds: Rectangle, text: cstring, active: var bool): int32 {.importc: "GuiToggle".}
+proc guiToggle*(bounds: Rectangle, text: cstring, active: out bool): int32 {.importc: "GuiToggle".}
   ## Toggle Button control, returns true when active
-proc guiToggleGroup*(bounds: Rectangle, text: cstring, active: var int32): int32 {.importc: "GuiToggleGroup".}
+proc guiToggleGroup*(bounds: Rectangle, text: cstring, active: out int32): int32 {.importc: "GuiToggleGroup".}
   ## Toggle Group control, returns active toggle index
-proc guiCheckBox*(bounds: Rectangle, text: cstring, checked: var bool): int32 {.importc: "GuiCheckBox".}
+proc guiCheckBox*(bounds: Rectangle, text: cstring, checked: out bool): int32 {.importc: "GuiCheckBox".}
   ## Check Box control, returns true when active
-proc guiComboBox*(bounds: Rectangle, text: cstring, active: var int32): int32 {.importc: "GuiComboBox".}
+proc guiComboBox*(bounds: Rectangle, text: cstring, active: out int32): int32 {.importc: "GuiComboBox".}
   ## Combo Box control, returns selected item index
-proc guiDropdownBox*(bounds: Rectangle, text: cstring, active: var int32, editMode: bool): int32 {.importc: "GuiDropdownBox".}
+proc guiDropdownBox*(bounds: Rectangle, text: cstring, active: out int32, editMode: bool): int32 {.importc: "GuiDropdownBox".}
   ## Dropdown Box control, returns selected item
-proc guiSpinner*(bounds: Rectangle, text: cstring, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiSpinner".}
+proc guiSpinner*(bounds: Rectangle, text: cstring, value: out int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiSpinner".}
   ## Spinner control, returns selected value
-proc guiValueBox*(bounds: Rectangle, text: cstring, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiValueBox".}
+proc guiValueBox*(bounds: Rectangle, text: cstring, value: out int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiValueBox".}
   ## Value Box control, updates input text with numbers
 proc guiTextBox*(bounds: Rectangle, text: cstring, textSize: int32, editMode: bool): int32 {.importc: "GuiTextBox".}
   ## Text Box control, updates input text
-proc guiSlider*(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: var float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSlider".}
+proc guiSlider*(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: out float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSlider".}
   ## Slider control, returns selected value
-proc guiSliderBar*(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: var float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSliderBar".}
+proc guiSliderBar*(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: out float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSliderBar".}
   ## Slider Bar control, returns selected value
-proc guiProgressBar*(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: var float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiProgressBar".}
+proc guiProgressBar*(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: out float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiProgressBar".}
   ## Progress Bar control, shows current progress value
 proc guiStatusBar*(bounds: Rectangle, text: cstring): int32 {.importc: "GuiStatusBar".}
   ## Status Bar control, shows info text
 proc guiDummyRec*(bounds: Rectangle, text: cstring): int32 {.importc: "GuiDummyRec".}
   ## Dummy control for placeholders
-proc guiGrid*(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: var Vector2): int32 {.importc: "GuiGrid".}
+proc guiGrid*(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 {.importc: "GuiGrid".}
   ## Grid control, returns mouse cell position
-proc guiListView*(bounds: Rectangle, text: cstring, scrollIndex: var int32, active: var int32): int32 {.importc: "GuiListView".}
+proc guiListView*(bounds: Rectangle, text: cstring, scrollIndex: out int32, active: out int32): int32 {.importc: "GuiListView".}
   ## List View control, returns selected list item index
-proc guiListView*(bounds: Rectangle, text: cstringArray, count: int32, scrollIndex: var int32, active: var int32, focus: var int32): int32 {.importc: "GuiListViewEx".}
+proc guiListView*(bounds: Rectangle, text: cstringArray, count: int32, scrollIndex: out int32, active: out int32, focus: out int32): int32 {.importc: "GuiListViewEx".}
   ## List View with extended parameters
 proc guiMessageBox*(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring): int32 {.importc: "GuiMessageBox".}
   ## Message Box control, displays a message
-proc guiTextInputBox*(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring, text: cstring, textMaxSize: int32, secretViewActive: var bool): int32 {.importc: "GuiTextInputBox".}
+proc guiTextInputBox*(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring, text: cstring, textMaxSize: int32, secretViewActive: out bool): int32 {.importc: "GuiTextInputBox".}
   ## Text Input Box control, ask for text, supports secret
-proc guiColorPicker*(bounds: Rectangle, text: cstring, color: var Color): int32 {.importc: "GuiColorPicker".}
+proc guiColorPicker*(bounds: Rectangle, text: cstring, color: out Color): int32 {.importc: "GuiColorPicker".}
   ## Color Picker control (multiple color controls)
-proc guiColorPanel*(bounds: Rectangle, text: cstring, color: var Color): int32 {.importc: "GuiColorPanel".}
+proc guiColorPanel*(bounds: Rectangle, text: cstring, color: out Color): int32 {.importc: "GuiColorPanel".}
   ## Color Panel control
-proc guiColorBarAlpha*(bounds: Rectangle, text: cstring, alpha: var float32): int32 {.importc: "GuiColorBarAlpha".}
+proc guiColorBarAlpha*(bounds: Rectangle, text: cstring, alpha: out float32): int32 {.importc: "GuiColorBarAlpha".}
   ## Color Bar Alpha control
-proc guiColorBarHue*(bounds: Rectangle, text: cstring, value: var float32): int32 {.importc: "GuiColorBarHue".}
+proc guiColorBarHue*(bounds: Rectangle, text: cstring, value: out float32): int32 {.importc: "GuiColorBarHue".}
   ## Color Bar Hue control
-proc guiColorPickerHSV*(bounds: Rectangle, text: cstring, colorHsv: var Vector3): int32 {.importc: "GuiColorPickerHSV".}
+proc guiColorPickerHSV*(bounds: Rectangle, text: cstring, colorHsv: out Vector3): int32 {.importc: "GuiColorPickerHSV".}
   ## Color Picker control that avoids conversion to RGB on each call (multiple color controls)
-proc guiColorPanelHSV*(bounds: Rectangle, text: cstring, colorHsv: var Vector3): int32 {.importc: "GuiColorPanelHSV".}
+proc guiColorPanelHSV*(bounds: Rectangle, text: cstring, colorHsv: out Vector3): int32 {.importc: "GuiColorPanelHSV".}
   ## Color Panel control that returns HSV color value, used by GuiColorPickerHSV()
-
-# proc guiSetStyle*(control: GuiControl, property: AnyProperty, value: Color) =
-#   ## Set one style property
-#   guiSetStyleImpl(control, property, value.colorToInt)
-
-# proc guiSetStyle*(control: GuiControl, property: AnyProperty, value: bool|int32|enum) =
-#   ## Set one style property
-#   guiSetStyleImpl(control, property, value.int32)
