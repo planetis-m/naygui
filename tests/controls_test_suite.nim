@@ -22,7 +22,7 @@
 #
 #   DEPENDENCIES:
 #       raylib 4.5          - Windowing/input management and drawing
-#       raygui 3.5          - Immediate-mode GUI controls with custom styling and icons
+#       raygui 4.0          - Immediate-mode GUI controls with custom styling and icons
 #
 #   COMPILATION (Windows - MinGW):
 #       gcc -o $(NAME_PART).exe $(FILE_NAME) -I../../src -lraylib -lopengl32 -lgdi32 -std=c99
@@ -157,7 +157,7 @@ proc main =
       spinnerEditMode = not spinnerEditMode
     if guiValueBox(Rectangle(x: 25, y: 175, width: 125, height: 30), nil, valueBox002Value, 0, 100, valueBoxEditMode) != 0:
       valueBoxEditMode = not valueBoxEditMode
-    guiSetStyle(TextBox, TextAlignment.int32, Left.int32)
+    guiSetStyle(TextBox, TextAlignment.int32, GuiTextAlignment.Left.int32)
     if guiTextBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, 64, textBoxEditMode) != 0:
       textBoxEditMode = not textBoxEditMode
     guiSetStyle(Button, TextAlignment.int32, Center.int32)
@@ -183,7 +183,7 @@ proc main =
         "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal", visualStyleActive)
     # NOTE: GuiDropdownBox must draw after any other control that can be covered on unfolding
     guiUnlock()
-    guiSetStyle(Dropdownbox, TextAlignment.int32, Left.int32)
+    guiSetStyle(Dropdownbox, TextAlignment.int32, GuiTextAlignment.Left.int32)
     if guiDropdownBox(Rectangle(x: 25, y: 65, width: 125, height: 30),
         "#01#ONE;#02#TWO;#03#THREE;#04#FOUR", dropdownBox001Active, dropDown001EditMode) != 0:
       dropDown001EditMode = not dropDown001EditMode
@@ -194,8 +194,8 @@ proc main =
     discard guiListView(Rectangle(x: 165, y: 25, width: 140, height: 140),
         "Charmander;Bulbasaur;#18#Squirtel;Pikachu;Eevee;Pidgey",
         listViewScrollIndex, listViewActive)
-    discard guiListView(Rectangle(x: 165, y: 180, width: 140, height: 200), cast[cstringArray](addr listViewExList),
-        8, listViewExScrollIndex, listViewExActive, listViewExFocus)
+    # discard guiListView(Rectangle(x: 165, y: 180, width: 140, height: 200), cast[cstringArray](addr listViewExList),
+    #     8, listViewExScrollIndex, listViewExActive, listViewExFocus)
     # guiToggle(Rectangle(x: 165, y: 400, width: 140, height: 25), "#1#ONE", toggleGroupActive)
     discard guiToggleGroup(Rectangle(x: 165, y: 400, width: 140, height: 25),
         "#1#ONE\n#3#TWO\n#8#THREE\n#23#", toggleGroupActive)
