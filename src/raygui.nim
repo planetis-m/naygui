@@ -2,10 +2,10 @@ from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphIn
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
 import std/os
-const rayguiDir = currentSourcePath().parentDir / "raygui/src"
+const currentDir = currentSourcePath().parentDir
 
-{.passC: "-I" & rayguiDir.}
-{.passC: "-DRAYGUI_IMPLEMENTATION".}
+{.passC: "-I" & currentDir.}
+{.compile: currentDir / "raygui_wrap.c".}
 
 const
   RayguiVersion* = (4, 0, 0)
@@ -397,7 +397,7 @@ type
     alignmentV*: int32
     padding*: int32
 
-{.push callconv: cdecl, header: "raygui.h".}
+{.push callconv: cdecl, header: "raygui_wrap.h".}
 proc guiEnable*() {.importc: "GuiEnable".}
   ## Enable gui controls (global state)
 proc guiDisable*() {.importc: "GuiDisable".}
@@ -510,3 +510,25 @@ proc guiColorPickerHSV*(bounds: Rectangle, text: cstring, colorHsv: out Vector3)
   ## Color Picker control that avoids conversion to RGB on each call (multiple color controls)
 proc guiColorPanelHSV*(bounds: Rectangle, text: cstring, colorHsv: out Vector3): int32 {.importc: "GuiColorPanelHSV".}
   ## Color Panel control that returns HSV color value, used by GuiColorPickerHSV()
+proc guiLoadStyleAshes*() {.importc: "GuiLoadStyleAshes".}
+  ## Load style ashes over global style
+proc guiLoadStyleBluish*() {.importc: "GuiLoadStyleBluish".}
+  ## Load style bluish over global style
+proc guiLoadStyleCandy*() {.importc: "GuiLoadStyleCandy".}
+  ## Load style candy over global style
+proc guiLoadStyleCherry*() {.importc: "GuiLoadStyleCherry".}
+  ## Load style cherry over global style
+proc guiLoadStyleCyber*() {.importc: "GuiLoadStyleCyber".}
+  ## Load style cyber over global style
+proc guiLoadStyleDark*() {.importc: "GuiLoadStyleDark".}
+  ## Load style dark over global style
+proc guiLoadStyleEnefete*() {.importc: "GuiLoadStyleEnefete".}
+  ## Load style enefete over global style
+proc guiLoadStyleJungle*() {.importc: "GuiLoadStyleJungle".}
+  ## Load style jungle over global style
+proc guiLoadStyleLavanda*() {.importc: "GuiLoadStyleLavanda".}
+  ## Load style lavanda over global style
+proc guiLoadStyleSunny*() {.importc: "GuiLoadStyleSunny".}
+  ## Load style sunny over global style
+proc guiLoadStyleTerminal*() {.importc: "GuiLoadStyleTerminal".}
+  ## Load style terminal over global style
