@@ -362,14 +362,14 @@ index c1ea5df..a694b9e 100644
      int horizontalScrollBarWidth = hasHorizontalScrollBar? GuiGetStyle(LISTVIEW, SCROLLBAR_WIDTH) : 0;
      int verticalScrollBarWidth =  hasVerticalScrollBar? GuiGetStyle(LISTVIEW, SCROLLBAR_WIDTH) : 0;
 -    Rectangle horizontalScrollBar = { 
-+    rlRectangle horizontalScrollBar = { 
++    rlRectangle horizontalScrollBar = {
          (float)((GuiGetStyle(LISTVIEW, SCROLLBAR_SIDE) == SCROLLBAR_LEFT_SIDE)? (float)bounds.x + verticalScrollBarWidth : (float)bounds.x) + GuiGetStyle(DEFAULT, BORDER_WIDTH), 
          (float)bounds.y + bounds.height - horizontalScrollBarWidth - GuiGetStyle(DEFAULT, BORDER_WIDTH), 
          (float)bounds.width - verticalScrollBarWidth - 2*GuiGetStyle(DEFAULT, BORDER_WIDTH), 
          (float)horizontalScrollBarWidth 
      };
 -    Rectangle verticalScrollBar = { 
-+    rlRectangle verticalScrollBar = { 
++    rlRectangle verticalScrollBar = {
          (float)((GuiGetStyle(LISTVIEW, SCROLLBAR_SIDE) == SCROLLBAR_LEFT_SIDE)? (float)bounds.x + GuiGetStyle(DEFAULT, BORDER_WIDTH) : (float)bounds.x + bounds.width - verticalScrollBarWidth - GuiGetStyle(DEFAULT, BORDER_WIDTH)), 
          (float)bounds.y + GuiGetStyle(DEFAULT, BORDER_WIDTH), 
          (float)verticalScrollBarWidth, 
