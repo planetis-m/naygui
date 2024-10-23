@@ -10,14 +10,29 @@ from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphIn
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
 import std/os
-const rayguiDir = currentSourcePath().parentDir / "raygui/src"
+const currentDir = currentSourcePath().parentDir
 
-{.passC: "-I" & rayguiDir.}
-{.passC: "-DRAYGUI_IMPLEMENTATION".}
+{.passC: "-I" & currentDir.}
+{.compile: currentDir / "raygui_wrap.c".}
 
 const
   RayguiVersion* = (4, 0, 0)
 """
+
+  rayguiStyles = [
+    "Ashes",
+    "Bluish",
+    "Candy",
+    "Cherry",
+    "Cyber",
+    "Dark",
+    "Enefete",
+    "Jungle",
+    "Lavanda",
+    "Sunny",
+    "Terminal"
+  ]
+
   excludedTypes = [
     "Vector2",
     "Vector3",
@@ -90,7 +105,7 @@ proc genBindings(t: TopLevel, fname: string, header, footer: string) =
             doc fld
         lit "\n"
     # Generate functions
-    lit "\n{.push callconv: cdecl, header: \"raygui.h\".}"
+    lit "\n{.push callconv: cdecl, header: \"raygui_wrap.h\".}"
     for fnc in items(t.functions):
       lit "\nproc "
       var name = fnc.name
@@ -140,6 +155,8 @@ const
 
 proc main =
   var t = parseApi(rayguiApi)
+  for style in rayguiStyles:
+    t.functions.add(FunctionInfo(name: "GuiLoadStyle" & style, returnType: "void", description: "Load style " & style.toLower & " over global style"))
   genBindings(t, outputname, rayguiHeader, "")
 
 main()

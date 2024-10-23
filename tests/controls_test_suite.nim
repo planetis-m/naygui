@@ -115,33 +115,33 @@ proc main =
       var droppedFiles = getDroppedFiles()
       if droppedFiles.len > 0 and
           endsWith(droppedFiles[0], ".rgs"):
-        guiLoadStyle(droppedFiles[0])
+        guiLoadStyle(droppedFiles[0].cstring)
       # Clear internal buffers
     progressValue += 0.002
     # if progressValue >= 1: progressValue = 0
     if isKeyPressed(Space):
       progressValue = 0.2
-    # if visualStyleActive != prevVisualStyleActive:
-    #   guiLoadStyleDefault()
-    #   case visualStyleActive
-    #   of 0:
-    #     discard
-    #   of 1:
-    #     guiLoadStyleJungle()
-    #   of 2:
-    #     guiLoadStyleLavanda()
-    #   of 3:
-    #     guiLoadStyleDark()
-    #   of 4:
-    #     guiLoadStyleBluish()
-    #   of 5:
-    #     guiLoadStyleCyber()
-    #   of 6:
-    #     guiLoadStyleTerminal()
-    #   else:
-    #     discard
-    #   guiSetStyle(Label, TextAlignment, Left)
-    #   prevVisualStyleActive = visualStyleActive
+    if visualStyleActive != prevVisualStyleActive:
+      guiLoadStyleDefault()
+      case visualStyleActive
+      of 0:
+        discard
+      of 1:
+        guiLoadStyleJungle()
+      of 2:
+        guiLoadStyleLavanda()
+      of 3:
+        guiLoadStyleDark()
+      of 4:
+        guiLoadStyleBluish()
+      of 5:
+        guiLoadStyleCyber()
+      of 6:
+        guiLoadStyleTerminal()
+      else:
+        discard
+      guiSetStyle(Label, TextAlignment.int32, GuiTextAlignment.Left.int32)
+      prevVisualStyleActive = visualStyleActive
     beginDrawing()
     clearBackground(getColor(guiGetStyle(Default, BackgroundColor.int32).uint32))
     # raygui: controls drawing
@@ -158,7 +158,7 @@ proc main =
     if guiValueBox(Rectangle(x: 25, y: 175, width: 125, height: 30), nil, valueBox002Value, 0, 100, valueBoxEditMode) != 0:
       valueBoxEditMode = not valueBoxEditMode
     guiSetStyle(TextBox, TextAlignment.int32, GuiTextAlignment.Left.int32)
-    if guiTextBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, 64, textBoxEditMode) != 0:
+    if guiTextBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText.cstring, 64, textBoxEditMode) != 0:
       textBoxEditMode = not textBoxEditMode
     guiSetStyle(Button, TextAlignment.int32, Center.int32)
     if guiButton(Rectangle(x: 25, y: 255, width: 125, height: 30), guiIconText(FileSave, "Save File")) != 0:
@@ -204,11 +204,11 @@ proc main =
     discard guiColorPicker(Rectangle(x: 320, y: 185, width: 196, height: 192), nil, colorPickerValue)
     # guiDisable()
     discard guiSlider(Rectangle(x: 355, y: 400, width: 165, height: 20), "TEST",
-        &"%{sliderValue:2.2f}", sliderValue, -50, 100)
+        cstring &"%{sliderValue:2.2f}", sliderValue, -50, 100)
     discard guiSliderBar(Rectangle(x: 320, y: 430, width: 200, height: 20), nil,
-        &"%{int32(sliderBarValue)}", sliderBarValue, 0, 100)
+        cstring &"%{int32(sliderBarValue)}", sliderBarValue, 0, 100)
     discard guiProgressBar(Rectangle(x: 320, y: 460, width: 200, height: 20), nil,
-        &" %{int(progressValue * 100)}%%", progressValue, 0, 1)
+        cstring &" %{int(progressValue * 100)}%%", progressValue, 0, 1)
     guiEnable()
     # NOTE: View rectangle could be used to perform some scissor test
     var view: Rectangle

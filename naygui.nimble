@@ -15,14 +15,3 @@ requires "naylib >= 4.6.1"
 #import std/distros
 #foreignDep "wayland-protocols"
 #foreignDep "wayland"
-
-from std/os import `/`, quoteShell
-
-const
-  PkgDir = thisDir()
-
-before install:
-  let patchPath = PkgDir / "mangle_names.patch"
-  withDir(PkgDir / "src/raygui"):
-    exec "git apply " & quoteShell(patchPath)
-
