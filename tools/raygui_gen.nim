@@ -1,4 +1,6 @@
-import common, std/[strutils, streams]
+import common
+import std/streams
+import std/strutils except spaces # strutils.spaces conflicts with common.spaces
 when defined(nimPreviewSlimSystem):
   import std/syncio
 

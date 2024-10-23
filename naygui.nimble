@@ -19,10 +19,10 @@ requires "naylib >= 4.6.1"
 from std/os import `/`, quoteShell
 
 const
-  PkgDir = thisDir().quoteShell
+  PkgDir = thisDir()
 
 before install:
-  when defined(windows):
-    let patchPath = PkgDir / "mangle_names.patch"
-    withDir(PkgDir / "src/raygui"):
-      exec "git apply " & patchPath
+  let patchPath = PkgDir / "mangle_names.patch"
+  withDir(PkgDir / "src/raygui"):
+    exec "git apply " & quoteShell(patchPath)
+

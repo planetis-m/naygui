@@ -3,7 +3,7 @@ import std/os
 const
   ProjectUrl = "https://github.com/planetis-m/naygui"
   PkgDir = thisDir().quoteShell
-  RaylibDir = PkgDir / "src/raygui"
+  RayguiDir = PkgDir / "src/raygui"
   ApiDir = PkgDir / "api"
   DocsDir = PkgDir / "docs"
 
@@ -21,12 +21,12 @@ proc genWrapper(lib: string) =
 
 proc genApiJson(lib, prefix: string) =
   let src = "raylib_parser.c"
-  withDir(RaylibDir / "parser"):
+  withDir(RayguiDir / "parser"):
     let exe = toExe("raylib_parser")
     # Building raylib API parser
     exec("cc " & src & " -o " & exe)
     mkDir(ApiDir)
-    let header = RaylibDir / "src" / (lib & ".h")
+    let header = RayguiDir / "src" / (lib & ".h")
     let apiJson = ApiDir / (lib & ".json")
     # Generate {lib} API JSON file
     exec(/.exe & " -f JSON " & (if prefix != "": "-d " & prefix else: "") &
