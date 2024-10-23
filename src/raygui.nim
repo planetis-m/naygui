@@ -22,12 +22,22 @@ type
     Center
     Right
 
+  GuiTextAlignmentVertical* {.size: sizeof(int32).} = enum ## Gui control text alignment vertical
+    Top
+    Middle
+    Bottom
+
+  GuiTextWrapMode* {.size: sizeof(int32).} = enum ## Gui control text wrap mode
+    TextWrapNone
+    TextWrapChar
+    TextWrapWord
+
   GuiControl* {.size: sizeof(int32).} = enum ## Gui controls
     Default
     Label ## Used also for: LABELBUTTON
     Button
     Toggle ## Used also for: TOGGLEGROUP
-    Slider ## Used also for: SLIDERBAR
+    Slider ## Used also for: SLIDERBAR, TOGGLESLIDER
     Progressbar
     Checkbox
     Combobox
@@ -41,22 +51,21 @@ type
     Statusbar
 
   GuiControlProperty* {.size: sizeof(int32).} = enum ## Gui base properties for every control
-    BorderColorNormal
-    BaseColorNormal
-    TextColorNormal
-    BorderColorFocused
-    BaseColorFocused
-    TextColorFocused
-    BorderColorPressed
-    BaseColorPressed
-    TextColorPressed
-    BorderColorDisabled
-    BaseColorDisabled
-    TextColorDisabled
-    BorderWidth
-    TextPadding
-    TextAlignment
-    Reserved
+    BorderColorNormal ## Control border color in STATE_NORMAL
+    BaseColorNormal ## Control base color in STATE_NORMAL
+    TextColorNormal ## Control text color in STATE_NORMAL
+    BorderColorFocused ## Control border color in STATE_FOCUSED
+    BaseColorFocused ## Control base color in STATE_FOCUSED
+    TextColorFocused ## Control text color in STATE_FOCUSED
+    BorderColorPressed ## Control border color in STATE_PRESSED
+    BaseColorPressed ## Control base color in STATE_PRESSED
+    TextColorPressed ## Control text color in STATE_PRESSED
+    BorderColorDisabled ## Control border color in STATE_DISABLED
+    BaseColorDisabled ## Control base color in STATE_DISABLED
+    TextColorDisabled ## Control text color in STATE_DISABLED
+    BorderWidth ## Control border size, 0 for no border
+    TextPadding ## Control text padding, not considering border
+    TextAlignment ## Control text horizontal alignment inside control text bound (after border and padding)
 
   GuiDefaultProperty* {.size: sizeof(int32).} = enum ## DEFAULT extended properties
     TextSize = 16 ## Text size (glyphs max height)
@@ -64,6 +73,8 @@ type
     LineColor ## Line control color
     BackgroundColor ## Background color
     TextLineSpacing ## Text spacing between lines
+    TextAlignmentVertical ## Text vertical alignment inside text bounds (after border and padding)
+    TextWrapMode ## Text wrap-mode inside text bounds
 
   GuiToggleProperty* {.size: sizeof(int32).} = enum ## Toggle/ToggleGroup
     GroupPadding = 16 ## ToggleGroup separation between toggles
@@ -76,12 +87,12 @@ type
     ProgressPadding = 16 ## ProgressBar internal padding
 
   GuiScrollBarProperty* {.size: sizeof(int32).} = enum ## ScrollBar
-    ArrowsSize = 16
-    ArrowsVisible
-    ScrollSliderPadding ## (SLIDERBAR, SLIDER_PADDING)
-    ScrollSliderSize
-    ScrollPadding
-    ScrollSpeed
+    ArrowsSize = 16 ## ScrollBar arrows size
+    ArrowsVisible ## ScrollBar arrows visible
+    ScrollSliderPadding ## ScrollBar slider internal padding
+    ScrollSliderSize ## ScrollBar slider size
+    ScrollPadding ## ScrollBar scroll padding from arrows
+    ScrollSpeed ## ScrollBar scrolling speed
 
   GuiCheckBoxProperty* {.size: sizeof(int32).} = enum ## CheckBox
     CheckPadding = 16 ## CheckBox internal check padding
@@ -95,11 +106,7 @@ type
     DropdownItemsSpacing ## DropdownBox items separation
 
   GuiTextBoxProperty* {.size: sizeof(int32).} = enum ## TextBox/TextBoxMulti/ValueBox/Spinner
-    TextInnerPadding = 16 ## TextBox/TextBoxMulti/ValueBox/Spinner inner text padding
-    TextLinesSpacing ## TextBoxMulti lines separation
-    TextAlignmentVertical ## TextBoxMulti vertical alignment: 0-CENTERED, 1-UP, 2-DOWN
-    TextMultiline ## TextBox supports multiple lines
-    TextWrapMode ## TextBox wrap mode for multiline: 0-NO_WRAP, 1-CHAR_WRAP, 2-WORD_WRAP
+    TextReadonly = 16 ## TextBox in read-only mode: 0-text editable, 1-text no-editable
 
   GuiSpinnerProperty* {.size: sizeof(int32).} = enum ## Spinner
     SpinButtonWidth = 16 ## Spinner left/right buttons width
@@ -109,7 +116,7 @@ type
     ListItemsHeight = 16 ## ListView items height
     ListItemsSpacing ## ListView items separation
     ScrollbarWidth ## ListView scrollbar size (usually width)
-    ScrollbarSide ## ListView scrollbar side (0-left, 1-right)
+    ScrollbarSide ## ListView scrollbar side (0-SCROLLBAR_LEFT_SIDE, 1-SCROLLBAR_RIGHT_SIDE)
 
   GuiColorPickerProperty* {.size: sizeof(int32).} = enum ## ColorPicker
     ColorSelectorSize = 16
@@ -377,10 +384,18 @@ type
     Icon255
 
 type
-  GuiStyleProp* {.bycopy.} = object ## Style property
-    controlId*: uint16
-    propertyId*: uint16
-    propertyValue*: uint32
+  GuiStyleProp* {.bycopy.} = object ## NOTE: Used when exporting style as code for convenience
+    controlId*: uint16 ## Control identifier
+    propertyId*: uint16 ## Property identifier
+    propertyValue*: int32 ## Property value
+
+  GuiTextStyle* {.bycopy.} = object ## NOTE: Text style is defined by control
+    size*: uint32
+    charSpacing*: int32
+    lineSpacing*: int32
+    alignmentH*: int32
+    alignmentV*: int32
+    padding*: int32
 
 {.push callconv: cdecl, header: "raygui.h".}
 proc guiEnable*() {.importc: "GuiEnable".}
@@ -393,7 +408,7 @@ proc guiUnlock*() {.importc: "GuiUnlock".}
   ## Unlock gui controls (global state)
 proc guiIsLocked*(): bool {.importc: "GuiIsLocked".}
   ## Check if gui is locked (global state)
-proc guiFade*(alpha: float32) {.importc: "GuiFade".}
+proc guiSetAlpha*(alpha: float32) {.importc: "GuiSetAlpha".}
   ## Set gui controls alpha (global state), alpha goes from 0.0f to 1.0f
 proc guiSetState*(state: GuiState) {.importc: "GuiSetState".}
   ## Set gui state (global state)
@@ -449,6 +464,8 @@ proc guiToggle*(bounds: Rectangle, text: cstring, active: out bool): int32 {.imp
   ## Toggle Button control, returns true when active
 proc guiToggleGroup*(bounds: Rectangle, text: cstring, active: out int32): int32 {.importc: "GuiToggleGroup".}
   ## Toggle Group control, returns active toggle index
+proc guiToggleSlider*(bounds: Rectangle, text: cstring, active: out int32): int32 {.importc: "GuiToggleSlider".}
+  ## Toggle Slider control, returns true when clicked
 proc guiCheckBox*(bounds: Rectangle, text: cstring, checked: out bool): int32 {.importc: "GuiCheckBox".}
   ## Check Box control, returns true when active
 proc guiComboBox*(bounds: Rectangle, text: cstring, active: out int32): int32 {.importc: "GuiComboBox".}
