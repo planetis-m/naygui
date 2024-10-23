@@ -37,8 +37,7 @@ proc wrapRaylib(lib, prefix: string) =
   genWrapper(lib)
 
 task wrap, "Produce all raylib nim wrappers":
-  # wrapRaylib("raygui", "RAYGUIAPI")
-  genWrapper("raygui")
+  wrapRaylib("raygui", "RAYGUIAPI")
 
 task docs, "Generate documentation":
   # https://nim-lang.github.io/Nim/docgen.html
