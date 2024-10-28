@@ -14,10 +14,13 @@ template `/.`(x: string): string =
   when defined(posix): "./" & x else: x
 
 proc fetchLatestRaylib() =
+  var firstTime = false
   if not dirExists(RayguiDir):
+    firstTime = true
     exec "git clone --depth 1 " & RayguiGit & " " & quoteShell(RayguiDir)
   withDir(RayguiDir):
-    exec "git switch -"
+    if not firstTime:
+      exec "git switch -"
     exec "git fetch --depth 100 origin " & RayLatestCommit
     exec "git checkout " & RayLatestCommit
 
