@@ -5,14 +5,12 @@ Welcome to this repository! Here you'll find a Nim wrapper for raygui, an auxili
 ## Documentation
 
 Please refer to the raygui readme and examples writen in C:
-https://github.com/raysan5/raygui/tree/4.0
+https://github.com/raysan5/raygui/
 
 ## Installation
 
 ```
-git clone https://github.com/planetis-m/naygui.git --recurse-submodules
-cd naygui/src/raygui/
-git apply ../../mangle_names.patch
+nimble install https://github.com/planetis-m/naygui.git
 ```
 
 ## Examples
