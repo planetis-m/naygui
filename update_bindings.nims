@@ -74,7 +74,7 @@ task genApi, "Generate API JSON files":
   genApiJson("raygui", "RAYGUIAPI", "#endif // RAYGUI_H")
 
 task genWrappers, "Generate Nim wrappers":
-  genWrapper("raygui", "raygui")
+  genWrapper("raygui")
 
 task update, "Update the raygui git directory":
   fetchLatestRaylib()

@@ -415,7 +415,7 @@ proc guiUnlock*() {.importc: "GuiUnlock", sideEffect.}
   ## Unlock gui controls (global state)
 proc guiIsLocked*(): bool {.importc: "GuiIsLocked", sideEffect.}
   ## Check if gui is locked (global state)
-proc setAlpha*(alpha: float32) {.importc: "GuiSetAlpha", sideEffect.}
+proc guiSetAlpha*(alpha: float32) {.importc: "GuiSetAlpha", sideEffect.}
   ## Set gui controls alpha (global state), alpha goes from 0.0f to 1.0f
 proc guiSetState*(state: GuiState) {.importc: "GuiSetState", sideEffect.}
   ## Set gui state (global state)
@@ -425,10 +425,8 @@ proc guiSetFont*(font: Font) {.importc: "GuiSetFont", sideEffect.}
   ## Set gui custom font (global state)
 proc guiGetFont*(): Font {.importc: "GuiGetFont", sideEffect.}
   ## Get gui custom font (global state)
-proc guiSetStyle*(control: GuiControl, property: int32, value: int32) {.importc: "GuiSetStyle", sideEffect.}
-  ## Set one style property
-proc guiGetStyle*(control: GuiControl, property: int32): int32 {.importc: "GuiGetStyle", sideEffect.}
-  ## Get one style property
+proc guiSetStyleImpl(control: GuiControl, property: int32, value: int32) {.importc: "GuiSetStyle", sideEffect.}
+proc guiGetStyleImpl(control: GuiControl, property: int32): int32 {.importc: "GuiGetStyle", sideEffect.}
 proc guiLoadStyleImpl(fileName: cstring) {.importc: "GuiLoadStyle", sideEffect.}
 proc guiLoadStyleDefault*() {.importc: "GuiLoadStyleDefault", sideEffect.}
   ## Load style default over global style
@@ -632,3 +630,22 @@ proc colorPickerHSV*(bounds: Rectangle, text: string, colorHsv: out Vector3): in
 proc colorPanelHSV*(bounds: Rectangle, text: string, colorHsv: out Vector3): int32 =
   ## Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()
   colorPanelHSVImpl(bounds, text.cstring, colorHsv)
+
+type
+  GuiStyleProperty = ControlProperty|DefaultProperty|ToggleProperty|SliderProperty|
+                     ProgressBarProperty|ScrollBarProperty|CheckBoxProperty|
+                     ComboBoxProperty|DropdownBoxProperty|TextBoxProperty|
+                     SpinnerProperty|ListViewProperty|ColorPickerProperty
+
+  GuiStyleValue = GuiState|GuiTextAlignment|GuiTextAlignmentVertical|
+                  GuiTextWrapMode|GuiControl|int32|bool
+
+proc guiSetStyle*[P: GuiStyleProperty, V: GuiStyleValue](
+    control: GuiControl, property: P, value: V) =
+  ## Set one style property
+  guiSetStyleImpl(control, property.int32, value.int32)
+
+proc guiGetStyle*[P: GuiStyleProperty](
+    control: GuiControl, property: P): int32 =
+  ## Get one style property
+  guiGetStyleImpl(control, property.int32)

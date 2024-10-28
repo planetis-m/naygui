@@ -139,27 +139,27 @@ proc main =
         guiLoadStyleTerminal()
       else:
         discard
-      guiSetStyle(Label, TextAlignment.int32, GuiTextAlignment.Left.int32)
+      guiSetStyle(Label, TextAlignment, GuiTextAlignment.Left)
       prevVisualStyleActive = visualStyleActive
     beginDrawing()
-    clearBackground(getColor(guiGetStyle(GuiControl.Default, BackgroundColor.int32).uint32))
+    clearBackground(getColor(guiGetStyle(Default, BackgroundColor).uint32))
     # raygui: controls drawing
     # ----------------------------------------------------------------------------------
     # Check all possible events that require GuiLock
     if dropDown000EditMode or dropDown001EditMode:
       guiLock()
     discard checkBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
-    guiSetStyle(GuiControl.TextBox, TextAlignment.int32, Center.int32)
+    guiSetStyle(TextBox, TextAlignment, Center)
     # guiSetStyle(Scrollbar, ArrowsVisible, true)
     # guiSetStyle(ValueBox, TextAlignment, Left)
     if spinner(Rectangle(x: 25, y: 135, width: 125, height: 30), "", spinner001Value, 0, 100, spinnerEditMode) != 0:
       spinnerEditMode = not spinnerEditMode
     if valueBox(Rectangle(x: 25, y: 175, width: 125, height: 30), "", valueBox002Value, 0, 100, valueBoxEditMode) != 0:
       valueBoxEditMode = not valueBoxEditMode
-    guiSetStyle(Textbox, TextAlignment.int32, GuiTextAlignment.Left.int32)
+    guiSetStyle(Textbox, TextAlignment, GuiTextAlignment.Left)
     if textBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, 64, textBoxEditMode) != 0:
       textBoxEditMode = not textBoxEditMode
-    guiSetStyle(Button, TextAlignment.int32, Center.int32)
+    guiSetStyle(Button, TextAlignment, Center)
     if button(Rectangle(x: 25, y: 255, width: 125, height: 30), iconText(FileSave, "Save File")) != 0:
       showTextInputBox = true
     discard groupBox(Rectangle(x: 25, y: 310, width: 125, height: 150), "STATES")
@@ -182,11 +182,11 @@ proc main =
         "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal", visualStyleActive)
     # NOTE: GuiDropdownBox must draw after any other control that can be covered on unfolding
     guiUnlock()
-    guiSetStyle(Dropdownbox, TextAlignment.int32, GuiTextAlignment.Left.int32)
+    guiSetStyle(Dropdownbox, TextAlignment, Left)
     if dropdownBox(Rectangle(x: 25, y: 65, width: 125, height: 30),
         "#01#ONE;#02#TWO;#03#THREE;#04#FOUR", dropdownBox001Active, dropDown001EditMode) != 0:
       dropDown001EditMode = not dropDown001EditMode
-    guiSetStyle(Dropdownbox, TextAlignment.int32, Center.int32)
+    guiSetStyle(Dropdownbox, TextAlignment, Center)
     if dropdownBox(Rectangle(x: 25, y: 25, width: 125, height: 30), "ONE;TWO;THREE",
         dropdownBox000Active, dropDown000EditMode) != 0:
       dropDown000EditMode = not dropDown000EditMode
@@ -207,10 +207,10 @@ proc main =
     discard sliderBar(Rectangle(x: 320, y: 430, width: 200, height: 20), "",
         &"{int32(sliderBarValue)}", sliderBarValue, 0, 100)
     discard progressBar(Rectangle(x: 320, y: 460, width: 200, height: 20), "",
-        &" {int(progressValue * 100)}%", progressValue, 0, 1)
+        &"{int(progressValue * 100)}%", progressValue, 0, 1)
     guiEnable()
     # NOTE: View rectangle could be used to perform some scissor test
-    var view: Rectangle
+    var view = default(Rectangle)
     discard scrollPanel(Rectangle(x: 560, y: 25, width: 102, height: 354), "",
         Rectangle(x: 560, y: 25, width: 300, height: 1200), viewScroll, view)
     var mouseCell = Vector2(x: 0, y: 0)
