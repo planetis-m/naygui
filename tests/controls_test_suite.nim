@@ -25,7 +25,7 @@
 #       raygui 4.0          - Immediate-mode GUI controls with custom styling and icons
 #
 #   COMPILATION (Windows - MinGW):
-#       gcc -o $(NAME_PART).exe $(FILE_NAME) -I../../src -lraylib -lopengl32 -lgdi32 -std=c99
+#       gcc -o $(NAME_PART).exe $(FILE_NAME) -Iraygui/raygui/src -lraylib -lopengl32 -lgdi32 -std=c99
 #
 #   LICENSE: zlib/libpng
 #
@@ -41,8 +41,8 @@ import raylib, raygui, std/[strutils, strformat]
 # raygui embedded styles
 
 # import
-#   ../styles/style_cyber, ../styles/style_jungle, ../styles/style_lavanda,
-#   ../styles/style_dark, ../styles/style_bluish, ../styles/style_terminal
+#   raygui/styles/cyber, raygui/styles/jungle, raygui/styles/lavanda,
+#   raygui/styles/dark, raygui/styles/bluish, raygui/styles/terminal
 
 const
   screenWidth = 700
