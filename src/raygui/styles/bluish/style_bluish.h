@@ -11,6 +11,11 @@
 //                                                                              //
 //////////////////////////////////////////////////////////////////////////////////
 
+#include "raylib.h"
+#include "raygui.h"
+#include <stdlib.h>
+#include <string.h>
+
 #define BLUISH_STYLE_PROPS_COUNT  14
 
 // Custom style name: Bluish
