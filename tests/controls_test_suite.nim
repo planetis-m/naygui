@@ -157,7 +157,7 @@ proc main =
       spinnerEditMode = not spinnerEditMode
     if valueBox(Rectangle(x: 25, y: 175, width: 125, height: 30), "", valueBox002Value, 0, 100, valueBoxEditMode) != 0:
       valueBoxEditMode = not valueBoxEditMode
-    guiSetStyle(TextBox, TextAlignment.int32, GuiTextAlignment.Left.int32)
+    guiSetStyle(Textbox, TextAlignment.int32, GuiTextAlignment.Left.int32)
     if textBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, 64, textBoxEditMode) != 0:
       textBoxEditMode = not textBoxEditMode
     guiSetStyle(Button, TextAlignment.int32, Center.int32)
