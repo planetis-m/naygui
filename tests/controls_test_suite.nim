@@ -143,14 +143,14 @@ proc main =
     #   guiSetStyle(Label, TextAlignment, Left)
     #   prevVisualStyleActive = visualStyleActive
     beginDrawing()
-    clearBackground(getColor(guiGetStyle(Default, BackgroundColor.int32).uint32))
+    clearBackground(getColor(guiGetStyle(GuiControl.Default.int32, BackgroundColor.int32).uint32))
     # raygui: controls drawing
     # ----------------------------------------------------------------------------------
     # Check all possible events that require GuiLock
     if dropDown000EditMode or dropDown001EditMode:
       guiLock()
     discard guiCheckBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
-    guiSetStyle(TextBox, TextAlignment.int32, Center.int32)
+    guiSetStyle(GuiControl.TextBox, TextAlignment.int32, Center.int32)
     # guiSetStyle(Scrollbar, ArrowsVisible, true)
     # guiSetStyle(ValueBox, TextAlignment, Left)
     if guiSpinner(Rectangle(x: 25, y: 135, width: 125, height: 30), nil, spinner001Value, 0, 100, spinnerEditMode) != 0:
