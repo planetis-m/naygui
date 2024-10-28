@@ -1,0 +1,26 @@
+{
+  "defines": [
+    {
+      "name": "BLUISH_STYLE_PROPS_COUNT",
+      "type": "INT",
+      "value": 14,
+      "description": ""
+    },
+    {
+      "name": "BLUISH_STYLE_FONT_ATLAS_COMP_SIZE",
+      "type": "INT",
+      "value": 2914,
+      "description": ""
+    }
+  ],
+  "structs": [
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+  ]
+}

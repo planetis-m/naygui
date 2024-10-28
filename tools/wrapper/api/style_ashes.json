@@ -1,0 +1,26 @@
+{
+  "defines": [
+    {
+      "name": "ASHES_STYLE_PROPS_COUNT",
+      "type": "INT",
+      "value": 16,
+      "description": ""
+    },
+    {
+      "name": "ASHES_STYLE_FONT_ATLAS_COMP_SIZE",
+      "type": "INT",
+      "value": 2042,
+      "description": ""
+    }
+  ],
+  "structs": [
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+  ]
+}

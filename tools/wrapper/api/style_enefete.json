@@ -1,0 +1,26 @@
+{
+  "defines": [
+    {
+      "name": "ENEFETE_STYLE_PROPS_COUNT",
+      "type": "INT",
+      "value": 17,
+      "description": ""
+    },
+    {
+      "name": "ENEFETE_STYLE_FONT_ATLAS_COMP_SIZE",
+      "type": "INT",
+      "value": 2462,
+      "description": ""
+    }
+  ],
+  "structs": [
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+  ]
+}
