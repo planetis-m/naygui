@@ -2,7 +2,7 @@ from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphIn
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
 import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui/src"
+const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui"
 
 {.passC: "-I" & rayguiDir.string.}
 {.passC: "-DRAYGUI_IMPLEMENTATION".}
@@ -416,20 +416,20 @@ proc guiIsLocked*(): bool {.importc: "GuiIsLocked", sideEffect.}
   ## Check if gui is locked (global state)
 proc setAlpha*(alpha: float32) {.importc: "GuiSetAlpha", sideEffect.}
   ## Set gui controls alpha (global state), alpha goes from 0.0f to 1.0f
-proc setState*(state: GuiState) {.importc: "GuiSetState", sideEffect.}
+proc guiSetState*(state: GuiState) {.importc: "GuiSetState", sideEffect.}
   ## Set gui state (global state)
-proc getState*(): GuiState {.importc: "GuiGetState", sideEffect.}
+proc guiGetState*(): GuiState {.importc: "GuiGetState", sideEffect.}
   ## Get gui state (global state)
-proc setFont*(font: Font) {.importc: "GuiSetFont", sideEffect.}
+proc guiSetFont*(font: Font) {.importc: "GuiSetFont", sideEffect.}
   ## Set gui custom font (global state)
-proc getFont*(): Font {.importc: "GuiGetFont", sideEffect.}
+proc guiGetFont*(): Font {.importc: "GuiGetFont", sideEffect.}
   ## Get gui custom font (global state)
-proc setStyle*(control: GuiControl, property: int32, value: int32) {.importc: "GuiSetStyle", sideEffect.}
+proc guiSetStyle*(control: GuiControl, property: int32, value: int32) {.importc: "GuiSetStyle", sideEffect.}
   ## Set one style property
-proc getStyle*(control: GuiControl, property: int32): int32 {.importc: "GuiGetStyle", sideEffect.}
+proc guiGetStyle*(control: GuiControl, property: int32): int32 {.importc: "GuiGetStyle", sideEffect.}
   ## Get one style property
-proc loadStyleImpl(fileName: cstring) {.importc: "GuiLoadStyle", sideEffect.}
-proc loadStyleDefault*() {.importc: "GuiLoadStyleDefault", sideEffect.}
+proc guiLoadStyleImpl(fileName: cstring) {.importc: "GuiLoadStyle", sideEffect.}
+proc guiLoadStyleDefault*() {.importc: "GuiLoadStyleDefault", sideEffect.}
   ## Load style default over global style
 proc enableTooltip*() {.importc: "GuiEnableTooltip", sideEffect.}
   ## Enable gui tooltips (global state)
@@ -484,9 +484,9 @@ proc colorPanelHSVImpl(bounds: Rectangle, text: cstring, colorHsv: out Vector3):
 {.pop.}
 
 
-proc loadStyle*(fileName: string) =
+proc guiLoadStyle*(fileName: string) =
   ## Load style file over global style variable (.rgs)
-  loadStyleImpl(fileName.cstring)
+  guiLoadStyleImpl(fileName.cstring)
 
 proc setTooltip*(tooltip: string) =
   ## Set tooltip string
