@@ -1,6 +1,6 @@
 # Package
 
-version     = "4.5.1"
+version     = "4.5.2"
 author      = "Antonis Geralis"
 description = "Raygui Nim wrapper"
 license     = "MIT"
@@ -8,7 +8,7 @@ srcDir      = "src"
 
 # Deps
 
-requires "nim >= 1.9.5"
+requires "nim >= 2.2.0"
 requires "naylib >= 24.43"
 #requires "eminim == 2.8.2"
 
