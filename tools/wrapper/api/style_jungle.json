@@ -1,0 +1,26 @@
+{
+  "defines": [
+    {
+      "name": "JUNGLE_STYLE_PROPS_COUNT",
+      "type": "INT",
+      "value": 17,
+      "description": ""
+    },
+    {
+      "name": "JUNGLE_STYLE_FONT_ATLAS_COMP_SIZE",
+      "type": "INT",
+      "value": 2030,
+      "description": ""
+    }
+  ],
+  "structs": [
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+  ]
+}

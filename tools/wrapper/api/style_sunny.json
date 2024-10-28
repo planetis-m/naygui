@@ -1,0 +1,26 @@
+{
+  "defines": [
+    {
+      "name": "SUNNY_STYLE_PROPS_COUNT",
+      "type": "INT",
+      "value": 33,
+      "description": ""
+    },
+    {
+      "name": "SUNNY_STYLE_FONT_ATLAS_COMP_SIZE",
+      "type": "INT",
+      "value": 2462,
+      "description": ""
+    }
+  ],
+  "structs": [
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+  ]
+}

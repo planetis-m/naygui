@@ -1,0 +1,26 @@
+{
+  "defines": [
+    {
+      "name": "DARK_STYLE_PROPS_COUNT",
+      "type": "INT",
+      "value": 23,
+      "description": ""
+    },
+    {
+      "name": "DARK_STYLE_FONT_ATLAS_COMP_SIZE",
+      "type": "INT",
+      "value": 2126,
+      "description": ""
+    }
+  ],
+  "structs": [
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+  ]
+}
