@@ -11,6 +11,11 @@
 //                                                                              //
 //////////////////////////////////////////////////////////////////////////////////
 
+#include "raylib.h"
+#include "raygui.h"
+#include <stdlib.h>
+#include <string.h>
+
 #define CYBER_STYLE_PROPS_COUNT  17
 
 // Custom style name: Cyber

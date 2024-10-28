@@ -11,6 +11,11 @@
 //                                                                              //
 //////////////////////////////////////////////////////////////////////////////////
 
+#include "raylib.h"
+#include "raygui.h"
+#include <stdlib.h>
+#include <string.h>
+
 #define LAVANDA_STYLE_PROPS_COUNT  16
 
 // Custom style name: Lavanda

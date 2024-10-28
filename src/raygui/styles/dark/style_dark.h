@@ -11,6 +11,11 @@
 //                                                                              //
 //////////////////////////////////////////////////////////////////////////////////
 
+#include "raylib.h"
+#include "raygui.h"
+#include <stdlib.h>
+#include <string.h>
+
 #define DARK_STYLE_PROPS_COUNT  23
 
 // Custom style name: Dark
