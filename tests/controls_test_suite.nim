@@ -41,8 +41,7 @@ import raylib, raygui, std/[strutils, strformat]
 # raygui embedded styles
 
 # import
-#   raygui/styles/cyber, raygui/styles/jungle, raygui/styles/lavanda,
-#   raygui/styles/dark, raygui/styles/bluish, raygui/styles/terminal
+#   naygui/styles/[cyber, jungle, lavanda, dark, bluish, terminal]
 
 const
   screenWidth = 700

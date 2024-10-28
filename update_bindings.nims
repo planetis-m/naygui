@@ -45,44 +45,36 @@ proc buildWrapper() =
     # if not fileExists(exe) or fileNewer(src, exe):
     exec "nim c --mm:arc --panics:on -d:release -d:emiLenient " & src
 
-proc genApiJson(lib, prefix, after, headerPath: string) =
+proc genApiJson(lib, prefix, after: string) =
   withDir(ToolsDir / "parser"):
     mkDir(ApiDir)
-    let header = RayguiDir / headerPath / (lib & ".h")
+    let header = RayguiDir / "src" / (lib & ".h")
     let apiJson = ApiDir / (lib & ".json")
     let prefixArg = if prefix != "": "-d " & prefix else: ""
     exec /.toExe("raylib_parser") & " -f JSON " & prefixArg & " -i " & header.quoteShell &
         " -t " & after.quoteShell & " -o " & apiJson.quoteShell
 
-proc genWrapper(lib, outputPath: string) =
+proc genWrapper(lib: string) =
   withDir(ToolsDir / "wrapper"):
-    let outp = PkgDir / "src" / (outputPath & ".nim")
+    let outp = PkgDir / "src" / (lib & ".nim")
     let conf = "config" / (lib & ".cfg")
     exec /.toExe("naylib_wrapper") & " -c:" & conf & " -o:" & outp
 
-proc wrapRaylib(lib, prefix, after, headerPath, outputPath: string) =
-  genApiJson(lib, prefix, after, headerPath)
-  genWrapper(lib, outputPath)
+proc wrapRaylib(lib, prefix, after: string) =
+  genApiJson(lib, prefix, after)
+  genWrapper(lib)
 
 task buildTools, "Build raylib_parser and naylib_wrapper":
   buildParser()
   buildWrapper()
   buildMangler()
 
-let styles =
-  ["amber", "ashes", "bluish", "candy", "cherry", "cyber", "dark",
-   "enefete", "jungle", "lavanda", "sunny", "terminal"]
-
 task genApi, "Generate API JSON files":
   buildParser()
-  genApiJson("raygui", "RAYGUIAPI", "#endif // RAYGUI_H", "src")
-  for style in styles.items:
-    genApiJson("style_" & style, "", "", "styles" / style)
+  genApiJson("raygui", "RAYGUIAPI", "#endif // RAYGUI_H")
 
 task genWrappers, "Generate Nim wrappers":
   genWrapper("raygui", "raygui")
-  for style in styles.items:
-    genWrapper("style_" & style, "styles" / style)
 
 task update, "Update the raygui git directory":
   fetchLatestRaylib()
@@ -97,13 +89,13 @@ task mangle, "Mangle identifiers in raygui source":
 
 task wrap, "Produce all raygui Nim wrappers":
   buildToolsTask()
-  wrapRaylib("raygui", "RAYGUIAPI", "#endif // RAYGUI_H", "src", "raygui")
-  for style in styles.items:
-    wrapRaylib("style_" & style, "", "", "styles" / style, "styles" / style)
+  wrapRaylib("raygui", "RAYGUIAPI", "#endif // RAYGUI_H")
 
 task docs, "Generate documentation":
   withDir(PkgDir):
-    for tmp in ["raygui"]:
+    for tmp in ["raygui", "amber", "ashes", "bluish", "candy",
+                "cherry", "cyber", "dark", "enefete", "jungle",
+                "lavanda", "sunny", "terminal"]:
       let doc = DocsDir / (tmp & ".html")
       let src = "src" / tmp
       let showNonExports = if tmp != "rmem": " --shownonexports" else: ""
