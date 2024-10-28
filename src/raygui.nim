@@ -448,39 +448,39 @@ proc guiWindowBoxImpl(bounds: Rectangle, title: cstring): int32 {.importc: "GuiW
 proc guiGroupBoxImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiGroupBox", sideEffect.}
 proc guiLineImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLine", sideEffect.}
 proc guiPanelImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiPanel", sideEffect.}
-proc guiTabBar*(bounds: Rectangle, text: cstringArray, count: int32, active: var int32): int32 {.importc: "GuiTabBar", sideEffect.}
+proc guiTabBar*(bounds: Rectangle, text: cstringArray, count: int32, active: out int32): int32 {.importc: "GuiTabBar", sideEffect.}
   ## Tab Bar control, returns TAB to be closed or -1
-proc guiScrollPanelImpl(bounds: Rectangle, text: cstring, content: Rectangle, scroll: ptr Vector2, view: ptr Rectangle): int32 {.importc: "GuiScrollPanel", sideEffect.}
+proc guiScrollPanelImpl(bounds: Rectangle, text: cstring, content: Rectangle, scroll: out Vector2, view: out Rectangle): int32 {.importc: "GuiScrollPanel", sideEffect.}
 proc guiLabelImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabel", sideEffect.}
 proc guiButtonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiButton", sideEffect.}
 proc guiLabelButtonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabelButton", sideEffect.}
-proc guiToggleImpl(bounds: Rectangle, text: cstring, active: ptr bool): int32 {.importc: "GuiToggle", sideEffect.}
-proc guiToggleGroupImpl(bounds: Rectangle, text: cstring, active: ptr int32): int32 {.importc: "GuiToggleGroup", sideEffect.}
-proc guiToggleSliderImpl(bounds: Rectangle, text: cstring, active: ptr int32): int32 {.importc: "GuiToggleSlider", sideEffect.}
+proc guiToggleImpl(bounds: Rectangle, text: cstring, active: out bool): int32 {.importc: "GuiToggle", sideEffect.}
+proc guiToggleGroupImpl(bounds: Rectangle, text: cstring, active: out int32): int32 {.importc: "GuiToggleGroup", sideEffect.}
+proc guiToggleSliderImpl(bounds: Rectangle, text: cstring, active: out int32): int32 {.importc: "GuiToggleSlider", sideEffect.}
 proc guiCheckBoxImpl(bounds: Rectangle, text: cstring, checked: ptr bool): int32 {.importc: "GuiCheckBox", sideEffect.}
-proc guiComboBoxImpl(bounds: Rectangle, text: cstring, active: ptr int32): int32 {.importc: "GuiComboBox", sideEffect.}
-proc guiDropdownBoxImpl(bounds: Rectangle, text: cstring, active: ptr int32, editMode: bool): int32 {.importc: "GuiDropdownBox", sideEffect.}
-proc guiSpinnerImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiSpinner", sideEffect.}
-proc guiValueBoxImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiValueBox", sideEffect.}
+proc guiComboBoxImpl(bounds: Rectangle, text: cstring, active: out int32): int32 {.importc: "GuiComboBox", sideEffect.}
+proc guiDropdownBoxImpl(bounds: Rectangle, text: cstring, active: out int32, editMode: bool): int32 {.importc: "GuiDropdownBox", sideEffect.}
+proc guiSpinnerImpl(bounds: Rectangle, text: cstring, value: out int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiSpinner", sideEffect.}
+proc guiValueBoxImpl(bounds: Rectangle, text: cstring, value: out int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiValueBox", sideEffect.}
 proc guiValueBoxFloatImpl(bounds: Rectangle, text: cstring, textValue: cstring, value: ptr float32, editMode: bool): int32 {.importc: "GuiValueBoxFloat", sideEffect.}
 proc guiTextBoxImpl(bounds: Rectangle, text: cstring, textSize: int32, editMode: bool): int32 {.importc: "GuiTextBox", sideEffect.}
-proc guiSliderImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSlider", sideEffect.}
-proc guiSliderBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSliderBar", sideEffect.}
-proc guiProgressBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiProgressBar", sideEffect.}
+proc guiSliderImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: out float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSlider", sideEffect.}
+proc guiSliderBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: out float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSliderBar", sideEffect.}
+proc guiProgressBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: out float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiProgressBar", sideEffect.}
 proc guiStatusBarImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiStatusBar", sideEffect.}
 proc guiDummyRecImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiDummyRec", sideEffect.}
-proc guiGridImpl(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: ptr Vector2): int32 {.importc: "GuiGrid", sideEffect.}
-proc guiListViewImpl(bounds: Rectangle, text: cstring, scrollIndex: ptr int32, active: ptr int32): int32 {.importc: "GuiListView", sideEffect.}
-proc guiListView*(bounds: Rectangle, text: cstringArray, count: int32, scrollIndex: var int32, active: var int32, focus: var int32): int32 {.importc: "GuiListViewEx", sideEffect.}
+proc guiGridImpl(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 {.importc: "GuiGrid", sideEffect.}
+proc guiListViewImpl(bounds: Rectangle, text: cstring, scrollIndex: out int32, active: out int32): int32 {.importc: "GuiListView", sideEffect.}
+proc guiListView*(bounds: Rectangle, text: cstringArray, count: int32, scrollIndex: out int32, active: out int32, focus: out int32): int32 {.importc: "GuiListViewEx", sideEffect.}
   ## List View with extended parameters
 proc guiMessageBoxImpl(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring): int32 {.importc: "GuiMessageBox", sideEffect.}
-proc guiTextInputBoxImpl(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring, text: cstring, textMaxSize: int32, secretViewActive: ptr bool): int32 {.importc: "GuiTextInputBox", sideEffect.}
-proc guiColorPickerImpl(bounds: Rectangle, text: cstring, color: ptr Color): int32 {.importc: "GuiColorPicker", sideEffect.}
-proc guiColorPanelImpl(bounds: Rectangle, text: cstring, color: ptr Color): int32 {.importc: "GuiColorPanel", sideEffect.}
-proc guiColorBarAlphaImpl(bounds: Rectangle, text: cstring, alpha: ptr float32): int32 {.importc: "GuiColorBarAlpha", sideEffect.}
-proc guiColorBarHueImpl(bounds: Rectangle, text: cstring, value: ptr float32): int32 {.importc: "GuiColorBarHue", sideEffect.}
-proc guiColorPickerHSVImpl(bounds: Rectangle, text: cstring, colorHsv: ptr Vector3): int32 {.importc: "GuiColorPickerHSV", sideEffect.}
-proc guiColorPanelHSVImpl(bounds: Rectangle, text: cstring, colorHsv: ptr Vector3): int32 {.importc: "GuiColorPanelHSV", sideEffect.}
+proc guiTextInputBoxImpl(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring, text: cstring, textMaxSize: int32, secretViewActive: out bool): int32 {.importc: "GuiTextInputBox", sideEffect.}
+proc guiColorPickerImpl(bounds: Rectangle, text: cstring, color: out Color): int32 {.importc: "GuiColorPicker", sideEffect.}
+proc guiColorPanelImpl(bounds: Rectangle, text: cstring, color: out Color): int32 {.importc: "GuiColorPanel", sideEffect.}
+proc guiColorBarAlphaImpl(bounds: Rectangle, text: cstring, alpha: out float32): int32 {.importc: "GuiColorBarAlpha", sideEffect.}
+proc guiColorBarHueImpl(bounds: Rectangle, text: cstring, value: out float32): int32 {.importc: "GuiColorBarHue", sideEffect.}
+proc guiColorPickerHSVImpl(bounds: Rectangle, text: cstring, colorHsv: out Vector3): int32 {.importc: "GuiColorPickerHSV", sideEffect.}
+proc guiColorPanelHSVImpl(bounds: Rectangle, text: cstring, colorHsv: out Vector3): int32 {.importc: "GuiColorPanelHSV", sideEffect.}
 {.pop.}
 
 
@@ -516,9 +516,9 @@ proc guiPanel*(bounds: Rectangle, text: string): int32 =
   ## Panel control, useful to group controls
   guiPanelImpl(bounds, text.cstring)
 
-proc guiScrollPanel*(bounds: Rectangle, text: string, content: Rectangle, scroll: var Vector2, view: var Rectangle): int32 =
+proc guiScrollPanel*(bounds: Rectangle, text: string, content: Rectangle, scroll: out Vector2, view: out Rectangle): int32 =
   ## Scroll Panel control
-  guiScrollPanelImpl(bounds, text.cstring, content, addr scroll, addr view)
+  guiScrollPanelImpl(bounds, text.cstring, content, scroll, view)
 
 proc guiLabel*(bounds: Rectangle, text: string): int32 =
   ## Label control
@@ -532,37 +532,37 @@ proc guiLabelButton*(bounds: Rectangle, text: string): int32 =
   ## Label button control, returns true when clicked
   guiLabelButtonImpl(bounds, text.cstring)
 
-proc guiToggle*(bounds: Rectangle, text: string, active: var bool): int32 =
+proc guiToggle*(bounds: Rectangle, text: string, active: out bool): int32 =
   ## Toggle Button control
-  guiToggleImpl(bounds, text.cstring, addr active)
+  guiToggleImpl(bounds, text.cstring, active)
 
-proc guiToggleGroup*(bounds: Rectangle, text: string, active: var int32): int32 =
+proc guiToggleGroup*(bounds: Rectangle, text: string, active: out int32): int32 =
   ## Toggle Group control
-  guiToggleGroupImpl(bounds, text.cstring, addr active)
+  guiToggleGroupImpl(bounds, text.cstring, active)
 
-proc guiToggleSlider*(bounds: Rectangle, text: string, active: var int32): int32 =
+proc guiToggleSlider*(bounds: Rectangle, text: string, active: out int32): int32 =
   ## Toggle Slider control
-  guiToggleSliderImpl(bounds, text.cstring, addr active)
+  guiToggleSliderImpl(bounds, text.cstring, active)
 
 proc guiCheckBox*(bounds: Rectangle, text: string, checked: var bool): int32 =
   ## Check Box control, returns true when active
   guiCheckBoxImpl(bounds, text.cstring, addr checked)
 
-proc guiComboBox*(bounds: Rectangle, text: string, active: var int32): int32 =
+proc guiComboBox*(bounds: Rectangle, text: string, active: out int32): int32 =
   ## Combo Box control
-  guiComboBoxImpl(bounds, text.cstring, addr active)
+  guiComboBoxImpl(bounds, text.cstring, active)
 
-proc guiDropdownBox*(bounds: Rectangle, text: string, active: var int32, editMode: bool): int32 =
+proc guiDropdownBox*(bounds: Rectangle, text: string, active: out int32, editMode: bool): int32 =
   ## Dropdown Box control
-  guiDropdownBoxImpl(bounds, text.cstring, addr active, editMode)
+  guiDropdownBoxImpl(bounds, text.cstring, active, editMode)
 
-proc guiSpinner*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
+proc guiSpinner*(bounds: Rectangle, text: string, value: out int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
   ## Spinner control
-  guiSpinnerImpl(bounds, text.cstring, addr value, minValue, maxValue, editMode)
+  guiSpinnerImpl(bounds, text.cstring, value, minValue, maxValue, editMode)
 
-proc guiValueBox*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
+proc guiValueBox*(bounds: Rectangle, text: string, value: out int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
   ## Value Box control, updates input text with numbers
-  guiValueBoxImpl(bounds, text.cstring, addr value, minValue, maxValue, editMode)
+  guiValueBoxImpl(bounds, text.cstring, value, minValue, maxValue, editMode)
 
 proc guiValueBoxFloat*(bounds: Rectangle, text: string, textValue: string, value: var float32, editMode: bool): int32 =
   ## Value box control for float values
@@ -572,17 +572,17 @@ proc guiTextBox*(bounds: Rectangle, text: string, textSize: int32, editMode: boo
   ## Text Box control, updates input text
   guiTextBoxImpl(bounds, text.cstring, textSize, editMode)
 
-proc guiSlider*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 =
+proc guiSlider*(bounds: Rectangle, textLeft: string, textRight: string, value: out float32, minValue: float32, maxValue: float32): int32 =
   ## Slider control
-  guiSliderImpl(bounds, textLeft.cstring, textRight.cstring, addr value, minValue, maxValue)
+  guiSliderImpl(bounds, textLeft.cstring, textRight.cstring, value, minValue, maxValue)
 
-proc guiSliderBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 =
+proc guiSliderBar*(bounds: Rectangle, textLeft: string, textRight: string, value: out float32, minValue: float32, maxValue: float32): int32 =
   ## Slider Bar control
-  guiSliderBarImpl(bounds, textLeft.cstring, textRight.cstring, addr value, minValue, maxValue)
+  guiSliderBarImpl(bounds, textLeft.cstring, textRight.cstring, value, minValue, maxValue)
 
-proc guiProgressBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 =
+proc guiProgressBar*(bounds: Rectangle, textLeft: string, textRight: string, value: out float32, minValue: float32, maxValue: float32): int32 =
   ## Progress Bar control
-  guiProgressBarImpl(bounds, textLeft.cstring, textRight.cstring, addr value, minValue, maxValue)
+  guiProgressBarImpl(bounds, textLeft.cstring, textRight.cstring, value, minValue, maxValue)
 
 proc guiStatusBar*(bounds: Rectangle, text: string): int32 =
   ## Status Bar control, shows info text
@@ -592,42 +592,42 @@ proc guiDummyRec*(bounds: Rectangle, text: string): int32 =
   ## Dummy control for placeholders
   guiDummyRecImpl(bounds, text.cstring)
 
-proc guiGrid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mouseCell: var Vector2): int32 =
+proc guiGrid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 =
   ## Grid control
-  guiGridImpl(bounds, text.cstring, spacing, subdivs, addr mouseCell)
+  guiGridImpl(bounds, text.cstring, spacing, subdivs, mouseCell)
 
-proc guiListView*(bounds: Rectangle, text: string, scrollIndex: var int32, active: var int32): int32 =
+proc guiListView*(bounds: Rectangle, text: string, scrollIndex: out int32, active: out int32): int32 =
   ## List View control
-  guiListViewImpl(bounds, text.cstring, addr scrollIndex, addr active)
+  guiListViewImpl(bounds, text.cstring, scrollIndex, active)
 
 proc guiMessageBox*(bounds: Rectangle, title: string, message: string, buttons: string): int32 =
   ## Message Box control, displays a message
   guiMessageBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring)
 
-proc guiTextInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: string, textMaxSize: int32, secretViewActive: var bool): int32 =
+proc guiTextInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: string, textMaxSize: int32, secretViewActive: out bool): int32 =
   ## Text Input Box control, ask for text, supports secret
-  guiTextInputBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring, text.cstring, textMaxSize, addr secretViewActive)
+  guiTextInputBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring, text.cstring, textMaxSize, secretViewActive)
 
-proc guiColorPicker*(bounds: Rectangle, text: string, color: var Color): int32 =
+proc guiColorPicker*(bounds: Rectangle, text: string, color: out Color): int32 =
   ## Color Picker control (multiple color controls)
-  guiColorPickerImpl(bounds, text.cstring, addr color)
+  guiColorPickerImpl(bounds, text.cstring, color)
 
-proc guiColorPanel*(bounds: Rectangle, text: string, color: var Color): int32 =
+proc guiColorPanel*(bounds: Rectangle, text: string, color: out Color): int32 =
   ## Color Panel control
-  guiColorPanelImpl(bounds, text.cstring, addr color)
+  guiColorPanelImpl(bounds, text.cstring, color)
 
-proc guiColorBarAlpha*(bounds: Rectangle, text: string, alpha: var float32): int32 =
+proc guiColorBarAlpha*(bounds: Rectangle, text: string, alpha: out float32): int32 =
   ## Color Bar Alpha control
-  guiColorBarAlphaImpl(bounds, text.cstring, addr alpha)
+  guiColorBarAlphaImpl(bounds, text.cstring, alpha)
 
-proc guiColorBarHue*(bounds: Rectangle, text: string, value: var float32): int32 =
+proc guiColorBarHue*(bounds: Rectangle, text: string, value: out float32): int32 =
   ## Color Bar Hue control
-  guiColorBarHueImpl(bounds, text.cstring, addr value)
+  guiColorBarHueImpl(bounds, text.cstring, value)
 
-proc guiColorPickerHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3): int32 =
+proc guiColorPickerHSV*(bounds: Rectangle, text: string, colorHsv: out Vector3): int32 =
   ## Color Picker control that avoids conversion to RGB on each call (multiple color controls)
-  guiColorPickerHSVImpl(bounds, text.cstring, addr colorHsv)
+  guiColorPickerHSVImpl(bounds, text.cstring, colorHsv)
 
-proc guiColorPanelHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3): int32 =
+proc guiColorPanelHSV*(bounds: Rectangle, text: string, colorHsv: out Vector3): int32 =
   ## Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()
-  guiColorPanelHSVImpl(bounds, text.cstring, addr colorHsv)
+  guiColorPanelHSVImpl(bounds, text.cstring, colorHsv)
