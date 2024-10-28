@@ -40,8 +40,8 @@ import raylib, raygui, std/[strutils, strformat]
 
 # raygui embedded styles
 
-# import
-#   naygui/styles/[cyber, jungle, lavanda, dark, bluish, terminal]
+import
+  naygui/styles/[cyber, jungle, lavanda, dark, bluish, terminal]
 
 const
   screenWidth = 700
@@ -120,27 +120,27 @@ proc main =
     # if progressValue >= 1: progressValue = 0
     if isKeyPressed(Space):
       progressValue = 0.2
-    # if visualStyleActive != prevVisualStyleActive:
-    #   guiLoadStyleDefault()
-    #   case visualStyleActive
-    #   of 0:
-    #     discard
-    #   of 1:
-    #     guiLoadStyleJungle()
-    #   of 2:
-    #     guiLoadStyleLavanda()
-    #   of 3:
-    #     guiLoadStyleDark()
-    #   of 4:
-    #     guiLoadStyleBluish()
-    #   of 5:
-    #     guiLoadStyleCyber()
-    #   of 6:
-    #     guiLoadStyleTerminal()
-    #   else:
-    #     discard
-    #   guiSetStyle(Label, TextAlignment, Left)
-    #   prevVisualStyleActive = visualStyleActive
+    if visualStyleActive != prevVisualStyleActive:
+      guiLoadStyleDefault()
+      case visualStyleActive
+      of 0:
+        discard
+      of 1:
+        guiLoadStyleJungle()
+      of 2:
+        guiLoadStyleLavanda()
+      of 3:
+        guiLoadStyleDark()
+      of 4:
+        guiLoadStyleBluish()
+      of 5:
+        guiLoadStyleCyber()
+      of 6:
+        guiLoadStyleTerminal()
+      else:
+        discard
+      guiSetStyle(Label, TextAlignment.int32, GuiTextAlignment.Left.int32)
+      prevVisualStyleActive = visualStyleActive
     beginDrawing()
     clearBackground(getColor(guiGetStyle(GuiControl.Default, BackgroundColor.int32).uint32))
     # raygui: controls drawing
@@ -193,8 +193,8 @@ proc main =
     discard listView(Rectangle(x: 165, y: 25, width: 140, height: 140),
         "Charmander;Bulbasaur;#18#Squirtel;Pikachu;Eevee;Pidgey",
         listViewScrollIndex, listViewActive)
-    # discard listView(Rectangle(x: 165, y: 180, width: 140, height: 200), cast[cstringArray](addr listViewExList),
-    #     8, listViewExScrollIndex, listViewExActive, listViewExFocus)
+    discard listView(Rectangle(x: 165, y: 180, width: 140, height: 200), cast[cstringArray](addr listViewExList),
+        8, listViewExScrollIndex, listViewExActive, listViewExFocus)
     # toggle(Rectangle(x: 165, y: 400, width: 140, height: 25), "#1#ONE", toggleGroupActive)
     discard toggleGroup(Rectangle(x: 165, y: 400, width: 140, height: 25),
         "#1#ONE\n#3#TWO\n#8#THREE\n#23#", toggleGroupActive)
@@ -203,11 +203,11 @@ proc main =
     discard colorPicker(Rectangle(x: 320, y: 185, width: 196, height: 192), "", colorPickerValue)
     # guiDisable()
     discard slider(Rectangle(x: 355, y: 400, width: 165, height: 20), "TEST",
-        &"%{sliderValue:2.2f}", sliderValue, -50, 100)
+        &"{sliderValue:2.2f}", sliderValue, -50, 100)
     discard sliderBar(Rectangle(x: 320, y: 430, width: 200, height: 20), "",
-        &"%{int32(sliderBarValue)}", sliderBarValue, 0, 100)
+        &"{int32(sliderBarValue)}", sliderBarValue, 0, 100)
     discard progressBar(Rectangle(x: 320, y: 460, width: 200, height: 20), "",
-        &" %{int(progressValue * 100)}%%", progressValue, 0, 1)
+        &" {int(progressValue * 100)}%", progressValue, 0, 1)
     guiEnable()
     # NOTE: View rectangle could be used to perform some scissor test
     var view: Rectangle

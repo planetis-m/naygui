@@ -11,6 +11,11 @@
 //                                                                              //
 //////////////////////////////////////////////////////////////////////////////////
 
+#include "raylib.h"
+#include "raygui.h"
+#include <stdlib.h>
+#include <string.h>
+
 #define SUNNY_STYLE_PROPS_COUNT  33
 
 // Custom style name: Sunny
