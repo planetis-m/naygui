@@ -630,8 +630,7 @@ template setupTextBox(call: untyped): untyped =
     text[0] = '\0'
   result = call
   if result == 1:
-    let last = find(text, '\0')
-    text.setLen(if last != -1: last else: text.capacity)
+    text.setLen(text.cstring.len)
 
 proc textBox*(bounds: Rectangle, text: var string, editMode: bool): int32 =
   ## Text Box control, updates input text
@@ -646,7 +645,7 @@ proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: s
 proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string): int32 =
   ## Text Input Box control, ask for text, without secret.
   setupTextBox:
-    textInputBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, cast[ptr bool](nil))
+    textInputBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, nil)
 
 type
   GuiStyleProperty = ControlProperty|DefaultProperty|ToggleProperty|SliderProperty|
