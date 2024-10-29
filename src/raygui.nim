@@ -1,7 +1,7 @@
 from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
-import std/paths
+import std/[assertions, paths]
 const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui"
 
 # {.passC: "-DRAYGUI_IMPLEMENTATION".}
@@ -653,6 +653,7 @@ proc loadIcons*(fileName: string, loadIconsName: bool): seq[string] =
 template setupTextBox(call: untyped): untyped =
   # Helper template to set up a text box with common code.
   if text.len == 0:
+    assert text.capacity != 0, "Expects a preallocated string buffer."
     text.setLen(1)
     text[0] = '\0'
   result = call

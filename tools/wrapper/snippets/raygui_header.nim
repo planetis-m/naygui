@@ -1,7 +1,7 @@
 from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
-import std/paths
+import std/[assertions, paths]
 const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui"
 
 # {.passC: "-DRAYGUI_IMPLEMENTATION".}

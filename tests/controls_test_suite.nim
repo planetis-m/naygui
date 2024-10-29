@@ -111,7 +111,7 @@ proc main =
     if isKeyDown(LeftControl) and isKeyPressed(S):
       showTextInputBox = true
     if isFileDropped():
-      var droppedFiles = getDroppedFiles()
+      let droppedFiles = getDroppedFiles()
       if droppedFiles.len > 0 and
           endsWith(droppedFiles[0], ".rgs"):
         guiLoadStyle(droppedFiles[0])
