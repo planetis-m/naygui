@@ -12,6 +12,9 @@ const
   RayguiVersion* = (4, 5, 0)
 
 type
+  ConstCstringArray {.importc: "const char **".} = cstringArray
+
+type
   GuiState* {.size: sizeof(int32).} = enum ## Gui control state
     Normal
     Focused
@@ -447,8 +450,7 @@ proc windowBoxImpl(bounds: Rectangle, title: cstring): int32 {.importc: "GuiWind
 proc groupBoxImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiGroupBox", sideEffect.}
 proc lineImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLine", sideEffect.}
 proc panelImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiPanel", sideEffect.}
-proc tabBar*(bounds: Rectangle, text: cstringArray, count: int32, active: var int32): int32 {.importc: "GuiTabBar", sideEffect.}
-  ## Tab Bar control, returns TAB to be closed or -1
+proc tabBarImpl(bounds: Rectangle, text: ConstCstringArray, count: int32, active: ptr int32): int32 {.importc: "GuiTabBar", sideEffect.}
 proc scrollPanelImpl(bounds: Rectangle, text: cstring, content: Rectangle, scroll: ptr Vector2, view: out Rectangle): int32 {.importc: "GuiScrollPanel", sideEffect.}
 proc labelImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabel", sideEffect.}
 proc buttonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiButton", sideEffect.}
@@ -470,8 +472,7 @@ proc statusBarImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiStatu
 proc dummyRecImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiDummyRec", sideEffect.}
 proc gridImpl(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 {.importc: "GuiGrid", sideEffect.}
 proc listViewImpl(bounds: Rectangle, text: cstring, scrollIndex: ptr int32, active: ptr int32): int32 {.importc: "GuiListView", sideEffect.}
-proc listView*(bounds: Rectangle, text: cstringArray, count: int32, scrollIndex: var int32, active: var int32, focus: var int32): int32 {.importc: "GuiListViewEx", sideEffect.}
-  ## List View with extended parameters
+proc listViewImpl(bounds: Rectangle, text: ConstCstringArray, count: int32, scrollIndex: ptr int32, active: ptr int32, focus: ptr int32): int32 {.importc: "GuiListViewEx", sideEffect.}
 proc messageBoxImpl(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring): int32 {.importc: "GuiMessageBox", sideEffect.}
 proc textInputBoxImpl(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring, text: cstring, textMaxSize: int32, secretViewActive: ptr bool): int32 {.importc: "GuiTextInputBox", sideEffect.}
 proc colorPickerImpl(bounds: Rectangle, text: cstring, color: ptr Color): int32 {.importc: "GuiColorPicker", sideEffect.}
@@ -494,10 +495,6 @@ proc setTooltip*(tooltip: string) =
 proc iconText*(iconId: GuiIconName, text: string): string =
   ## Get text with icon id prepended (if supported)
   $iconTextImpl(iconId, text.cstring)
-
-proc loadIcons*(fileName: string, loadIconsName: bool): cstringArray =
-  ## Load raygui icons file (.rgi) into internal icons data
-  loadIconsImpl(fileName.cstring, loadIconsName)
 
 proc windowBox*(bounds: Rectangle, title: string): int32 =
   ## Window Box control, shows a window that can be closed
@@ -622,6 +619,36 @@ proc colorPickerHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3): in
 proc colorPanelHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3): int32 =
   ## Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()
   colorPanelHSVImpl(bounds, text.cstring, addr colorHsv)
+
+type
+  TextArray* = object
+    data: ConstCstringArray
+    count: int32
+
+proc `=destroy`*(t: TextArray) =
+  if t.data != nil:
+    deallocCStringArray(t.data)
+proc `=dup`*(source: TextArray): TextArray {.error.}
+proc `=copy`*(dest: var TextArray; source: TextArray) {.error.}
+
+proc toTextArray*(texts: openArray[string]): TextArray =
+  TextArray(data: allocCStringArray(texts), count: texts.len.int32)
+
+proc memFree(`ptr`: pointer) {.importc: "RAYGUI_FREE", sideEffect.}
+
+proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32): int32 =
+  ## List View with extended parameters
+  listViewImpl(bounds, text.data, text.count, addr scrollIndex, addr active, addr focus)
+
+proc tabBar*(bounds: Rectangle, text: TextArray, active: var int32): int32 =
+  ## Tab Bar control, returns TAB to be closed or -1
+  tabBarImpl(bounds, text.data, text.count, addr active)
+
+proc loadIcons*(fileName: string, loadIconsName: bool): seq[string] =
+  ## Load raygui icons file (.rgi) into internal icons data
+  let iconsName = loadIconsImpl(fileName.cstring, loadIconsName)
+  result = cstringArrayToSeq(iconsName)
+  memFree(iconsName)
 
 template setupTextBox(call: untyped): untyped =
   # Helper template to set up a text box with common code.

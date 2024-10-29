@@ -1,4 +1,34 @@
 
+type
+  TextArray* = object
+    data: ConstCstringArray
+    count: int32
+
+proc `=destroy`*(t: TextArray) =
+  if t.data != nil:
+    deallocCStringArray(t.data)
+proc `=dup`*(source: TextArray): TextArray {.error.}
+proc `=copy`*(dest: var TextArray; source: TextArray) {.error.}
+
+proc toTextArray*(texts: openArray[string]): TextArray =
+  TextArray(data: allocCStringArray(texts), count: texts.len.int32)
+
+proc memFree(`ptr`: pointer) {.importc: "RAYGUI_FREE", sideEffect.}
+
+proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32): int32 =
+  ## List View with extended parameters
+  listViewImpl(bounds, text.data, text.count, addr scrollIndex, addr active, addr focus)
+
+proc tabBar*(bounds: Rectangle, text: TextArray, active: var int32): int32 =
+  ## Tab Bar control, returns TAB to be closed or -1
+  tabBarImpl(bounds, text.data, text.count, addr active)
+
+proc loadIcons*(fileName: string, loadIconsName: bool): seq[string] =
+  ## Load raygui icons file (.rgi) into internal icons data
+  let iconsName = loadIconsImpl(fileName.cstring, loadIconsName)
+  result = cstringArrayToSeq(iconsName)
+  memFree(iconsName)
+
 template setupTextBox(call: untyped): untyped =
   # Helper template to set up a text box with common code.
   if text.len == 0:
