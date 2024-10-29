@@ -7,6 +7,8 @@ Welcome to this repository! Here you'll find a Nim wrapper for raygui, an auxili
 Please refer to the raygui readme and examples writen in C:
 https://github.com/raysan5/raygui/
 
+[API docs](https://planetis-m.github.io/naygui/raygui.html)
+
 ## Installation
 
 ```
@@ -17,6 +19,7 @@ nimble install https://github.com/planetis-m/naygui.git
 
 Example code located in tests dir:
 https://github.com/planetis-m/naygui/blob/master/tests/controls_test_suite.nim
+
 ```
 nim compile -r tests/controls_test_suite.nim
 ```
