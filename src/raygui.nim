@@ -449,7 +449,7 @@ proc lineImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLine", sid
 proc panelImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiPanel", sideEffect.}
 proc tabBar*(bounds: Rectangle, text: cstringArray, count: int32, active: var int32): int32 {.importc: "GuiTabBar", sideEffect.}
   ## Tab Bar control, returns TAB to be closed or -1
-proc scrollPanelImpl(bounds: Rectangle, text: cstring, content: Rectangle, scroll: ptr Vector2, view: ptr Rectangle): int32 {.importc: "GuiScrollPanel", sideEffect.}
+proc scrollPanelImpl(bounds: Rectangle, text: cstring, content: Rectangle, scroll: ptr Vector2, view: out Rectangle): int32 {.importc: "GuiScrollPanel", sideEffect.}
 proc labelImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabel", sideEffect.}
 proc buttonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiButton", sideEffect.}
 proc labelButtonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabelButton", sideEffect.}
@@ -468,7 +468,7 @@ proc sliderBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, val
 proc progressBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiProgressBar", sideEffect.}
 proc statusBarImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiStatusBar", sideEffect.}
 proc dummyRecImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiDummyRec", sideEffect.}
-proc gridImpl(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: ptr Vector2): int32 {.importc: "GuiGrid", sideEffect.}
+proc gridImpl(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 {.importc: "GuiGrid", sideEffect.}
 proc listViewImpl(bounds: Rectangle, text: cstring, scrollIndex: ptr int32, active: ptr int32): int32 {.importc: "GuiListView", sideEffect.}
 proc listView*(bounds: Rectangle, text: cstringArray, count: int32, scrollIndex: var int32, active: var int32, focus: var int32): int32 {.importc: "GuiListViewEx", sideEffect.}
   ## List View with extended parameters
@@ -515,9 +515,9 @@ proc panel*(bounds: Rectangle, text: string): int32 =
   ## Panel control, useful to group controls
   panelImpl(bounds, text.cstring)
 
-proc scrollPanel*(bounds: Rectangle, text: string, content: Rectangle, scroll: var Vector2, view: var Rectangle): int32 =
+proc scrollPanel*(bounds: Rectangle, text: string, content: Rectangle, scroll: var Vector2, view: out Rectangle): int32 =
   ## Scroll Panel control
-  scrollPanelImpl(bounds, text.cstring, content, addr scroll, addr view)
+  scrollPanelImpl(bounds, text.cstring, content, addr scroll, view)
 
 proc label*(bounds: Rectangle, text: string): int32 =
   ## Label control
@@ -587,9 +587,9 @@ proc dummyRec*(bounds: Rectangle, text: string): int32 =
   ## Dummy control for placeholders
   dummyRecImpl(bounds, text.cstring)
 
-proc grid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mouseCell: var Vector2): int32 =
+proc grid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 =
   ## Grid control
-  gridImpl(bounds, text.cstring, spacing, subdivs, addr mouseCell)
+  gridImpl(bounds, text.cstring, spacing, subdivs, mouseCell)
 
 proc listView*(bounds: Rectangle, text: string, scrollIndex: var int32, active: var int32): int32 =
   ## List View control
