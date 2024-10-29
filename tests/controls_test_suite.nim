@@ -74,9 +74,9 @@ proc main =
   var listViewExScrollIndex: int32 = 0
   var listViewExActive: int32 = 2
   var listViewExFocus: int32 = -1
-  let listViewExList: array[8, cstring] = [
+  let listViewExList = toTextArray([
       "This", "is", "a", "list view",
-      "with", "disable", "elements", "amazing!"]
+      "with", "disable", "elements", "amazing!"])
   let multiTextBoxText = "Multi text box"
   var multiTextBoxEditMode: bool = false
   var colorPickerValue: Color = Red
@@ -193,8 +193,8 @@ proc main =
     discard listView(Rectangle(x: 165, y: 25, width: 140, height: 140),
         "Charmander;Bulbasaur;#18#Squirtel;Pikachu;Eevee;Pidgey",
         listViewScrollIndex, listViewActive)
-    discard listView(Rectangle(x: 165, y: 180, width: 140, height: 200), cast[cstringArray](addr listViewExList),
-        8, listViewExScrollIndex, listViewExActive, listViewExFocus)
+    discard listView(Rectangle(x: 165, y: 180, width: 140, height: 200), listViewExList,
+        listViewExScrollIndex, listViewExActive, listViewExFocus)
     # toggle(Rectangle(x: 165, y: 400, width: 140, height: 25), "#1#ONE", toggleGroupActive)
     discard toggleGroup(Rectangle(x: 165, y: 400, width: 140, height: 25),
         "#1#ONE\n#3#TWO\n#8#THREE\n#23#", toggleGroupActive)

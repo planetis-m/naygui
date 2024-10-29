@@ -10,3 +10,6 @@ const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui"
 
 const
   RayguiVersion* = (4, 5, 0)
+
+type
+  ConstCstringArray {.importc: "const char **".} = cstringArray
