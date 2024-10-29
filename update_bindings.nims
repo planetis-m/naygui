@@ -93,11 +93,8 @@ task wrap, "Produce all raygui Nim wrappers":
 
 task docs, "Generate documentation":
   withDir(PkgDir):
-    for tmp in ["raygui", "amber", "ashes", "bluish", "candy",
-                "cherry", "cyber", "dark", "enefete", "jungle",
-                "lavanda", "sunny", "terminal"]:
+    for tmp in ["raygui"]:
       let doc = DocsDir / (tmp & ".html")
       let src = "src" / tmp
-      let showNonExports = if tmp != "rmem": " --shownonexports" else: ""
-      exec "nim doc --verbosity:0 --git.url:" & ProjectUrl & showNonExports &
-           " --git.devel:main --git.commit:main --out:" & doc.quoteShell & " " & src
+      exec "nim doc --verbosity:0 --git.url:" & ProjectUrl &
+           " --git.devel:master --git.commit:master --out:" & doc.quoteShell & " " & src
