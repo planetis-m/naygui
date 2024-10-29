@@ -96,7 +96,7 @@ proc main =
   # guiSetFont(font)
   var exitWindow: bool = false
   var showMessageBox: bool = false
-  var textInput = newString(256)
+  var textInput = newString(255)
   var showTextInputBox: bool = false
   var textInputFileName: string = ""
   setTargetFPS(60)
@@ -157,7 +157,7 @@ proc main =
     if valueBox(Rectangle(x: 25, y: 175, width: 125, height: 30), "", valueBox002Value, 0, 100, valueBoxEditMode) != 0:
       valueBoxEditMode = not valueBoxEditMode
     guiSetStyle(Textbox, TextAlignment, GuiTextAlignment.Left)
-    if textBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, 64, textBoxEditMode) != 0:
+    if textBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, textBoxEditMode) != 0:
       textBoxEditMode = not textBoxEditMode
     guiSetStyle(Button, TextAlignment, Center)
     if button(Rectangle(x: 25, y: 255, width: 125, height: 30), iconText(FileSave, "Save File")) != 0:
@@ -230,19 +230,16 @@ proc main =
         exitWindow = true
     if showTextInputBox:
       drawRectangle(0, 0, getScreenWidth(), getScreenHeight(), fade(RayWhite, 0.8))
-      var tmp = false
       let result = textInputBox(Rectangle(
           x: float32(getScreenWidth() div 2) - 120,
           y: float32(getScreenHeight() div 2) - 60, width: 240, height: 140), "Save",
-          iconText(FileSave, "Save file as..."), "Ok;Cancel",
-          textInput, 255, tmp)
+          iconText(FileSave, "Save file as..."), "Ok;Cancel", textInput)
       if result == 1:
         # TODO: Validate textInput value and save
         textInputFileName = textInput
       if result == 0 or result == 1 or result == 2:
         showTextInputBox = false
-        # textInput.reset()
-        textInput[0] = '\0'
+        textInput.setLen(0)
     endDrawing()
     # ----------------------------------------------------------------------------------
   # De-Initialization
