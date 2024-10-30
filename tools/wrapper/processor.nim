@@ -187,8 +187,6 @@ proc processParameters(fnc: var FunctionInfo, config: ConfigData) =
   for i, param in enumerate(fnc.params.mitems):
     if isArray(fnc.name, param.name, config):
       param.flags.incl isPtArray
-    if isNotNilParameter(fnc.name, param.name, config):
-      param.flags.incl isNotNil
     let pointerType =
       if isPtArray in param.flags: ptArray
       elif isOutParameter(fnc.name, param.name, config): ptOut
@@ -202,6 +200,9 @@ proc processParameters(fnc: var FunctionInfo, config: ConfigData) =
       param.flags.incl isOpenArray
       fnc.params[i+1].flags.incl isArrayLen
       fnc.flags.incl isAutoWrappedFunc
+    if {isOpenArray, isString} * param.flags != {} and
+        not isNotNilParameter(fnc.name, param.name, config):
+      param.flags.incl isNilIfEmpty
     if paramType.startsWith("var "):
       param.flags.incl isVarParam
       param.dirty = paramType
