@@ -233,7 +233,7 @@ proc main =
       drawRectangle(0, 0, getScreenWidth(), getScreenHeight(), fade(RayWhite, 0.8))
       let result = textInputBox(Rectangle(
           x: float32(getScreenWidth() div 2) - 120,
-          y: float32(getScreenHeight() div 2) - 60, width: 240, height: 140), "Save",
+          y: float32(getScreenHeight() div 2) - 60, width: 240, height: 140), "",
           iconText(FileSave, "Save file as..."), "Ok;Cancel", textInput)
       if result == 1:
         # TODO: Validate textInput value and save

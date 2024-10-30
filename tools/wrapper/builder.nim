@@ -189,7 +189,7 @@ proc generateWrappedProc*(b: var Builder, fnc: FunctionInfo) =
       for i, param in enumerate(fnc.params):
         if i > 0:
           b.addRaw ", "
-        if {isOpenArray, isString} * param.flags != {}:
+        if {isOpenArray, isString} * param.flags != {} and isNotNil notin param.flags:
           b.addRaw "if "
           b.addIdent param.name
           b.addRaw ".len == 0: nil else: "

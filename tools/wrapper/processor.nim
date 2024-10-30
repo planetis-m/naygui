@@ -26,6 +26,9 @@ proc isReadOnlyField(x, y: string, config: ConfigData): bool =
 proc isOutParameter(x, y: string, config: ConfigData): bool =
   (x, y) in config.outParameters
 
+proc isNotNilParameter(x, y: string, config: ConfigData): bool =
+  (x, y) in config.notNilParameters
+
 proc getReplacement(x, y: string, config: ConfigData): string =
   result = getOrDefault(config.typeReplacements, (x, y))
 
@@ -184,6 +187,8 @@ proc processParameters(fnc: var FunctionInfo, config: ConfigData) =
   for i, param in enumerate(fnc.params.mitems):
     if isArray(fnc.name, param.name, config):
       param.flags.incl isPtArray
+    if isNotNilParameter(fnc.name, param.name, config):
+      param.flags.incl isNotNil
     let pointerType =
       if isPtArray in param.flags: ptArray
       elif isOutParameter(fnc.name, param.name, config): ptOut

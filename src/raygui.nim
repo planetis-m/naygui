@@ -537,11 +537,11 @@ proc toggle*(bounds: Rectangle, text: string, active: var bool): int32 =
 
 proc toggleGroup*(bounds: Rectangle, text: string, active: var int32): int32 =
   ## Toggle Group control
-  toggleGroupImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
+  toggleGroupImpl(bounds, text.cstring, addr active)
 
 proc toggleSlider*(bounds: Rectangle, text: string, active: var int32): int32 =
   ## Toggle Slider control
-  toggleSliderImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
+  toggleSliderImpl(bounds, text.cstring, addr active)
 
 proc checkBox*(bounds: Rectangle, text: string, checked: var bool): int32 =
   ## Check Box control, returns true when active
@@ -549,11 +549,11 @@ proc checkBox*(bounds: Rectangle, text: string, checked: var bool): int32 =
 
 proc comboBox*(bounds: Rectangle, text: string, active: var int32): int32 =
   ## Combo Box control
-  comboBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
+  comboBoxImpl(bounds, text.cstring, addr active)
 
 proc dropdownBox*(bounds: Rectangle, text: string, active: var int32, editMode: bool): int32 =
   ## Dropdown Box control
-  dropdownBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr active, editMode)
+  dropdownBoxImpl(bounds, text.cstring, addr active, editMode)
 
 proc spinner*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
   ## Spinner control
@@ -593,11 +593,11 @@ proc grid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mo
 
 proc listView*(bounds: Rectangle, text: string, scrollIndex: var int32, active: var int32): int32 =
   ## List View control
-  listViewImpl(bounds, if text.len == 0: nil else: text.cstring, addr scrollIndex, addr active)
+  listViewImpl(bounds, text.cstring, addr scrollIndex, addr active)
 
 proc messageBox*(bounds: Rectangle, title: string, message: string, buttons: string): int32 =
   ## Message Box control, displays a message
-  messageBoxImpl(bounds, if title.len == 0: nil else: title.cstring, if message.len == 0: nil else: message.cstring, if buttons.len == 0: nil else: buttons.cstring)
+  messageBoxImpl(bounds, if title.len == 0: nil else: title.cstring, if message.len == 0: nil else: message.cstring, buttons.cstring)
 
 proc colorPicker*(bounds: Rectangle, text: string, color: var Color): int32 =
   ## Color Picker control (multiple color controls)
