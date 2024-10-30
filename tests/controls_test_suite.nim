@@ -195,7 +195,8 @@ proc main =
         listViewScrollIndex, listViewActive)
     discard listView(Rectangle(x: 165, y: 180, width: 140, height: 200), listViewExList,
         listViewExScrollIndex, listViewExActive, listViewExFocus)
-    # toggle(Rectangle(x: 165, y: 400, width: 140, height: 25), "#1#ONE", toggleGroupActive)
+    # var toggleActive = false
+    # discard toggle(Rectangle(x: 165, y: 400, width: 140, height: 25), "#1#ONE", toggleActive)
     discard toggleGroup(Rectangle(x: 165, y: 400, width: 140, height: 25),
         "#1#ONE\n#3#TWO\n#8#THREE\n#23#", toggleGroupActive)
     # Third GUI column
