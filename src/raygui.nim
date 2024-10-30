@@ -489,139 +489,139 @@ proc colorPanelHSVImpl(bounds: Rectangle, text: cstring, colorHsv: ptr Vector3):
 
 proc guiLoadStyle*(fileName: string) =
   ## Load style file over global style variable (.rgs)
-  guiLoadStyleImpl(fileName.cstring)
+  guiLoadStyleImpl(if fileName.len == 0: nil else: fileName.cstring)
 
 proc setTooltip*(tooltip: string) =
   ## Set tooltip string
-  setTooltipImpl(tooltip.cstring)
+  setTooltipImpl(if tooltip.len == 0: nil else: tooltip.cstring)
 
 proc iconText*(iconId: GuiIconName, text: string): string =
   ## Get text with icon id prepended (if supported)
-  $iconTextImpl(iconId, text.cstring)
+  $iconTextImpl(iconId, if text.len == 0: nil else: text.cstring)
 
 proc windowBox*(bounds: Rectangle, title: string): int32 =
   ## Window Box control, shows a window that can be closed
-  windowBoxImpl(bounds, title.cstring)
+  windowBoxImpl(bounds, if title.len == 0: nil else: title.cstring)
 
 proc groupBox*(bounds: Rectangle, text: string): int32 =
   ## Group Box control with text name
-  groupBoxImpl(bounds, text.cstring)
+  groupBoxImpl(bounds, if text.len == 0: nil else: text.cstring)
 
 proc line*(bounds: Rectangle, text: string): int32 =
   ## Line separator control, could contain text
-  lineImpl(bounds, text.cstring)
+  lineImpl(bounds, if text.len == 0: nil else: text.cstring)
 
 proc panel*(bounds: Rectangle, text: string): int32 =
   ## Panel control, useful to group controls
-  panelImpl(bounds, text.cstring)
+  panelImpl(bounds, if text.len == 0: nil else: text.cstring)
 
 proc scrollPanel*(bounds: Rectangle, text: string, content: Rectangle, scroll: var Vector2, view: out Rectangle): int32 =
   ## Scroll Panel control
-  scrollPanelImpl(bounds, text.cstring, content, addr scroll, view)
+  scrollPanelImpl(bounds, if text.len == 0: nil else: text.cstring, content, addr scroll, view)
 
 proc label*(bounds: Rectangle, text: string): int32 =
   ## Label control
-  labelImpl(bounds, text.cstring)
+  labelImpl(bounds, if text.len == 0: nil else: text.cstring)
 
 proc button*(bounds: Rectangle, text: string): int32 =
   ## Button control, returns true when clicked
-  buttonImpl(bounds, text.cstring)
+  buttonImpl(bounds, if text.len == 0: nil else: text.cstring)
 
 proc labelButton*(bounds: Rectangle, text: string): int32 =
   ## Label button control, returns true when clicked
-  labelButtonImpl(bounds, text.cstring)
+  labelButtonImpl(bounds, if text.len == 0: nil else: text.cstring)
 
 proc toggle*(bounds: Rectangle, text: string, active: var bool): int32 =
   ## Toggle Button control
-  toggleImpl(bounds, text.cstring, addr active)
+  toggleImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
 
 proc toggleGroup*(bounds: Rectangle, text: string, active: var int32): int32 =
   ## Toggle Group control
-  toggleGroupImpl(bounds, text.cstring, addr active)
+  toggleGroupImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
 
 proc toggleSlider*(bounds: Rectangle, text: string, active: var int32): int32 =
   ## Toggle Slider control
-  toggleSliderImpl(bounds, text.cstring, addr active)
+  toggleSliderImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
 
 proc checkBox*(bounds: Rectangle, text: string, checked: var bool): int32 =
   ## Check Box control, returns true when active
-  checkBoxImpl(bounds, text.cstring, addr checked)
+  checkBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr checked)
 
 proc comboBox*(bounds: Rectangle, text: string, active: var int32): int32 =
   ## Combo Box control
-  comboBoxImpl(bounds, text.cstring, addr active)
+  comboBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
 
 proc dropdownBox*(bounds: Rectangle, text: string, active: var int32, editMode: bool): int32 =
   ## Dropdown Box control
-  dropdownBoxImpl(bounds, text.cstring, addr active, editMode)
+  dropdownBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr active, editMode)
 
 proc spinner*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
   ## Spinner control
-  spinnerImpl(bounds, text.cstring, addr value, minValue, maxValue, editMode)
+  spinnerImpl(bounds, if text.len == 0: nil else: text.cstring, addr value, minValue, maxValue, editMode)
 
 proc valueBox*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
   ## Value Box control, updates input text with numbers
-  valueBoxImpl(bounds, text.cstring, addr value, minValue, maxValue, editMode)
+  valueBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr value, minValue, maxValue, editMode)
 
 proc valueBoxFloat*(bounds: Rectangle, text: string, textValue: string, value: var float32, editMode: bool): int32 =
   ## Value box control for float values
-  valueBoxFloatImpl(bounds, text.cstring, textValue.cstring, addr value, editMode)
+  valueBoxFloatImpl(bounds, if text.len == 0: nil else: text.cstring, if textValue.len == 0: nil else: textValue.cstring, addr value, editMode)
 
 proc slider*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 =
   ## Slider control
-  sliderImpl(bounds, textLeft.cstring, textRight.cstring, addr value, minValue, maxValue)
+  sliderImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue)
 
 proc sliderBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 =
   ## Slider Bar control
-  sliderBarImpl(bounds, textLeft.cstring, textRight.cstring, addr value, minValue, maxValue)
+  sliderBarImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue)
 
 proc progressBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 =
   ## Progress Bar control
-  progressBarImpl(bounds, textLeft.cstring, textRight.cstring, addr value, minValue, maxValue)
+  progressBarImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue)
 
 proc statusBar*(bounds: Rectangle, text: string): int32 =
   ## Status Bar control, shows info text
-  statusBarImpl(bounds, text.cstring)
+  statusBarImpl(bounds, if text.len == 0: nil else: text.cstring)
 
 proc dummyRec*(bounds: Rectangle, text: string): int32 =
   ## Dummy control for placeholders
-  dummyRecImpl(bounds, text.cstring)
+  dummyRecImpl(bounds, if text.len == 0: nil else: text.cstring)
 
 proc grid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 =
   ## Grid control
-  gridImpl(bounds, text.cstring, spacing, subdivs, mouseCell)
+  gridImpl(bounds, if text.len == 0: nil else: text.cstring, spacing, subdivs, mouseCell)
 
 proc listView*(bounds: Rectangle, text: string, scrollIndex: var int32, active: var int32): int32 =
   ## List View control
-  listViewImpl(bounds, text.cstring, addr scrollIndex, addr active)
+  listViewImpl(bounds, if text.len == 0: nil else: text.cstring, addr scrollIndex, addr active)
 
 proc messageBox*(bounds: Rectangle, title: string, message: string, buttons: string): int32 =
   ## Message Box control, displays a message
-  messageBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring)
+  messageBoxImpl(bounds, if title.len == 0: nil else: title.cstring, if message.len == 0: nil else: message.cstring, if buttons.len == 0: nil else: buttons.cstring)
 
 proc colorPicker*(bounds: Rectangle, text: string, color: var Color): int32 =
   ## Color Picker control (multiple color controls)
-  colorPickerImpl(bounds, text.cstring, addr color)
+  colorPickerImpl(bounds, if text.len == 0: nil else: text.cstring, addr color)
 
 proc colorPanel*(bounds: Rectangle, text: string, color: var Color): int32 =
   ## Color Panel control
-  colorPanelImpl(bounds, text.cstring, addr color)
+  colorPanelImpl(bounds, if text.len == 0: nil else: text.cstring, addr color)
 
 proc colorBarAlpha*(bounds: Rectangle, text: string, alpha: var float32): int32 =
   ## Color Bar Alpha control
-  colorBarAlphaImpl(bounds, text.cstring, addr alpha)
+  colorBarAlphaImpl(bounds, if text.len == 0: nil else: text.cstring, addr alpha)
 
 proc colorBarHue*(bounds: Rectangle, text: string, value: var float32): int32 =
   ## Color Bar Hue control
-  colorBarHueImpl(bounds, text.cstring, addr value)
+  colorBarHueImpl(bounds, if text.len == 0: nil else: text.cstring, addr value)
 
 proc colorPickerHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3): int32 =
   ## Color Picker control that avoids conversion to RGB on each call (multiple color controls)
-  colorPickerHSVImpl(bounds, text.cstring, addr colorHsv)
+  colorPickerHSVImpl(bounds, if text.len == 0: nil else: text.cstring, addr colorHsv)
 
 proc colorPanelHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3): int32 =
   ## Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()
-  colorPanelHSVImpl(bounds, text.cstring, addr colorHsv)
+  colorPanelHSVImpl(bounds, if text.len == 0: nil else: text.cstring, addr colorHsv)
 
 type
   TextArray* = object
@@ -671,12 +671,12 @@ proc textBox*(bounds: Rectangle, text: var string, editMode: bool): int32 =
 proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string, secretViewActive: var bool): int32 =
   ## Text Input Box control, ask for text, supports secret.
   setupTextBox:
-    textInputBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, addr secretViewActive)
+    textInputBoxImpl(bounds, if title.len == 0: nil else: title.cstring, if message.len == 0: nil else: message.cstring, if buttons.len == 0: nil else: buttons.cstring, text.cstring, text.capacity.int32 + 1, addr secretViewActive)
 
 proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string): int32 =
   ## Text Input Box control, ask for text, without secret.
   setupTextBox:
-    textInputBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, nil)
+    textInputBoxImpl(bounds, if title.len == 0: nil else: title.cstring, if message.len == 0: nil else: message.cstring, if buttons.len == 0: nil else: buttons.cstring, text.cstring, text.capacity.int32 + 1, nil)
 
 type
   GuiStyleProperty = ControlProperty|DefaultProperty|ToggleProperty|SliderProperty|
