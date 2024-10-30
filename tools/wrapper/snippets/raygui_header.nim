@@ -12,4 +12,7 @@ const
   RayguiVersion* = (4, 5, 0)
 
 type
-  ConstCstringArray {.importc: "const char **".} = cstringArray
+  ConstCstringArray {.importc: "const char **".} = object
+
+proc toConstCStringArray(x: cstringArray): ConstCstringArray {.
+    importc: "(const char **)", noconv, nodecl.}
