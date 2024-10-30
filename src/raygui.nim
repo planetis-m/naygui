@@ -489,7 +489,7 @@ proc colorPanelHSVImpl(bounds: Rectangle, text: cstring, colorHsv: ptr Vector3):
 
 proc guiLoadStyle*(fileName: string) =
   ## Load style file over global style variable (.rgs)
-  guiLoadStyleImpl(if fileName.len == 0: nil else: fileName.cstring)
+  guiLoadStyleImpl(fileName.cstring)
 
 proc setTooltip*(tooltip: string) =
   ## Set tooltip string
