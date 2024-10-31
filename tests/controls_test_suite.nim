@@ -144,7 +144,7 @@ proc main =
     beginDrawing()
     clearBackground(getColor(guiGetStyle(Default, BackgroundColor).uint32))
     # raygui: controls drawing
-    # ----------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------
     # Check all possible events that require GuiLock
     if dropDown000EditMode or dropDown001EditMode:
       guiLock()
@@ -242,7 +242,7 @@ proc main =
         showTextInputBox = false
         textInput.setLen(0)
     endDrawing()
-    # ----------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------
   # De-Initialization
   # --------------------------------------------------------------------------------------
   closeWindow()

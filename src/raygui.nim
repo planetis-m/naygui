@@ -393,6 +393,9 @@ type
     Icon254
     Icon255
 
+const
+  ScrollbarLeftSide* = 0
+  ScrollbarRightSide* = 1
 
 type
   StyleProp* {.importc: "GuiStyleProp", header: "raygui.h", completeStruct, bycopy.} = object ## NOTE: Used when exporting style as code for convenience
