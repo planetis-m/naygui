@@ -47,12 +47,12 @@ proc textBox*(bounds: Rectangle, text: var string, editMode: bool): int32 =
 proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string, secretViewActive: var bool): int32 =
   ## Text Input Box control, ask for text, supports secret.
   setupTextBox:
-    textInputBoxImpl(bounds, if title.len == 0: nil else: title.cstring, if message.len == 0: nil else: message.cstring, if buttons.len == 0: nil else: buttons.cstring, text.cstring, text.capacity.int32 + 1, addr secretViewActive)
+    textInputBoxImpl(bounds, title.cstring, if message.len == 0: nil else: message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, addr secretViewActive)
 
 proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string): int32 =
   ## Text Input Box control, ask for text, without secret.
   setupTextBox:
-    textInputBoxImpl(bounds, if title.len == 0: nil else: title.cstring, if message.len == 0: nil else: message.cstring, if buttons.len == 0: nil else: buttons.cstring, text.cstring, text.capacity.int32 + 1, nil)
+    textInputBoxImpl(bounds, title.cstring, if message.len == 0: nil else: message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, nil)
 
 type
   GuiStyleProperty = ControlProperty|DefaultProperty|ToggleProperty|SliderProperty|
