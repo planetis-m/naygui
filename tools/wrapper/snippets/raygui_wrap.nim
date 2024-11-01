@@ -15,11 +15,11 @@ proc toTextArray*(texts: openArray[string]): TextArray =
 
 proc memFree(`ptr`: pointer) {.importc: "RAYGUI_FREE", sideEffect.}
 
-proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32): int32 =
+proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32): int32 {.discardable.} =
   ## List View with extended parameters
   listViewImpl(bounds, toConstCStringArray(text.data), text.count, addr scrollIndex, addr active, addr focus)
 
-proc tabBar*(bounds: Rectangle, text: TextArray, active: var int32): int32 =
+proc tabBar*(bounds: Rectangle, text: TextArray, active: var int32): int32 {.discardable.} =
   ## Tab Bar control, returns TAB to be closed or -1
   tabBarImpl(bounds, toConstCStringArray(text.data), text.count, addr active)
 
@@ -39,17 +39,17 @@ template setupTextBox(call: untyped): untyped =
   if result == 1:
     text.setLen(text.cstring.len)
 
-proc textBox*(bounds: Rectangle, text: var string, editMode: bool): int32 =
+proc textBox*(bounds: Rectangle, text: var string, editMode: bool): int32 {.discardable.} =
   ## Text Box control, updates input text
   setupTextBox:
     textBoxImpl(bounds, text.cstring, text.capacity.int32 + 1, editMode)
 
-proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string, secretViewActive: var bool): int32 =
+proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string, secretViewActive: var bool): int32 {.discardable.} =
   ## Text Input Box control, ask for text, supports secret.
   setupTextBox:
     textInputBoxImpl(bounds, title.cstring, if message.len == 0: nil else: message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, addr secretViewActive)
 
-proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string): int32 =
+proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string): int32 {.discardable.} =
   ## Text Input Box control, ask for text, without secret.
   setupTextBox:
     textInputBoxImpl(bounds, title.cstring, if message.len == 0: nil else: message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, nil)

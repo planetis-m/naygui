@@ -59,6 +59,9 @@ proc shouldMarkAsPrivate(name: string, config: ConfigData): bool =
 proc shouldMarkAsPrivate(module, name: string, config: ConfigData): bool =
   isPrivateSymbol(module, name, config)
 
+proc shouldMarkAsDiscardable(name: string, config: ConfigData): bool =
+  name in config.discardableReturn
+
 proc updateType(typeVar: var string; module, name: string;
                 pointerType: PointerType; config: ConfigData) =
   let replacement = getReplacement(module, name, config)
@@ -177,6 +180,8 @@ proc processFunctionFlags(fnc: var FunctionInfo, config: ConfigData) =
     fnc.flags.incl isPrivate
   if fnc.name in config.noSideEffectsFuncs:
     fnc.flags.incl isFunc
+  if shouldMarkAsDiscardable(fnc.name, config):
+    fnc.flags.incl isDiscardable
 
 proc processVarargs(fnc: var FunctionInfo, config: ConfigData) =
   if fnc.params.len > 0 and isVarargsParam(fnc.params[^1]):

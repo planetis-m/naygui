@@ -21,21 +21,21 @@ proc drawStyleEditControls() =
   guiSetStyle(Scrollbar, ArrowsSize, style)
 
   # Slider padding control
-  style = guiGetStyle(Scrollbar, SliderPadding)
-  discard label(Rectangle(x: 555, y: 245, width: 110, height: 10), "SLIDER_PADDING")
+  style = guiGetStyle(Scrollbar, ScrollPadding)
+  discard label(Rectangle(x: 555, y: 245, width: 110, height: 10), "SCROLL_PADDING")
   discard spinner(Rectangle(x: 670, y: 240, width: 90, height: 20), "", style, 0, 14, false)
-  guiSetStyle(Scrollbar, SliderPadding, style)
+  guiSetStyle(Scrollbar, ScrollPadding, style)
 
   # Arrows visible control
   var scrollBarArrows = bool(guiGetStyle(Scrollbar, ArrowsVisible))
   discard checkBox(Rectangle(x: 565, y: 280, width: 20, height: 20), "ARROWS_VISIBLE", scrollBarArrows)
-  guiSetStyle(Scrollbar, ArrowsVisible, cint(scrollBarArrows))
+  guiSetStyle(Scrollbar, ArrowsVisible, scrollBarArrows)
 
   # Additional slider padding control
-  style = guiGetStyle(Scrollbar, SliderPadding)
+  style = guiGetStyle(Slider, ScrollSliderPadding)
   discard label(Rectangle(x: 555, y: 325, width: 110, height: 10), "SLIDER_PADDING")
   discard spinner(Rectangle(x: 670, y: 320, width: 90, height: 20), "", style, 0, 14, false)
-  guiSetStyle(Scrollbar, SliderPadding, style)
+  guiSetStyle(Slider, ScrollSliderPadding, style)
 
   # Slider width control
   style = guiGetStyle(Scrollbar, SliderWidth)
@@ -108,29 +108,22 @@ proc main() =
       # Draw content area if enabled
       if showContentArea:
         drawRectangle(int32(panelRec.x + panelScroll.x),
-                     int32(panelRec.y + panelScroll.y),
-                     int32(panelContentRec.width),
-                     int32(panelContentRec.height),
-                     fade(Red, 0.1))
+                      int32(panelRec.y + panelScroll.y),
+                      int32(panelContentRec.width),
+                      int32(panelContentRec.height),
+                      fade(Red, 0.1))
 
       drawStyleEditControls()
 
       # Draw controls
       discard checkBox(Rectangle(x: 565, y: 80, width: 20, height: 20),
-                      "SHOW CONTENT AREA",
-                      showContentArea)
+                       "SHOW CONTENT AREA", showContentArea)
 
-      discard sliderBar(Rectangle(x: 590, y: 385, width: 145, height: 15),
-                       "WIDTH",
-                       $int32(panelContentRec.width),
-                       panelContentRec.width,
-                       1, 600)
+      discard sliderBar(Rectangle(x: 590, y: 385, width: 145, height: 15), "WIDTH",
+                        $int32(panelContentRec.width), panelContentRec.width, 1, 600)
 
-      discard sliderBar(Rectangle(x: 590, y: 410, width: 145, height: 15),
-                       "HEIGHT",
-                       $int32(panelContentRec.height),
-                       panelContentRec.height,
-                       1, 400)
+      discard sliderBar(Rectangle(x: 590, y: 410, width: 145, height: 15), "HEIGHT",
+                        $int32(panelContentRec.height), panelContentRec.height, 1, 400)
 
 when isMainModule:
   main()

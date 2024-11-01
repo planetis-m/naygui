@@ -148,7 +148,7 @@ proc main =
     # Check all possible events that require GuiLock
     if dropDown000EditMode or dropDown001EditMode:
       guiLock()
-    discard checkBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
+    checkBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
     guiSetStyle(TextBox, TextAlignment, Center)
     # guiSetStyle(Scrollbar, ArrowsVisible, true)
     # guiSetStyle(ValueBox, TextAlignment, Left)
@@ -162,7 +162,7 @@ proc main =
     guiSetStyle(Button, TextAlignment, Center)
     if button(Rectangle(x: 25, y: 255, width: 125, height: 30), iconText(FileSave, "Save File")) != 0:
       showTextInputBox = true
-    discard groupBox(Rectangle(x: 25, y: 310, width: 125, height: 150), "STATES")
+    groupBox(Rectangle(x: 25, y: 310, width: 125, height: 150), "STATES")
     # guiLock()
     guiSetState(Normal)
     if button(Rectangle(x: 30, y: 320, width: 115, height: 30), "NORMAL") != 0:
@@ -178,7 +178,7 @@ proc main =
       discard
     guiSetState(Normal)
     # guiUnlock()
-    discard comboBox(Rectangle(x: 25, y: 470, width: 125, height: 30),
+    comboBox(Rectangle(x: 25, y: 470, width: 125, height: 30),
         "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal", visualStyleActive)
     # NOTE: GuiDropdownBox must draw after any other control that can be covered on unfolding
     guiUnlock()
@@ -190,35 +190,35 @@ proc main =
     if dropdownBox(Rectangle(x: 25, y: 25, width: 125, height: 30), "ONE;TWO;THREE",
         dropdownBox000Active, dropDown000EditMode) != 0:
       dropDown000EditMode = not dropDown000EditMode
-    discard listView(Rectangle(x: 165, y: 25, width: 140, height: 140),
+    listView(Rectangle(x: 165, y: 25, width: 140, height: 140),
         "Charmander;Bulbasaur;#18#Squirtel;Pikachu;Eevee;Pidgey",
         listViewScrollIndex, listViewActive)
-    discard listView(Rectangle(x: 165, y: 180, width: 140, height: 200), listViewExList,
+    listView(Rectangle(x: 165, y: 180, width: 140, height: 200), listViewExList,
         listViewExScrollIndex, listViewExActive, listViewExFocus)
     # var toggleActive = false
-    # discard toggle(Rectangle(x: 165, y: 400, width: 140, height: 25), "#1#ONE", toggleActive)
-    discard toggleGroup(Rectangle(x: 165, y: 400, width: 140, height: 25),
+    # toggle(Rectangle(x: 165, y: 400, width: 140, height: 25), "#1#ONE", toggleActive)
+    toggleGroup(Rectangle(x: 165, y: 400, width: 140, height: 25),
         "#1#ONE\n#3#TWO\n#8#THREE\n#23#", toggleGroupActive)
     # Third GUI column
-    discard panel(Rectangle(x: 320, y: 25, width: 225, height: 140), "Panel Info")
-    discard colorPicker(Rectangle(x: 320, y: 185, width: 196, height: 192), "", colorPickerValue)
+    panel(Rectangle(x: 320, y: 25, width: 225, height: 140), "Panel Info")
+    colorPicker(Rectangle(x: 320, y: 185, width: 196, height: 192), "", colorPickerValue)
     # guiDisable()
-    discard slider(Rectangle(x: 355, y: 400, width: 165, height: 20), "TEST",
+    slider(Rectangle(x: 355, y: 400, width: 165, height: 20), "TEST",
         &"{sliderValue:2.2f}", sliderValue, -50, 100)
-    discard sliderBar(Rectangle(x: 320, y: 430, width: 200, height: 20), "",
+    sliderBar(Rectangle(x: 320, y: 430, width: 200, height: 20), "",
         &"{int32(sliderBarValue)}", sliderBarValue, 0, 100)
-    discard progressBar(Rectangle(x: 320, y: 460, width: 200, height: 20), "",
+    progressBar(Rectangle(x: 320, y: 460, width: 200, height: 20), "",
         &"{int(progressValue * 100)}%", progressValue, 0, 1)
     guiEnable()
     # NOTE: View rectangle could be used to perform some scissor test
     var view = default(Rectangle)
-    discard scrollPanel(Rectangle(x: 560, y: 25, width: 102, height: 354), "",
+    scrollPanel(Rectangle(x: 560, y: 25, width: 102, height: 354), "",
         Rectangle(x: 560, y: 25, width: 300, height: 1200), viewScroll, view)
     var mouseCell = Vector2(x: 0, y: 0)
-    discard grid(Rectangle(x: 560, y: 25 + 180 + 195, width: 100, height: 120), "", 20, 2, mouseCell)
-    discard statusBar(Rectangle(x: 0, y: float32(getScreenHeight()) - 20,
+    grid(Rectangle(x: 560, y: 25 + 180 + 195, width: 100, height: 120), "", 20, 2, mouseCell)
+    statusBar(Rectangle(x: 0, y: float32(getScreenHeight()) - 20,
         width: float32(getScreenWidth()), height: 20), "This is a status bar")
-    discard colorBarAlpha(Rectangle(x: 320, y: 490, width: 200, height: 30), "", alphaValue)
+    colorBarAlpha(Rectangle(x: 320, y: 490, width: 200, height: 30), "", alphaValue)
     if showMessageBox:
       drawRectangle(0, 0, getScreenWidth(), getScreenHeight(), fade(RayWhite, 0.8))
       let result = messageBox(Rectangle(

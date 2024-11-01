@@ -147,6 +147,8 @@ proc generateProc*(b: var Builder, fnc: FunctionInfo) =
       b.addRaw fnc.returnType
     b.addRaw " {.importc: "
     b.addStrLit fnc.importName
+    if isDiscardable in fnc.flags:
+      b.addRaw ", discardable"
     if hasVarargs in fnc.flags:
       b.addRaw ", varargs"
     if isFunc notin fnc.flags:
@@ -179,6 +181,8 @@ proc generateWrappedProc*(b: var Builder, fnc: FunctionInfo) =
         b.addRaw "string"
       else:
         b.addRaw fnc.returnType
+    if isDiscardable in fnc.flags:
+      b.addRaw " {.discardable.}"
     b.addRaw " ="
     b.addBlockDoc fnc.description
     withBlock(b):
