@@ -16,3 +16,9 @@ type
 
 proc toConstCStringArray(x: cstringArray): ConstCstringArray {.
     importc: "(const char **)", noconv, nodecl.}
+
+type
+  BoolInt* = distinct int32
+
+converter toBool*(x: BoolInt): bool = int32(x) != 0
+  ## Converts BoolInt to bool

@@ -18,6 +18,12 @@ proc toConstCStringArray(x: cstringArray): ConstCstringArray {.
     importc: "(const char **)", noconv, nodecl.}
 
 type
+  BoolInt* = distinct int32
+
+converter toBool*(x: BoolInt): bool = int32(x) != 0
+  ## Converts BoolInt to bool
+
+type
   GuiState* {.size: sizeof(int32).} = enum ## Gui control state
     Normal
     Focused
@@ -452,27 +458,27 @@ proc getIcons*(): var uint32 {.importc: "GuiGetIcons", sideEffect.}
 proc loadIconsImpl(fileName: cstring, loadIconsName: bool): cstringArray {.importc: "GuiLoadIcons", sideEffect.}
 proc drawIcon*(iconId: GuiIconName, posX: int32, posY: int32, pixelSize: int32, color: Color) {.importc: "GuiDrawIcon", sideEffect.}
   ## Draw icon using pixel size at specified position
-proc windowBoxImpl(bounds: Rectangle, title: cstring): int32 {.importc: "GuiWindowBox", sideEffect.}
+proc windowBoxImpl(bounds: Rectangle, title: cstring): BoolInt {.importc: "GuiWindowBox", sideEffect.}
 proc groupBoxImpl(bounds: Rectangle, text: cstring) {.importc: "GuiGroupBox", sideEffect.}
 proc lineImpl(bounds: Rectangle, text: cstring) {.importc: "GuiLine", sideEffect.}
 proc panelImpl(bounds: Rectangle, text: cstring) {.importc: "GuiPanel", sideEffect.}
 proc tabBarImpl(bounds: Rectangle, text: ConstCstringArray, count: int32, active: ptr int32): int32 {.importc: "GuiTabBar", sideEffect.}
 proc scrollPanelImpl(bounds: Rectangle, text: cstring, content: Rectangle, scroll: ptr Vector2, view: out Rectangle) {.importc: "GuiScrollPanel", sideEffect.}
 proc labelImpl(bounds: Rectangle, text: cstring) {.importc: "GuiLabel", sideEffect.}
-proc buttonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiButton", sideEffect.}
-proc labelButtonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabelButton", sideEffect.}
+proc buttonImpl(bounds: Rectangle, text: cstring): BoolInt {.importc: "GuiButton", sideEffect.}
+proc labelButtonImpl(bounds: Rectangle, text: cstring): BoolInt {.importc: "GuiLabelButton", sideEffect.}
 proc toggleImpl(bounds: Rectangle, text: cstring, active: ptr bool) {.importc: "GuiToggle", sideEffect.}
 proc toggleGroupImpl(bounds: Rectangle, text: cstring, active: ptr int32) {.importc: "GuiToggleGroup", sideEffect.}
-proc toggleSliderImpl(bounds: Rectangle, text: cstring, active: ptr int32): int32 {.importc: "GuiToggleSlider", sideEffect.}
-proc checkBoxImpl(bounds: Rectangle, text: cstring, checked: ptr bool): int32 {.importc: "GuiCheckBox", sideEffect.}
+proc toggleSliderImpl(bounds: Rectangle, text: cstring, active: ptr int32): BoolInt {.importc: "GuiToggleSlider", sideEffect.}
+proc checkBoxImpl(bounds: Rectangle, text: cstring, checked: ptr bool): BoolInt {.importc: "GuiCheckBox", sideEffect.}
 proc comboBoxImpl(bounds: Rectangle, text: cstring, active: ptr int32) {.importc: "GuiComboBox", sideEffect.}
-proc dropdownBoxImpl(bounds: Rectangle, text: cstring, active: ptr int32, editMode: bool): int32 {.importc: "GuiDropdownBox", sideEffect.}
-proc spinnerImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiSpinner", sideEffect.}
-proc valueBoxImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiValueBox", sideEffect.}
-proc valueBoxFloatImpl(bounds: Rectangle, text: cstring, textValue: cstring, value: ptr float32, editMode: bool): int32 {.importc: "GuiValueBoxFloat", sideEffect.}
-proc textBoxImpl(bounds: Rectangle, text: cstring, textSize: int32, editMode: bool): int32 {.importc: "GuiTextBox", sideEffect.}
-proc sliderImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSlider", sideEffect.}
-proc sliderBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSliderBar", sideEffect.}
+proc dropdownBoxImpl(bounds: Rectangle, text: cstring, active: ptr int32, editMode: bool): BoolInt {.importc: "GuiDropdownBox", sideEffect.}
+proc spinnerImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: int32, maxValue: int32, editMode: bool): BoolInt {.importc: "GuiSpinner", sideEffect.}
+proc valueBoxImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: int32, maxValue: int32, editMode: bool): BoolInt {.importc: "GuiValueBox", sideEffect.}
+proc valueBoxFloatImpl(bounds: Rectangle, text: cstring, textValue: cstring, value: ptr float32, editMode: bool): BoolInt {.importc: "GuiValueBoxFloat", sideEffect.}
+proc textBoxImpl(bounds: Rectangle, text: cstring, textSize: int32, editMode: bool): BoolInt {.importc: "GuiTextBox", sideEffect.}
+proc sliderImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): BoolInt {.importc: "GuiSlider", sideEffect.}
+proc sliderBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): BoolInt {.importc: "GuiSliderBar", sideEffect.}
 proc progressBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32) {.importc: "GuiProgressBar", sideEffect.}
 proc statusBarImpl(bounds: Rectangle, text: cstring) {.importc: "GuiStatusBar", sideEffect.}
 proc dummyRecImpl(bounds: Rectangle, text: cstring) {.importc: "GuiDummyRec", sideEffect.}
@@ -502,7 +508,7 @@ proc iconText*(iconId: GuiIconName, text: string): string =
   ## Get text with icon id prepended (if supported)
   $iconTextImpl(iconId, if text.len == 0: nil else: text.cstring)
 
-proc windowBox*(bounds: Rectangle, title: string): int32 =
+proc windowBox*(bounds: Rectangle, title: string): BoolInt =
   ## Window Box control, shows a window that can be closed
   windowBoxImpl(bounds, title.cstring)
 
@@ -526,11 +532,11 @@ proc label*(bounds: Rectangle, text: string) =
   ## Label control
   labelImpl(bounds, text.cstring)
 
-proc button*(bounds: Rectangle, text: string): int32 =
+proc button*(bounds: Rectangle, text: string): BoolInt =
   ## Button control, returns true when clicked
   buttonImpl(bounds, text.cstring)
 
-proc labelButton*(bounds: Rectangle, text: string): int32 =
+proc labelButton*(bounds: Rectangle, text: string): BoolInt =
   ## Label button control, returns true when clicked
   labelButtonImpl(bounds, text.cstring)
 
@@ -542,11 +548,11 @@ proc toggleGroup*(bounds: Rectangle, text: string, active: var int32) =
   ## Toggle Group control
   toggleGroupImpl(bounds, text.cstring, addr active)
 
-proc toggleSlider*(bounds: Rectangle, text: string, active: var int32): int32 =
+proc toggleSlider*(bounds: Rectangle, text: string, active: var int32): BoolInt =
   ## Toggle Slider control
   toggleSliderImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
 
-proc checkBox*(bounds: Rectangle, text: string, checked: var bool): int32 =
+proc checkBox*(bounds: Rectangle, text: string, checked: var bool): BoolInt =
   ## Check Box control, returns true when active
   checkBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr checked)
 
@@ -554,27 +560,27 @@ proc comboBox*(bounds: Rectangle, text: string, active: var int32) =
   ## Combo Box control
   comboBoxImpl(bounds, text.cstring, addr active)
 
-proc dropdownBox*(bounds: Rectangle, text: string, active: var int32, editMode: bool): int32 =
+proc dropdownBox*(bounds: Rectangle, text: string, active: var int32, editMode: bool): BoolInt =
   ## Dropdown Box control
   dropdownBoxImpl(bounds, text.cstring, addr active, editMode)
 
-proc spinner*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
+proc spinner*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): BoolInt =
   ## Spinner control
   spinnerImpl(bounds, if text.len == 0: nil else: text.cstring, addr value, minValue, maxValue, editMode)
 
-proc valueBox*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): int32 =
+proc valueBox*(bounds: Rectangle, text: string, value: var int32, minValue: int32, maxValue: int32, editMode: bool): BoolInt =
   ## Value Box control, updates input text with numbers
   valueBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr value, minValue, maxValue, editMode)
 
-proc valueBoxFloat*(bounds: Rectangle, text: string, textValue: string, value: var float32, editMode: bool): int32 =
+proc valueBoxFloat*(bounds: Rectangle, text: string, textValue: string, value: var float32, editMode: bool): BoolInt =
   ## Value box control for float values
   valueBoxFloatImpl(bounds, if text.len == 0: nil else: text.cstring, textValue.cstring, addr value, editMode)
 
-proc slider*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 =
+proc slider*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): BoolInt =
   ## Slider control
   sliderImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue)
 
-proc sliderBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 =
+proc sliderBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): BoolInt =
   ## Slider Bar control
   sliderBarImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue)
 
@@ -663,10 +669,10 @@ template setupTextBox(call: untyped): untyped =
     text.setLen(1)
     text[0] = '\0'
   result = call
-  if result == 1:
+  if result.int32 == 1:
     text.setLen(text.cstring.len)
 
-proc textBox*(bounds: Rectangle, text: var string, editMode: bool): int32 =
+proc textBox*(bounds: Rectangle, text: var string, editMode: bool): BoolInt =
   ## Text Box control, updates input text
   setupTextBox:
     textBoxImpl(bounds, text.cstring, text.capacity.int32 + 1, editMode)

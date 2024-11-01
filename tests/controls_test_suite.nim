@@ -149,32 +149,32 @@ proc main =
     if dropDown000EditMode or dropDown001EditMode:
       guiLock()
     discard checkBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
-    guiSetStyle(TextBox, TextAlignment, Center)
+    guiSetStyle(Textbox, TextAlignment, Center)
     # guiSetStyle(Scrollbar, ArrowsVisible, true)
     # guiSetStyle(ValueBox, TextAlignment, Left)
-    if spinner(Rectangle(x: 25, y: 135, width: 125, height: 30), "", spinner001Value, 0, 100, spinnerEditMode) != 0:
+    if spinner(Rectangle(x: 25, y: 135, width: 125, height: 30), "", spinner001Value, 0, 100, spinnerEditMode):
       spinnerEditMode = not spinnerEditMode
-    if valueBox(Rectangle(x: 25, y: 175, width: 125, height: 30), "", valueBox002Value, 0, 100, valueBoxEditMode) != 0:
+    if valueBox(Rectangle(x: 25, y: 175, width: 125, height: 30), "", valueBox002Value, 0, 100, valueBoxEditMode):
       valueBoxEditMode = not valueBoxEditMode
     guiSetStyle(Textbox, TextAlignment, GuiTextAlignment.Left)
-    if textBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, textBoxEditMode) != 0:
+    if textBox(Rectangle(x: 25, y: 215, width: 125, height: 30), textBoxText, textBoxEditMode):
       textBoxEditMode = not textBoxEditMode
     guiSetStyle(Button, TextAlignment, Center)
-    if button(Rectangle(x: 25, y: 255, width: 125, height: 30), iconText(FileSave, "Save File")) != 0:
+    if button(Rectangle(x: 25, y: 255, width: 125, height: 30), iconText(FileSave, "Save File")):
       showTextInputBox = true
     groupBox(Rectangle(x: 25, y: 310, width: 125, height: 150), "STATES")
     # guiLock()
     guiSetState(Normal)
-    if button(Rectangle(x: 30, y: 320, width: 115, height: 30), "NORMAL") != 0:
+    if button(Rectangle(x: 30, y: 320, width: 115, height: 30), "NORMAL"):
       discard
     guiSetState(Focused)
-    if button(Rectangle(x: 30, y: 355, width: 115, height: 30), "FOCUSED") != 0:
+    if button(Rectangle(x: 30, y: 355, width: 115, height: 30), "FOCUSED"):
       discard
     guiSetState(Pressed)
-    if button(Rectangle(x: 30, y: 390, width: 115, height: 30), "#15#PRESSED") != 0:
+    if button(Rectangle(x: 30, y: 390, width: 115, height: 30), "#15#PRESSED"):
       discard
     guiSetState(Disabled)
-    if button(Rectangle(x: 30, y: 425, width: 115, height: 30), "DISABLED") != 0:
+    if button(Rectangle(x: 30, y: 425, width: 115, height: 30), "DISABLED"):
       discard
     guiSetState(Normal)
     # guiUnlock()
@@ -184,11 +184,11 @@ proc main =
     guiUnlock()
     guiSetStyle(Dropdownbox, TextAlignment, Left)
     if dropdownBox(Rectangle(x: 25, y: 65, width: 125, height: 30),
-        "#01#ONE;#02#TWO;#03#THREE;#04#FOUR", dropdownBox001Active, dropDown001EditMode) != 0:
+        "#01#ONE;#02#TWO;#03#THREE;#04#FOUR", dropdownBox001Active, dropDown001EditMode):
       dropDown001EditMode = not dropDown001EditMode
     guiSetStyle(Dropdownbox, TextAlignment, Center)
     if dropdownBox(Rectangle(x: 25, y: 25, width: 125, height: 30), "ONE;TWO;THREE",
-        dropdownBox000Active, dropDown000EditMode) != 0:
+        dropdownBox000Active, dropDown000EditMode):
       dropDown000EditMode = not dropDown000EditMode
     listView(Rectangle(x: 165, y: 25, width: 140, height: 140),
         "Charmander;Bulbasaur;#18#Squirtel;Pikachu;Eevee;Pidgey",

@@ -36,10 +36,10 @@ template setupTextBox(call: untyped): untyped =
     text.setLen(1)
     text[0] = '\0'
   result = call
-  if result == 1:
+  if result.int32 == 1:
     text.setLen(text.cstring.len)
 
-proc textBox*(bounds: Rectangle, text: var string, editMode: bool): int32 =
+proc textBox*(bounds: Rectangle, text: var string, editMode: bool): BoolInt =
   ## Text Box control, updates input text
   setupTextBox:
     textBoxImpl(bounds, text.cstring, text.capacity.int32 + 1, editMode)
