@@ -6,23 +6,23 @@ const
 
 proc drawStyleEditControls() =
   # ScrollPanel style controls
-  discard groupBox(Rectangle(x: 550, y: 170, width: 220, height: 205), "SCROLLBAR STYLE")
+  groupBox(Rectangle(x: 550, y: 170, width: 220, height: 205), "SCROLLBAR STYLE")
 
   # Border width control
   var style = guiGetStyle(Scrollbar, BorderWidth)
-  discard label(Rectangle(x: 555, y: 195, width: 110, height: 10), "BORDER_WIDTH")
+  label(Rectangle(x: 555, y: 195, width: 110, height: 10), "BORDER_WIDTH")
   discard spinner(Rectangle(x: 670, y: 190, width: 90, height: 20), "", style, 0, 6, false)
   guiSetStyle(Scrollbar, BorderWidth, style)
 
   # Arrows size control
   style = guiGetStyle(Scrollbar, ArrowsSize)
-  discard label(Rectangle(x: 555, y: 220, width: 110, height: 10), "ARROWS_SIZE")
+  label(Rectangle(x: 555, y: 220, width: 110, height: 10), "ARROWS_SIZE")
   discard spinner(Rectangle(x: 670, y: 215, width: 90, height: 20), "", style, 4, 14, false)
   guiSetStyle(Scrollbar, ArrowsSize, style)
 
   # Slider padding control
   style = guiGetStyle(Scrollbar, ScrollPadding)
-  discard label(Rectangle(x: 555, y: 245, width: 110, height: 10), "SCROLL_PADDING")
+  label(Rectangle(x: 555, y: 245, width: 110, height: 10), "SCROLL_PADDING")
   discard spinner(Rectangle(x: 670, y: 240, width: 90, height: 20), "", style, 0, 14, false)
   guiSetStyle(Scrollbar, ScrollPadding, style)
 
@@ -33,13 +33,13 @@ proc drawStyleEditControls() =
 
   # Additional slider padding control
   style = guiGetStyle(Slider, ScrollSliderPadding)
-  discard label(Rectangle(x: 555, y: 325, width: 110, height: 10), "SLIDER_PADDING")
+  label(Rectangle(x: 555, y: 325, width: 110, height: 10), "SLIDER_PADDING")
   discard spinner(Rectangle(x: 670, y: 320, width: 90, height: 20), "", style, 0, 14, false)
   guiSetStyle(Slider, ScrollSliderPadding, style)
 
   # Slider width control
   style = guiGetStyle(Scrollbar, SliderWidth)
-  discard label(Rectangle(x: 555, y: 350, width: 110, height: 10), "SLIDER_WIDTH")
+  label(Rectangle(x: 555, y: 350, width: 110, height: 10), "SLIDER_WIDTH")
   discard spinner(Rectangle(x: 670, y: 345, width: 90, height: 20), "", style, 2, 100, false)
   guiSetStyle(Scrollbar, SliderWidth, style)
 
@@ -49,19 +49,19 @@ proc drawStyleEditControls() =
   else:
     "SCROLLBAR: RIGHT"
   var toggleScrollBarSide = bool(guiGetStyle(ListView, ScrollbarSide))
-  discard toggle(Rectangle(x: 560, y: 110, width: 200, height: 35), text, toggleScrollBarSide)
+  toggle(Rectangle(x: 560, y: 110, width: 200, height: 35), text, toggleScrollBarSide)
   guiSetStyle(ListView, ScrollbarSide, toggleScrollBarSide)
 
   # ScrollBar style controls section
-  discard groupBox(Rectangle(x: 550, y: 20, width: 220, height: 135), "SCROLLPANEL STYLE")
+  groupBox(Rectangle(x: 550, y: 20, width: 220, height: 135), "SCROLLPANEL STYLE")
 
   style = guiGetStyle(ListView, ScrollbarWidth)
-  discard label(Rectangle(x: 555, y: 35, width: 110, height: 10), "SCROLLBAR_WIDTH")
+  label(Rectangle(x: 555, y: 35, width: 110, height: 10), "SCROLLBAR_WIDTH")
   discard spinner(Rectangle(x: 670, y: 30, width: 90, height: 20), "", style, 6, 30, false)
   guiSetStyle(ListView, ScrollbarWidth, style)
 
   style = guiGetStyle(Default, BorderWidth)
-  discard label(Rectangle(x: 555, y: 60, width: 110, height: 10), "BORDER_WIDTH")
+  label(Rectangle(x: 555, y: 60, width: 110, height: 10), "BORDER_WIDTH")
   discard spinner(Rectangle(x: 670, y: 55, width: 90, height: 20), "", style, 0, 20, false)
   guiSetStyle(Default, BorderWidth, style)
 
@@ -89,14 +89,14 @@ proc main() =
       drawText(&"[{panelScroll.x:.1f}, {panelScroll.y:.1f}]", 4, 4, 20, Red)
 
       # Draw scroll panel
-      discard scrollPanel(panelRec, "", panelContentRec, panelScroll, panelView)
+      scrollPanel(panelRec, "", panelContentRec, panelScroll, panelView)
 
       # Draw grid inside scroll panel with scissor mode
       beginScissorMode(int32(panelView.x), int32(panelView.y),
                        int32(panelView.width), int32(panelView.height))
 
       var tmp: Vector2
-      discard grid(Rectangle(
+      grid(Rectangle(
         x: panelRec.x + panelScroll.x,
         y: panelRec.y + panelScroll.y,
         width: panelContentRec.width,

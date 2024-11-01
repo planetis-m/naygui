@@ -453,19 +453,19 @@ proc loadIconsImpl(fileName: cstring, loadIconsName: bool): cstringArray {.impor
 proc drawIcon*(iconId: GuiIconName, posX: int32, posY: int32, pixelSize: int32, color: Color) {.importc: "GuiDrawIcon", sideEffect.}
   ## Draw icon using pixel size at specified position
 proc windowBoxImpl(bounds: Rectangle, title: cstring): int32 {.importc: "GuiWindowBox", sideEffect.}
-proc groupBoxImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiGroupBox", discardable, sideEffect.}
-proc lineImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLine", discardable, sideEffect.}
-proc panelImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiPanel", discardable, sideEffect.}
+proc groupBoxImpl(bounds: Rectangle, text: cstring) {.importc: "GuiGroupBox", sideEffect.}
+proc lineImpl(bounds: Rectangle, text: cstring) {.importc: "GuiLine", sideEffect.}
+proc panelImpl(bounds: Rectangle, text: cstring) {.importc: "GuiPanel", sideEffect.}
 proc tabBarImpl(bounds: Rectangle, text: ConstCstringArray, count: int32, active: ptr int32): int32 {.importc: "GuiTabBar", sideEffect.}
-proc scrollPanelImpl(bounds: Rectangle, text: cstring, content: Rectangle, scroll: ptr Vector2, view: out Rectangle): int32 {.importc: "GuiScrollPanel", discardable, sideEffect.}
-proc labelImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabel", discardable, sideEffect.}
+proc scrollPanelImpl(bounds: Rectangle, text: cstring, content: Rectangle, scroll: ptr Vector2, view: out Rectangle) {.importc: "GuiScrollPanel", sideEffect.}
+proc labelImpl(bounds: Rectangle, text: cstring) {.importc: "GuiLabel", sideEffect.}
 proc buttonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiButton", sideEffect.}
 proc labelButtonImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiLabelButton", sideEffect.}
-proc toggleImpl(bounds: Rectangle, text: cstring, active: ptr bool): int32 {.importc: "GuiToggle", discardable, sideEffect.}
-proc toggleGroupImpl(bounds: Rectangle, text: cstring, active: ptr int32): int32 {.importc: "GuiToggleGroup", discardable, sideEffect.}
+proc toggleImpl(bounds: Rectangle, text: cstring, active: ptr bool) {.importc: "GuiToggle", sideEffect.}
+proc toggleGroupImpl(bounds: Rectangle, text: cstring, active: ptr int32) {.importc: "GuiToggleGroup", sideEffect.}
 proc toggleSliderImpl(bounds: Rectangle, text: cstring, active: ptr int32): int32 {.importc: "GuiToggleSlider", sideEffect.}
 proc checkBoxImpl(bounds: Rectangle, text: cstring, checked: ptr bool): int32 {.importc: "GuiCheckBox", sideEffect.}
-proc comboBoxImpl(bounds: Rectangle, text: cstring, active: ptr int32): int32 {.importc: "GuiComboBox", discardable, sideEffect.}
+proc comboBoxImpl(bounds: Rectangle, text: cstring, active: ptr int32) {.importc: "GuiComboBox", sideEffect.}
 proc dropdownBoxImpl(bounds: Rectangle, text: cstring, active: ptr int32, editMode: bool): int32 {.importc: "GuiDropdownBox", sideEffect.}
 proc spinnerImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiSpinner", sideEffect.}
 proc valueBoxImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: int32, maxValue: int32, editMode: bool): int32 {.importc: "GuiValueBox", sideEffect.}
@@ -473,20 +473,20 @@ proc valueBoxFloatImpl(bounds: Rectangle, text: cstring, textValue: cstring, val
 proc textBoxImpl(bounds: Rectangle, text: cstring, textSize: int32, editMode: bool): int32 {.importc: "GuiTextBox", sideEffect.}
 proc sliderImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSlider", sideEffect.}
 proc sliderBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSliderBar", sideEffect.}
-proc progressBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiProgressBar", discardable, sideEffect.}
-proc statusBarImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiStatusBar", discardable, sideEffect.}
-proc dummyRecImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiDummyRec", discardable, sideEffect.}
-proc gridImpl(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 {.importc: "GuiGrid", discardable, sideEffect.}
-proc listViewImpl(bounds: Rectangle, text: cstring, scrollIndex: ptr int32, active: ptr int32): int32 {.importc: "GuiListView", discardable, sideEffect.}
-proc listViewImpl(bounds: Rectangle, text: ConstCstringArray, count: int32, scrollIndex: ptr int32, active: ptr int32, focus: ptr int32): int32 {.importc: "GuiListViewEx", discardable, sideEffect.}
+proc progressBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32) {.importc: "GuiProgressBar", sideEffect.}
+proc statusBarImpl(bounds: Rectangle, text: cstring) {.importc: "GuiStatusBar", sideEffect.}
+proc dummyRecImpl(bounds: Rectangle, text: cstring) {.importc: "GuiDummyRec", sideEffect.}
+proc gridImpl(bounds: Rectangle, text: cstring, spacing: float32, subdivs: int32, mouseCell: out Vector2) {.importc: "GuiGrid", sideEffect.}
+proc listViewImpl(bounds: Rectangle, text: cstring, scrollIndex: ptr int32, active: ptr int32) {.importc: "GuiListView", sideEffect.}
+proc listViewImpl(bounds: Rectangle, text: ConstCstringArray, count: int32, scrollIndex: ptr int32, active: ptr int32, focus: ptr int32) {.importc: "GuiListViewEx", sideEffect.}
 proc messageBoxImpl(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring): int32 {.importc: "GuiMessageBox", sideEffect.}
 proc textInputBoxImpl(bounds: Rectangle, title: cstring, message: cstring, buttons: cstring, text: cstring, textMaxSize: int32, secretViewActive: ptr bool): int32 {.importc: "GuiTextInputBox", sideEffect.}
-proc colorPickerImpl(bounds: Rectangle, text: cstring, color: ptr Color): int32 {.importc: "GuiColorPicker", discardable, sideEffect.}
-proc colorPanelImpl(bounds: Rectangle, text: cstring, color: ptr Color): int32 {.importc: "GuiColorPanel", discardable, sideEffect.}
-proc colorBarAlphaImpl(bounds: Rectangle, text: cstring, alpha: ptr float32): int32 {.importc: "GuiColorBarAlpha", discardable, sideEffect.}
-proc colorBarHueImpl(bounds: Rectangle, text: cstring, value: ptr float32): int32 {.importc: "GuiColorBarHue", discardable, sideEffect.}
-proc colorPickerHSVImpl(bounds: Rectangle, text: cstring, colorHsv: ptr Vector3): int32 {.importc: "GuiColorPickerHSV", discardable, sideEffect.}
-proc colorPanelHSVImpl(bounds: Rectangle, text: cstring, colorHsv: ptr Vector3): int32 {.importc: "GuiColorPanelHSV", discardable, sideEffect.}
+proc colorPickerImpl(bounds: Rectangle, text: cstring, color: ptr Color) {.importc: "GuiColorPicker", sideEffect.}
+proc colorPanelImpl(bounds: Rectangle, text: cstring, color: ptr Color) {.importc: "GuiColorPanel", sideEffect.}
+proc colorBarAlphaImpl(bounds: Rectangle, text: cstring, alpha: ptr float32) {.importc: "GuiColorBarAlpha", sideEffect.}
+proc colorBarHueImpl(bounds: Rectangle, text: cstring, value: ptr float32) {.importc: "GuiColorBarHue", sideEffect.}
+proc colorPickerHSVImpl(bounds: Rectangle, text: cstring, colorHsv: ptr Vector3) {.importc: "GuiColorPickerHSV", sideEffect.}
+proc colorPanelHSVImpl(bounds: Rectangle, text: cstring, colorHsv: ptr Vector3) {.importc: "GuiColorPanelHSV", sideEffect.}
 {.pop.}
 
 
@@ -506,23 +506,23 @@ proc windowBox*(bounds: Rectangle, title: string): int32 =
   ## Window Box control, shows a window that can be closed
   windowBoxImpl(bounds, title.cstring)
 
-proc groupBox*(bounds: Rectangle, text: string): int32 {.discardable.} =
+proc groupBox*(bounds: Rectangle, text: string) =
   ## Group Box control with text name
   groupBoxImpl(bounds, if text.len == 0: nil else: text.cstring)
 
-proc line*(bounds: Rectangle, text: string): int32 {.discardable.} =
+proc line*(bounds: Rectangle, text: string) =
   ## Line separator control, could contain text
   lineImpl(bounds, if text.len == 0: nil else: text.cstring)
 
-proc panel*(bounds: Rectangle, text: string): int32 {.discardable.} =
+proc panel*(bounds: Rectangle, text: string) =
   ## Panel control, useful to group controls
   panelImpl(bounds, if text.len == 0: nil else: text.cstring)
 
-proc scrollPanel*(bounds: Rectangle, text: string, content: Rectangle, scroll: var Vector2, view: out Rectangle): int32 {.discardable.} =
+proc scrollPanel*(bounds: Rectangle, text: string, content: Rectangle, scroll: var Vector2, view: out Rectangle) =
   ## Scroll Panel control
   scrollPanelImpl(bounds, if text.len == 0: nil else: text.cstring, content, addr scroll, view)
 
-proc label*(bounds: Rectangle, text: string): int32 {.discardable.} =
+proc label*(bounds: Rectangle, text: string) =
   ## Label control
   labelImpl(bounds, text.cstring)
 
@@ -534,23 +534,23 @@ proc labelButton*(bounds: Rectangle, text: string): int32 =
   ## Label button control, returns true when clicked
   labelButtonImpl(bounds, text.cstring)
 
-proc toggle*(bounds: Rectangle, text: string, active: var bool): int32 {.discardable.} =
+proc toggle*(bounds: Rectangle, text: string, active: var bool) =
   ## Toggle Button control
   toggleImpl(bounds, text.cstring, addr active)
 
-proc toggleGroup*(bounds: Rectangle, text: string, active: var int32): int32 {.discardable.} =
+proc toggleGroup*(bounds: Rectangle, text: string, active: var int32) =
   ## Toggle Group control
   toggleGroupImpl(bounds, text.cstring, addr active)
 
 proc toggleSlider*(bounds: Rectangle, text: string, active: var int32): int32 =
   ## Toggle Slider control
-  toggleSliderImpl(bounds, text.cstring, addr active)
+  toggleSliderImpl(bounds, if text.len == 0: nil else: text.cstring, addr active)
 
 proc checkBox*(bounds: Rectangle, text: string, checked: var bool): int32 =
   ## Check Box control, returns true when active
   checkBoxImpl(bounds, if text.len == 0: nil else: text.cstring, addr checked)
 
-proc comboBox*(bounds: Rectangle, text: string, active: var int32): int32 {.discardable.} =
+proc comboBox*(bounds: Rectangle, text: string, active: var int32) =
   ## Combo Box control
   comboBoxImpl(bounds, text.cstring, addr active)
 
@@ -578,23 +578,23 @@ proc sliderBar*(bounds: Rectangle, textLeft: string, textRight: string, value: v
   ## Slider Bar control
   sliderBarImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue)
 
-proc progressBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): int32 {.discardable.} =
+proc progressBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32) =
   ## Progress Bar control
   progressBarImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue)
 
-proc statusBar*(bounds: Rectangle, text: string): int32 {.discardable.} =
+proc statusBar*(bounds: Rectangle, text: string) =
   ## Status Bar control, shows info text
   statusBarImpl(bounds, text.cstring)
 
-proc dummyRec*(bounds: Rectangle, text: string): int32 {.discardable.} =
+proc dummyRec*(bounds: Rectangle, text: string) =
   ## Dummy control for placeholders
   dummyRecImpl(bounds, text.cstring)
 
-proc grid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mouseCell: out Vector2): int32 {.discardable.} =
+proc grid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mouseCell: out Vector2) =
   ## Grid control
   gridImpl(bounds, text.cstring, spacing, subdivs, mouseCell)
 
-proc listView*(bounds: Rectangle, text: string, scrollIndex: var int32, active: var int32): int32 {.discardable.} =
+proc listView*(bounds: Rectangle, text: string, scrollIndex: var int32, active: var int32) =
   ## List View control
   listViewImpl(bounds, if text.len == 0: nil else: text.cstring, addr scrollIndex, addr active)
 
@@ -602,27 +602,27 @@ proc messageBox*(bounds: Rectangle, title: string, message: string, buttons: str
   ## Message Box control, displays a message
   messageBoxImpl(bounds, title.cstring, message.cstring, buttons.cstring)
 
-proc colorPicker*(bounds: Rectangle, text: string, color: var Color): int32 {.discardable.} =
+proc colorPicker*(bounds: Rectangle, text: string, color: var Color) =
   ## Color Picker control (multiple color controls)
   colorPickerImpl(bounds, text.cstring, addr color)
 
-proc colorPanel*(bounds: Rectangle, text: string, color: var Color): int32 {.discardable.} =
+proc colorPanel*(bounds: Rectangle, text: string, color: var Color) =
   ## Color Panel control
   colorPanelImpl(bounds, text.cstring, addr color)
 
-proc colorBarAlpha*(bounds: Rectangle, text: string, alpha: var float32): int32 {.discardable.} =
+proc colorBarAlpha*(bounds: Rectangle, text: string, alpha: var float32) =
   ## Color Bar Alpha control
   colorBarAlphaImpl(bounds, text.cstring, addr alpha)
 
-proc colorBarHue*(bounds: Rectangle, text: string, value: var float32): int32 {.discardable.} =
+proc colorBarHue*(bounds: Rectangle, text: string, value: var float32) =
   ## Color Bar Hue control
   colorBarHueImpl(bounds, text.cstring, addr value)
 
-proc colorPickerHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3): int32 {.discardable.} =
+proc colorPickerHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3) =
   ## Color Picker control that avoids conversion to RGB on each call (multiple color controls)
   colorPickerHSVImpl(bounds, text.cstring, addr colorHsv)
 
-proc colorPanelHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3): int32 {.discardable.} =
+proc colorPanelHSV*(bounds: Rectangle, text: string, colorHsv: var Vector3) =
   ## Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()
   colorPanelHSVImpl(bounds, text.cstring, addr colorHsv)
 
@@ -642,7 +642,7 @@ proc toTextArray*(texts: openArray[string]): TextArray =
 
 proc memFree(`ptr`: pointer) {.importc: "RAYGUI_FREE", sideEffect.}
 
-proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32): int32 {.discardable.} =
+proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32) =
   ## List View with extended parameters
   listViewImpl(bounds, toConstCStringArray(text.data), text.count, addr scrollIndex, addr active, addr focus)
 

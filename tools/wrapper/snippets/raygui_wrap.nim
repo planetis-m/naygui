@@ -15,7 +15,7 @@ proc toTextArray*(texts: openArray[string]): TextArray =
 
 proc memFree(`ptr`: pointer) {.importc: "RAYGUI_FREE", sideEffect.}
 
-proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32): int32 {.discardable.} =
+proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32) =
   ## List View with extended parameters
   listViewImpl(bounds, toConstCStringArray(text.data), text.count, addr scrollIndex, addr active, addr focus)
 
