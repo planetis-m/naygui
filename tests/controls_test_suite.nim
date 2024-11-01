@@ -148,7 +148,7 @@ proc main =
     # Check all possible events that require GuiLock
     if dropDown000EditMode or dropDown001EditMode:
       guiLock()
-    checkBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
+    discard checkBox(Rectangle(x: 25, y: 108, width: 15, height: 15), "FORCE CHECK!", forceSquaredChecked)
     guiSetStyle(TextBox, TextAlignment, Center)
     # guiSetStyle(Scrollbar, ArrowsVisible, true)
     # guiSetStyle(ValueBox, TextAlignment, Left)
@@ -203,9 +203,9 @@ proc main =
     panel(Rectangle(x: 320, y: 25, width: 225, height: 140), "Panel Info")
     colorPicker(Rectangle(x: 320, y: 185, width: 196, height: 192), "", colorPickerValue)
     # guiDisable()
-    slider(Rectangle(x: 355, y: 400, width: 165, height: 20), "TEST",
+    discard slider(Rectangle(x: 355, y: 400, width: 165, height: 20), "TEST",
         &"{sliderValue:2.2f}", sliderValue, -50, 100)
-    sliderBar(Rectangle(x: 320, y: 430, width: 200, height: 20), "",
+    discard sliderBar(Rectangle(x: 320, y: 430, width: 200, height: 20), "",
         &"{int32(sliderBarValue)}", sliderBarValue, 0, 100)
     progressBar(Rectangle(x: 320, y: 460, width: 200, height: 20), "",
         &"{int(progressValue * 100)}%", progressValue, 0, 1)
