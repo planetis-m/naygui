@@ -194,6 +194,8 @@
     <summary><a class="reference reference-toplevel" href="#10" id="60">Consts</a></summary>
     <ul class="simple simple-toc-section">
       <li><a class="reference" href="#RayguiVersion" title="RayguiVersion = (4, 5, 0)">RayguiVersion</a></li>
+<li><a class="reference" href="#ScrollbarLeftSide" title="ScrollbarLeftSide = 0">ScrollbarLeftSide</a></li>
+<li><a class="reference" href="#ScrollbarRightSide" title="ScrollbarRightSide = 1">ScrollbarRightSide</a></li>
 
     </ul>
   </details>
@@ -215,39 +217,39 @@
 
 </ul>
 <ul class="simple nested-toc-section">button
-  <li><a class="reference" href="#button%2CRectangle%2Cstring" title="button(bounds: Rectangle; text: string): int32">button(bounds: Rectangle; text: string): int32</a></li>
+  <li><a class="reference" href="#button%2CRectangle%2Cstring" title="button(bounds: Rectangle; text: string): bool">button(bounds: Rectangle; text: string): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">checkBox
-  <li><a class="reference" href="#checkBox%2CRectangle%2Cstring%2Cbool" title="checkBox(bounds: Rectangle; text: string; checked: var bool): int32">checkBox(bounds: Rectangle; text: string; checked: var bool): int32</a></li>
+  <li><a class="reference" href="#checkBox%2CRectangle%2Cstring%2Cbool" title="checkBox(bounds: Rectangle; text: string; checked: var bool): bool">checkBox(bounds: Rectangle; text: string; checked: var bool): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">colorBarAlpha
-  <li><a class="reference" href="#colorBarAlpha%2CRectangle%2Cstring%2Cfloat32" title="colorBarAlpha(bounds: Rectangle; text: string; alpha: var float32): int32">colorBarAlpha(bounds: Rectangle; text: string; alpha: var float32): int32</a></li>
+  <li><a class="reference" href="#colorBarAlpha%2CRectangle%2Cstring%2Cfloat32" title="colorBarAlpha(bounds: Rectangle; text: string; alpha: var float32)">colorBarAlpha(bounds: Rectangle; text: string; alpha: var float32)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">colorBarHue
-  <li><a class="reference" href="#colorBarHue%2CRectangle%2Cstring%2Cfloat32" title="colorBarHue(bounds: Rectangle; text: string; value: var float32): int32">colorBarHue(bounds: Rectangle; text: string; value: var float32): int32</a></li>
+  <li><a class="reference" href="#colorBarHue%2CRectangle%2Cstring%2Cfloat32" title="colorBarHue(bounds: Rectangle; text: string; value: var float32)">colorBarHue(bounds: Rectangle; text: string; value: var float32)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">colorPanel
-  <li><a class="reference" href="#colorPanel%2CRectangle%2Cstring%2CColor" title="colorPanel(bounds: Rectangle; text: string; color: var Color): int32">colorPanel(bounds: Rectangle; text: string; color: var Color): int32</a></li>
+  <li><a class="reference" href="#colorPanel%2CRectangle%2Cstring%2CColor" title="colorPanel(bounds: Rectangle; text: string; color: var Color)">colorPanel(bounds: Rectangle; text: string; color: var Color)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">colorPanelHSV
-  <li><a class="reference" href="#colorPanelHSV%2CRectangle%2Cstring%2CVector3" title="colorPanelHSV(bounds: Rectangle; text: string; colorHsv: var Vector3): int32">colorPanelHSV(bounds: Rectangle; text: string; colorHsv: var Vector3): int32</a></li>
+  <li><a class="reference" href="#colorPanelHSV%2CRectangle%2Cstring%2CVector3" title="colorPanelHSV(bounds: Rectangle; text: string; colorHsv: var Vector3)">colorPanelHSV(bounds: Rectangle; text: string; colorHsv: var Vector3)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">colorPicker
-  <li><a class="reference" href="#colorPicker%2CRectangle%2Cstring%2CColor" title="colorPicker(bounds: Rectangle; text: string; color: var Color): int32">colorPicker(bounds: Rectangle; text: string; color: var Color): int32</a></li>
+  <li><a class="reference" href="#colorPicker%2CRectangle%2Cstring%2CColor" title="colorPicker(bounds: Rectangle; text: string; color: var Color)">colorPicker(bounds: Rectangle; text: string; color: var Color)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">colorPickerHSV
-  <li><a class="reference" href="#colorPickerHSV%2CRectangle%2Cstring%2CVector3" title="colorPickerHSV(bounds: Rectangle; text: string; colorHsv: var Vector3): int32">colorPickerHSV(bounds: Rectangle; text: string; colorHsv: var Vector3): int32</a></li>
+  <li><a class="reference" href="#colorPickerHSV%2CRectangle%2Cstring%2CVector3" title="colorPickerHSV(bounds: Rectangle; text: string; colorHsv: var Vector3)">colorPickerHSV(bounds: Rectangle; text: string; colorHsv: var Vector3)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">comboBox
-  <li><a class="reference" href="#comboBox%2CRectangle%2Cstring%2Cint32" title="comboBox(bounds: Rectangle; text: string; active: var int32): int32">comboBox(bounds: Rectangle; text: string; active: var int32): int32</a></li>
+  <li><a class="reference" href="#comboBox%2CRectangle%2Cstring%2Cint32" title="comboBox(bounds: Rectangle; text: string; active: var int32)">comboBox(bounds: Rectangle; text: string; active: var int32)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">disableTooltip
@@ -261,11 +263,11 @@
 
 </ul>
 <ul class="simple nested-toc-section">dropdownBox
-  <li><a class="reference" href="#dropdownBox%2CRectangle%2Cstring%2Cint32%2Cbool" title="dropdownBox(bounds: Rectangle; text: string; active: var int32; editMode: bool): int32">dropdownBox(bounds: Rectangle; text: string; active: var int32; editMode: bool): int32</a></li>
+  <li><a class="reference" href="#dropdownBox%2CRectangle%2Cstring%2Cint32%2Cbool" title="dropdownBox(bounds: Rectangle; text: string; active: var int32; editMode: bool): bool">dropdownBox(bounds: Rectangle; text: string; active: var int32; editMode: bool): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">dummyRec
-  <li><a class="reference" href="#dummyRec%2CRectangle%2Cstring" title="dummyRec(bounds: Rectangle; text: string): int32">dummyRec(bounds: Rectangle; text: string): int32</a></li>
+  <li><a class="reference" href="#dummyRec%2CRectangle%2Cstring" title="dummyRec(bounds: Rectangle; text: string)">dummyRec(bounds: Rectangle; text: string)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">enableTooltip
@@ -278,12 +280,12 @@
 </ul>
 <ul class="simple nested-toc-section">grid
   <li><a class="reference" href="#grid%2CRectangle%2Cstring%2Cfloat32%2Cint32%2C" title="grid(bounds: Rectangle; text: string; spacing: float32; subdivs: int32;
-     mouseCell: out Vector2): int32">grid(bounds: Rectangle; text: string; spacing: float32; subdivs: int32;
-     mouseCell: out Vector2): int32</a></li>
+     mouseCell: out Vector2)">grid(bounds: Rectangle; text: string; spacing: float32; subdivs: int32;
+     mouseCell: out Vector2)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">groupBox
-  <li><a class="reference" href="#groupBox%2CRectangle%2Cstring" title="groupBox(bounds: Rectangle; text: string): int32">groupBox(bounds: Rectangle; text: string): int32</a></li>
+  <li><a class="reference" href="#groupBox%2CRectangle%2Cstring" title="groupBox(bounds: Rectangle; text: string)">groupBox(bounds: Rectangle; text: string)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">guiDisable
@@ -349,24 +351,24 @@
 
 </ul>
 <ul class="simple nested-toc-section">label
-  <li><a class="reference" href="#label%2CRectangle%2Cstring" title="label(bounds: Rectangle; text: string): int32">label(bounds: Rectangle; text: string): int32</a></li>
+  <li><a class="reference" href="#label%2CRectangle%2Cstring" title="label(bounds: Rectangle; text: string)">label(bounds: Rectangle; text: string)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">labelButton
-  <li><a class="reference" href="#labelButton%2CRectangle%2Cstring" title="labelButton(bounds: Rectangle; text: string): int32">labelButton(bounds: Rectangle; text: string): int32</a></li>
+  <li><a class="reference" href="#labelButton%2CRectangle%2Cstring" title="labelButton(bounds: Rectangle; text: string): bool">labelButton(bounds: Rectangle; text: string): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">line
-  <li><a class="reference" href="#line%2CRectangle%2Cstring" title="line(bounds: Rectangle; text: string): int32">line(bounds: Rectangle; text: string): int32</a></li>
+  <li><a class="reference" href="#line%2CRectangle%2Cstring" title="line(bounds: Rectangle; text: string)">line(bounds: Rectangle; text: string)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">listView
   <li><a class="reference" href="#listView%2CRectangle%2Cstring%2Cint32%2Cint32" title="listView(bounds: Rectangle; text: string; scrollIndex: var int32;
-         active: var int32): int32">listView(bounds: Rectangle; text: string; scrollIndex: var int32;
-         active: var int32): int32</a></li>
+         active: var int32)">listView(bounds: Rectangle; text: string; scrollIndex: var int32;
+         active: var int32)</a></li>
 <li><a class="reference" href="#listView%2CRectangle%2CTextArray%2Cint32%2Cint32%2Cint32" title="listView(bounds: Rectangle; text: TextArray; scrollIndex: var int32;
-         active: var int32; focus: var int32): int32">listView(bounds: Rectangle; text: TextArray; scrollIndex: var int32;
-         active: var int32; focus: var int32): int32</a></li>
+         active: var int32; focus: var int32)">listView(bounds: Rectangle; text: TextArray; scrollIndex: var int32;
+         active: var int32; focus: var int32)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">loadIcons
@@ -378,19 +380,19 @@
 
 </ul>
 <ul class="simple nested-toc-section">panel
-  <li><a class="reference" href="#panel%2CRectangle%2Cstring" title="panel(bounds: Rectangle; text: string): int32">panel(bounds: Rectangle; text: string): int32</a></li>
+  <li><a class="reference" href="#panel%2CRectangle%2Cstring" title="panel(bounds: Rectangle; text: string)">panel(bounds: Rectangle; text: string)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">progressBar
   <li><a class="reference" href="#progressBar%2CRectangle%2Cstring%2Cstring%2Cfloat32%2Cfloat32%2Cfloat32" title="progressBar(bounds: Rectangle; textLeft: string; textRight: string;
-            value: var float32; minValue: float32; maxValue: float32): int32">progressBar(bounds: Rectangle; textLeft: string; textRight: string;
-            value: var float32; minValue: float32; maxValue: float32): int32</a></li>
+            value: var float32; minValue: float32; maxValue: float32)">progressBar(bounds: Rectangle; textLeft: string; textRight: string;
+            value: var float32; minValue: float32; maxValue: float32)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">scrollPanel
   <li><a class="reference" href="#scrollPanel%2CRectangle%2Cstring%2CRectangle%2CVector2%2C" title="scrollPanel(bounds: Rectangle; text: string; content: Rectangle;
-            scroll: var Vector2; view: out Rectangle): int32">scrollPanel(bounds: Rectangle; text: string; content: Rectangle;
-            scroll: var Vector2; view: out Rectangle): int32</a></li>
+            scroll: var Vector2; view: out Rectangle)">scrollPanel(bounds: Rectangle; text: string; content: Rectangle;
+            scroll: var Vector2; view: out Rectangle)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">setIconScale
@@ -403,24 +405,24 @@
 </ul>
 <ul class="simple nested-toc-section">slider
   <li><a class="reference" href="#slider%2CRectangle%2Cstring%2Cstring%2Cfloat32%2Cfloat32%2Cfloat32" title="slider(bounds: Rectangle; textLeft: string; textRight: string;
-       value: var float32; minValue: float32; maxValue: float32): int32">slider(bounds: Rectangle; textLeft: string; textRight: string;
-       value: var float32; minValue: float32; maxValue: float32): int32</a></li>
+       value: var float32; minValue: float32; maxValue: float32): bool">slider(bounds: Rectangle; textLeft: string; textRight: string;
+       value: var float32; minValue: float32; maxValue: float32): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">sliderBar
   <li><a class="reference" href="#sliderBar%2CRectangle%2Cstring%2Cstring%2Cfloat32%2Cfloat32%2Cfloat32" title="sliderBar(bounds: Rectangle; textLeft: string; textRight: string;
-          value: var float32; minValue: float32; maxValue: float32): int32">sliderBar(bounds: Rectangle; textLeft: string; textRight: string;
-          value: var float32; minValue: float32; maxValue: float32): int32</a></li>
+          value: var float32; minValue: float32; maxValue: float32): bool">sliderBar(bounds: Rectangle; textLeft: string; textRight: string;
+          value: var float32; minValue: float32; maxValue: float32): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">spinner
   <li><a class="reference" href="#spinner%2CRectangle%2Cstring%2Cint32%2Cint32%2Cint32%2Cbool" title="spinner(bounds: Rectangle; text: string; value: var int32; minValue: int32;
-        maxValue: int32; editMode: bool): int32">spinner(bounds: Rectangle; text: string; value: var int32; minValue: int32;
-        maxValue: int32; editMode: bool): int32</a></li>
+        maxValue: int32; editMode: bool): bool">spinner(bounds: Rectangle; text: string; value: var int32; minValue: int32;
+        maxValue: int32; editMode: bool): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">statusBar
-  <li><a class="reference" href="#statusBar%2CRectangle%2Cstring" title="statusBar(bounds: Rectangle; text: string): int32">statusBar(bounds: Rectangle; text: string): int32</a></li>
+  <li><a class="reference" href="#statusBar%2CRectangle%2Cstring" title="statusBar(bounds: Rectangle; text: string)">statusBar(bounds: Rectangle; text: string)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">tabBar
@@ -428,7 +430,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">textBox
-  <li><a class="reference" href="#textBox%2CRectangle%2Cstring%2Cbool" title="textBox(bounds: Rectangle; text: var string; editMode: bool): int32">textBox(bounds: Rectangle; text: var string; editMode: bool): int32</a></li>
+  <li><a class="reference" href="#textBox%2CRectangle%2Cstring%2Cbool" title="textBox(bounds: Rectangle; text: var string; editMode: bool): bool">textBox(bounds: Rectangle; text: var string; editMode: bool): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">textInputBox
@@ -441,15 +443,15 @@
 
 </ul>
 <ul class="simple nested-toc-section">toggle
-  <li><a class="reference" href="#toggle%2CRectangle%2Cstring%2Cbool" title="toggle(bounds: Rectangle; text: string; active: var bool): int32">toggle(bounds: Rectangle; text: string; active: var bool): int32</a></li>
+  <li><a class="reference" href="#toggle%2CRectangle%2Cstring%2Cbool" title="toggle(bounds: Rectangle; text: string; active: var bool)">toggle(bounds: Rectangle; text: string; active: var bool)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">toggleGroup
-  <li><a class="reference" href="#toggleGroup%2CRectangle%2Cstring%2Cint32" title="toggleGroup(bounds: Rectangle; text: string; active: var int32): int32">toggleGroup(bounds: Rectangle; text: string; active: var int32): int32</a></li>
+  <li><a class="reference" href="#toggleGroup%2CRectangle%2Cstring%2Cint32" title="toggleGroup(bounds: Rectangle; text: string; active: var int32)">toggleGroup(bounds: Rectangle; text: string; active: var int32)</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">toggleSlider
-  <li><a class="reference" href="#toggleSlider%2CRectangle%2Cstring%2Cint32" title="toggleSlider(bounds: Rectangle; text: string; active: var int32): int32">toggleSlider(bounds: Rectangle; text: string; active: var int32): int32</a></li>
+  <li><a class="reference" href="#toggleSlider%2CRectangle%2Cstring%2Cint32" title="toggleSlider(bounds: Rectangle; text: string; active: var int32): bool">toggleSlider(bounds: Rectangle; text: string; active: var int32): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">toTextArray
@@ -458,18 +460,18 @@
 </ul>
 <ul class="simple nested-toc-section">valueBox
   <li><a class="reference" href="#valueBox%2CRectangle%2Cstring%2Cint32%2Cint32%2Cint32%2Cbool" title="valueBox(bounds: Rectangle; text: string; value: var int32; minValue: int32;
-         maxValue: int32; editMode: bool): int32">valueBox(bounds: Rectangle; text: string; value: var int32; minValue: int32;
-         maxValue: int32; editMode: bool): int32</a></li>
+         maxValue: int32; editMode: bool): bool">valueBox(bounds: Rectangle; text: string; value: var int32; minValue: int32;
+         maxValue: int32; editMode: bool): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">valueBoxFloat
   <li><a class="reference" href="#valueBoxFloat%2CRectangle%2Cstring%2Cstring%2Cfloat32%2Cbool" title="valueBoxFloat(bounds: Rectangle; text: string; textValue: string;
-              value: var float32; editMode: bool): int32">valueBoxFloat(bounds: Rectangle; text: string; textValue: string;
-              value: var float32; editMode: bool): int32</a></li>
+              value: var float32; editMode: bool): bool">valueBoxFloat(bounds: Rectangle; text: string; textValue: string;
+              value: var float32; editMode: bool): bool</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">windowBox
-  <li><a class="reference" href="#windowBox%2CRectangle%2Cstring" title="windowBox(bounds: Rectangle; title: string): int32">windowBox(bounds: Rectangle; title: string): int32</a></li>
+  <li><a class="reference" href="#windowBox%2CRectangle%2Cstring" title="windowBox(bounds: Rectangle; title: string): bool">windowBox(bounds: Rectangle; title: string): bool</a></li>
 
 </ul>
 
@@ -496,8 +498,8 @@
   <dd>
     
     CheckBox
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L101" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L101" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L104" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L104" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -510,8 +512,8 @@
   <dd>
     
     ColorPicker
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L128" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L128" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L131" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L131" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -522,8 +524,8 @@
   <dd>
     
     ComboBox
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L104" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L104" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L107" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L107" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -547,8 +549,8 @@
   <dd>
     
     Gui base properties for every control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L57" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L57" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L60" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L60" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -564,8 +566,8 @@
   <dd>
     
     DEFAULT extended properties
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L74" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L74" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L77" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L77" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -578,8 +580,8 @@
   <dd>
     
     DropdownBox
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L108" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L108" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L111" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L111" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -594,8 +596,8 @@
   <dd>
     
     Gui controls
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L39" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L39" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L42" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L42" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -642,8 +644,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L135" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L135" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L138" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L138" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -653,8 +655,8 @@
   <dd>
     
     Gui control state
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L18" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L18" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L21" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L21" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -664,8 +666,8 @@
   <dd>
     
     Gui control text alignment
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L24" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L24" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L27" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L27" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -675,8 +677,8 @@
   <dd>
     
     Gui control text alignment vertical
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L29" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L29" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L32" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L32" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -686,8 +688,8 @@
   <dd>
     
     Gui control text wrap mode
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L34" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L34" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L37" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L37" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -701,8 +703,8 @@
   <dd>
     
     ListView
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L121" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L121" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L124" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L124" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -712,8 +714,8 @@
   <dd>
     
     ProgressBar
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L90" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L90" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L93" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L93" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -728,8 +730,8 @@
   <dd>
     
     ScrollBar
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L93" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L93" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L96" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L96" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -740,8 +742,8 @@
   <dd>
     
     Slider/SliderBar
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L86" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L86" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L89" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L89" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -752,8 +754,8 @@
   <dd>
     
     Spinner
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L117" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L117" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L120" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L120" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -765,8 +767,8 @@
   <dd>
     
     NOTE: Used when exporting style as code for convenience
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L395" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L395" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L401" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L401" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -775,8 +777,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L624" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L624" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L630" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L630" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -786,8 +788,8 @@
   <dd>
     
     TextBox/TextBoxMulti/ValueBox/Spinner
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L114" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L114" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L117" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L117" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -802,8 +804,8 @@
   <dd>
     
     NOTE: Text style is defined by control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L400" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L400" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L406" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L406" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -813,8 +815,8 @@
   <dd>
     
     Toggle/ToggleGroup
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L83" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L83" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L86" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L86" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -834,6 +836,26 @@
 
   </dd>
 </div>
+<div id="ScrollbarLeftSide">
+  <dt><pre><a href="raygui.html#ScrollbarLeftSide"><span class="Identifier">ScrollbarLeftSide</span></a> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+  <dd>
+    
+    
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L397" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L397" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+
+  </dd>
+</div>
+<div id="ScrollbarRightSide">
+  <dt><pre><a href="raygui.html#ScrollbarRightSide"><span class="Identifier">ScrollbarRightSide</span></a> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+  <dd>
+    
+    
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L398" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L398" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+
+  </dd>
+</div>
 
   </dl>
 </div>
@@ -846,8 +868,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L632" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L632" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L638" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L638" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -859,8 +881,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L628" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L628" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L634" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L634" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -872,8 +894,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L631" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L631" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L637" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L637" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -881,13 +903,13 @@
 </div>
 <div id="button-procs-all">
   <div id="button,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#button%2CRectangle%2Cstring"><span class="Identifier">button</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#button%2CRectangle%2Cstring"><span class="Identifier">button</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Button control, returns true when clicked
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L523" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L523" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L529" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L529" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -895,13 +917,13 @@
 </div>
 <div id="checkBox-procs-all">
   <div id="checkBox,Rectangle,string,bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#checkBox%2CRectangle%2Cstring%2Cbool"><span class="Identifier">checkBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">checked</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#checkBox%2CRectangle%2Cstring%2Cbool"><span class="Identifier">checkBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">checked</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Check Box control, returns true when active
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L543" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L543" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L549" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L549" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -909,13 +931,13 @@
 </div>
 <div id="colorBarAlpha-procs-all">
   <div id="colorBarAlpha,Rectangle,string,float32">
-  <dt><pre><span class="Keyword">proc</span> <a href="#colorBarAlpha%2CRectangle%2Cstring%2Cfloat32"><span class="Identifier">colorBarAlpha</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#colorBarAlpha%2CRectangle%2Cstring%2Cfloat32"><span class="Identifier">colorBarAlpha</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Color Bar Alpha control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L607" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L607" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L613" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L613" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -923,13 +945,13 @@
 </div>
 <div id="colorBarHue-procs-all">
   <div id="colorBarHue,Rectangle,string,float32">
-  <dt><pre><span class="Keyword">proc</span> <a href="#colorBarHue%2CRectangle%2Cstring%2Cfloat32"><span class="Identifier">colorBarHue</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#colorBarHue%2CRectangle%2Cstring%2Cfloat32"><span class="Identifier">colorBarHue</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Color Bar Hue control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L611" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L611" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L617" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L617" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -937,13 +959,13 @@
 </div>
 <div id="colorPanel-procs-all">
   <div id="colorPanel,Rectangle,string,Color">
-  <dt><pre><span class="Keyword">proc</span> <a href="#colorPanel%2CRectangle%2Cstring%2CColor"><span class="Identifier">colorPanel</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#colorPanel%2CRectangle%2Cstring%2CColor"><span class="Identifier">colorPanel</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Color</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Color Panel control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L603" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L603" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L609" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L609" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -951,13 +973,13 @@
 </div>
 <div id="colorPanelHSV-procs-all">
   <div id="colorPanelHSV,Rectangle,string,Vector3">
-  <dt><pre><span class="Keyword">proc</span> <a href="#colorPanelHSV%2CRectangle%2Cstring%2CVector3"><span class="Identifier">colorPanelHSV</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">colorHsv</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Vector3</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#colorPanelHSV%2CRectangle%2Cstring%2CVector3"><span class="Identifier">colorPanelHSV</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">colorHsv</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Vector3</span><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L619" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L619" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L625" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L625" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -965,13 +987,13 @@
 </div>
 <div id="colorPicker-procs-all">
   <div id="colorPicker,Rectangle,string,Color">
-  <dt><pre><span class="Keyword">proc</span> <a href="#colorPicker%2CRectangle%2Cstring%2CColor"><span class="Identifier">colorPicker</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#colorPicker%2CRectangle%2Cstring%2CColor"><span class="Identifier">colorPicker</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Color</span><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Color Picker control (multiple color controls)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L599" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L599" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L605" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L605" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -979,13 +1001,13 @@
 </div>
 <div id="colorPickerHSV-procs-all">
   <div id="colorPickerHSV,Rectangle,string,Vector3">
-  <dt><pre><span class="Keyword">proc</span> <a href="#colorPickerHSV%2CRectangle%2Cstring%2CVector3"><span class="Identifier">colorPickerHSV</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">colorHsv</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Vector3</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#colorPickerHSV%2CRectangle%2Cstring%2CVector3"><span class="Identifier">colorPickerHSV</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">colorHsv</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Vector3</span><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Color Picker control that avoids conversion to RGB on each call (multiple color controls)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L615" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L615" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L621" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L621" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -993,13 +1015,13 @@
 </div>
 <div id="comboBox-procs-all">
   <div id="comboBox,Rectangle,string,int32">
-  <dt><pre><span class="Keyword">proc</span> <a href="#comboBox%2CRectangle%2Cstring%2Cint32"><span class="Identifier">comboBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#comboBox%2CRectangle%2Cstring%2Cint32"><span class="Identifier">comboBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Combo Box control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L547" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L547" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L553" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L553" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1012,8 +1034,8 @@
   <dd>
     
     Disable gui tooltips (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L438" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L438" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L444" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L444" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1028,8 +1050,8 @@
   <dd>
     
     Draw icon using pixel size at specified position
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L447" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L447" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L453" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L453" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1038,12 +1060,12 @@
 <div id="dropdownBox-procs-all">
   <div id="dropdownBox,Rectangle,string,int32,bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#dropdownBox%2CRectangle%2Cstring%2Cint32%2Cbool"><span class="Identifier">dropdownBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">;</span>
-                 <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+                 <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Dropdown Box control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L551" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L551" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L557" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L557" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1051,13 +1073,13 @@
 </div>
 <div id="dummyRec-procs-all">
   <div id="dummyRec,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#dummyRec%2CRectangle%2Cstring"><span class="Identifier">dummyRec</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#dummyRec%2CRectangle%2Cstring"><span class="Identifier">dummyRec</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Dummy control for placeholders
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L583" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L583" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L589" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L589" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1070,8 +1092,8 @@
   <dd>
     
     Enable gui tooltips (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L436" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L436" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L442" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L442" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1085,8 +1107,8 @@
   <dd>
     
     Get raygui icons data pointer
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L444" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L444" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L450" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L450" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1095,12 +1117,12 @@
 <div id="grid-procs-all">
   <div id="grid,Rectangle,string,float32,int32,">
   <dt><pre><span class="Keyword">proc</span> <a href="#grid%2CRectangle%2Cstring%2Cfloat32%2Cint32%2C"><span class="Identifier">grid</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">spacing</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">subdivs</span><span class="Other">:</span> <span class="Identifier">int32</span><span class="Other">;</span>
-          <span class="Identifier">mouseCell</span><span class="Other">:</span> <span class="Keyword">out</span> <span class="Identifier">Vector2</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+          <span class="Identifier">mouseCell</span><span class="Other">:</span> <span class="Keyword">out</span> <span class="Identifier">Vector2</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Grid control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L587" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L587" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L593" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L593" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1108,13 +1130,13 @@
 </div>
 <div id="groupBox-procs-all">
   <div id="groupBox,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#groupBox%2CRectangle%2Cstring"><span class="Identifier">groupBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#groupBox%2CRectangle%2Cstring"><span class="Identifier">groupBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Group Box control with text name
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L503" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L503" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L509" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L509" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1127,8 +1149,8 @@
   <dd>
     
     Disable gui controls (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L413" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L413" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L419" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L419" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1141,8 +1163,8 @@
   <dd>
     
     Enable gui controls (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L411" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L411" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L417" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L417" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1155,8 +1177,8 @@
   <dd>
     
     Get gui custom font (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L429" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L429" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L435" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L435" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1170,8 +1192,8 @@
   <dd>
     
     Get gui state (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L425" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L425" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L431" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L431" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1183,8 +1205,8 @@
   <dd>
     
     Get one style property
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L691" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L691" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L698" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L698" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1197,8 +1219,8 @@
   <dd>
     
     Check if gui is locked (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L419" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L419" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L425" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L425" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1210,8 +1232,8 @@
   <dd>
     
     Load style file over global style variable (.rgs)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L487" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L487" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L493" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L493" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1225,8 +1247,8 @@
   <dd>
     
     Load style default over global style
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L434" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L434" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L440" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L440" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1239,8 +1261,8 @@
   <dd>
     
     Lock gui controls (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L415" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L415" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L421" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L421" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1254,8 +1276,8 @@
   <dd>
     
     Set gui controls alpha (global state), alpha goes from 0.0f to 1.0f
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L421" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L421" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L427" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L427" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1269,8 +1291,8 @@
   <dd>
     
     Set gui custom font (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L427" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L427" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L433" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L433" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1284,8 +1306,8 @@
   <dd>
     
     Set gui state (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L423" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L423" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L429" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L429" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1298,8 +1320,8 @@
   <dd>
     
     Set one style property
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L686" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L686" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L693" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L693" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1312,8 +1334,8 @@
   <dd>
     
     Unlock gui controls (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L417" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L417" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L423" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L423" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1326,8 +1348,8 @@
   <dd>
     
     Get text with icon id prepended (if supported)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L495" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L495" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L501" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L501" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1335,13 +1357,12 @@
 </div>
 <div id="label-procs-all">
   <div id="label,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#label%2CRectangle%2Cstring"><span class="Identifier">label</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#label%2CRectangle%2Cstring"><span class="Identifier">label</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Label control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L519" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L519" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L525" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L525" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1349,13 +1370,13 @@
 </div>
 <div id="labelButton-procs-all">
   <div id="labelButton,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#labelButton%2CRectangle%2Cstring"><span class="Identifier">labelButton</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#labelButton%2CRectangle%2Cstring"><span class="Identifier">labelButton</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Label button control, returns true when clicked
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L527" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L527" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L533" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L533" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1363,13 +1384,12 @@
 </div>
 <div id="line-procs-all">
   <div id="line,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#line%2CRectangle%2Cstring"><span class="Identifier">line</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#line%2CRectangle%2Cstring"><span class="Identifier">line</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Line separator control, could contain text
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L507" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L507" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L513" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L513" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1378,24 +1398,24 @@
 <div id="listView-procs-all">
   <div id="listView,Rectangle,string,int32,int32">
   <dt><pre><span class="Keyword">proc</span> <a href="#listView%2CRectangle%2Cstring%2Cint32%2Cint32"><span class="Identifier">listView</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">scrollIndex</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">;</span>
-              <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+              <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     List View control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L591" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L591" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L597" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L597" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
 <div id="listView,Rectangle,TextArray,int32,int32,int32">
   <dt><pre><span class="Keyword">proc</span> <a href="#listView%2CRectangle%2CTextArray%2Cint32%2Cint32%2Cint32"><span class="Identifier">listView</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <a href="raygui.html#TextArray"><span class="Identifier">TextArray</span></a><span class="Other">;</span> <span class="Identifier">scrollIndex</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">;</span>
-              <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">focus</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+              <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">focus</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     List View with extended parameters
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L639" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L639" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L645" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L645" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1408,8 +1428,8 @@
   <dd>
     
     Load raygui icons file (.rgi) into internal icons data
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L647" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L647" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L653" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L653" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1422,8 +1442,8 @@
   <dd>
     
     Message Box control, displays a message
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L595" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L595" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L601" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L601" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1431,13 +1451,12 @@
 </div>
 <div id="panel-procs-all">
   <div id="panel,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#panel%2CRectangle%2Cstring"><span class="Identifier">panel</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#panel%2CRectangle%2Cstring"><span class="Identifier">panel</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Panel control, useful to group controls
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L511" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L511" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L517" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L517" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1446,13 +1465,13 @@
 <div id="progressBar-procs-all">
   <div id="progressBar,Rectangle,string,string,float32,float32,float32">
   <dt><pre><span class="Keyword">proc</span> <a href="#progressBar%2CRectangle%2Cstring%2Cstring%2Cfloat32%2Cfloat32%2Cfloat32"><span class="Identifier">progressBar</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">textLeft</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">textRight</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                 <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+                 <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Progress Bar control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L575" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L575" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L581" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L581" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1461,13 +1480,13 @@
 <div id="scrollPanel-procs-all">
   <div id="scrollPanel,Rectangle,string,Rectangle,Vector2,">
   <dt><pre><span class="Keyword">proc</span> <a href="#scrollPanel%2CRectangle%2Cstring%2CRectangle%2CVector2%2C"><span class="Identifier">scrollPanel</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">content</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span>
-                 <span class="Identifier">scroll</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Vector2</span><span class="Other">;</span> <span class="Identifier">view</span><span class="Other">:</span> <span class="Keyword">out</span> <span class="Identifier">Rectangle</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                 <span class="Identifier">scroll</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Vector2</span><span class="Other">;</span> <span class="Identifier">view</span><span class="Other">:</span> <span class="Keyword">out</span> <span class="Identifier">Rectangle</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Scroll Panel control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L515" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L515" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L521" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L521" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1481,8 +1500,8 @@
   <dd>
     
     Set default icon drawing size
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L442" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L442" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L448" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L448" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1494,8 +1513,8 @@
   <dd>
     
     Set tooltip string
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L491" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L491" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L497" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L497" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1504,13 +1523,13 @@
 <div id="slider-procs-all">
   <div id="slider,Rectangle,string,string,float32,float32,float32">
   <dt><pre><span class="Keyword">proc</span> <a href="#slider%2CRectangle%2Cstring%2Cstring%2Cfloat32%2Cfloat32%2Cfloat32"><span class="Identifier">slider</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">textLeft</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">textRight</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-            <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+            <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Slider control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L567" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L567" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L573" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L573" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1519,13 +1538,13 @@
 <div id="sliderBar-procs-all">
   <div id="sliderBar,Rectangle,string,string,float32,float32,float32">
   <dt><pre><span class="Keyword">proc</span> <a href="#sliderBar%2CRectangle%2Cstring%2Cstring%2Cfloat32%2Cfloat32%2Cfloat32"><span class="Identifier">sliderBar</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">textLeft</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">textRight</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-               <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+               <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">float32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Slider Bar control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L571" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L571" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L577" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L577" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1534,13 +1553,13 @@
 <div id="spinner-procs-all">
   <div id="spinner,Rectangle,string,int32,int32,int32,bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#spinner%2CRectangle%2Cstring%2Cint32%2Cint32%2Cint32%2Cbool"><span class="Identifier">spinner</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">int32</span><span class="Other">;</span>
-             <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+             <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Spinner control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L555" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L555" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L561" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L561" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1548,13 +1567,13 @@
 </div>
 <div id="statusBar-procs-all">
   <div id="statusBar,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#statusBar%2CRectangle%2Cstring"><span class="Identifier">statusBar</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#statusBar%2CRectangle%2Cstring"><span class="Identifier">statusBar</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Status Bar control, shows info text
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L579" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L579" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L585" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L585" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1567,8 +1586,8 @@
   <dd>
     
     Tab Bar control, returns TAB to be closed or -1
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L643" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L643" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L649" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L649" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1576,13 +1595,13 @@
 </div>
 <div id="textBox-procs-all">
   <div id="textBox,Rectangle,string,bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#textBox%2CRectangle%2Cstring%2Cbool"><span class="Identifier">textBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#textBox%2CRectangle%2Cstring%2Cbool"><span class="Identifier">textBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Text Box control, updates input text
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L662" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L662" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L669" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L669" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1596,8 +1615,8 @@
   <dd>
     
     Text Input Box control, ask for text, without secret.
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L672" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L672" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L679" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L679" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1608,8 +1627,8 @@
   <dd>
     
     Text Input Box control, ask for text, supports secret.
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L667" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L667" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L674" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L674" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1617,13 +1636,13 @@
 </div>
 <div id="toggle-procs-all">
   <div id="toggle,Rectangle,string,bool">
-  <dt><pre><span class="Keyword">proc</span> <a href="#toggle%2CRectangle%2Cstring%2Cbool"><span class="Identifier">toggle</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#toggle%2CRectangle%2Cstring%2Cbool"><span class="Identifier">toggle</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">bool</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Toggle Button control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L531" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L531" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L537" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L537" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1631,13 +1650,13 @@
 </div>
 <div id="toggleGroup-procs-all">
   <div id="toggleGroup,Rectangle,string,int32">
-  <dt><pre><span class="Keyword">proc</span> <a href="#toggleGroup%2CRectangle%2Cstring%2Cint32"><span class="Identifier">toggleGroup</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#toggleGroup%2CRectangle%2Cstring%2Cint32"><span class="Identifier">toggleGroup</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Toggle Group control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L535" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L535" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L541" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L541" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1645,13 +1664,13 @@
 </div>
 <div id="toggleSlider-procs-all">
   <div id="toggleSlider,Rectangle,string,int32">
-  <dt><pre><span class="Keyword">proc</span> <a href="#toggleSlider%2CRectangle%2Cstring%2Cint32"><span class="Identifier">toggleSlider</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#toggleSlider%2CRectangle%2Cstring%2Cint32"><span class="Identifier">toggleSlider</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">active</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Toggle Slider control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L539" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L539" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L545" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L545" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1664,8 +1683,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L634" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L634" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L640" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L640" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1674,13 +1693,13 @@
 <div id="valueBox-procs-all">
   <div id="valueBox,Rectangle,string,int32,int32,int32,bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#valueBox%2CRectangle%2Cstring%2Cint32%2Cint32%2Cint32%2Cbool"><span class="Identifier">valueBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">int32</span><span class="Other">;</span>
-              <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.
+              <span class="Identifier">minValue</span><span class="Other">:</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">maxValue</span><span class="Other">:</span> <span class="Identifier">int32</span><span class="Other">;</span> <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Value Box control, updates input text with numbers
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L559" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L559" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L565" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L565" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1689,13 +1708,13 @@
 <div id="valueBoxFloat-procs-all">
   <div id="valueBoxFloat,Rectangle,string,string,float32,bool">
   <dt><pre><span class="Keyword">proc</span> <a href="#valueBoxFloat%2CRectangle%2Cstring%2Cstring%2Cfloat32%2Cbool"><span class="Identifier">valueBoxFloat</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">textValue</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                   <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+                   <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">float32</span><span class="Other">;</span> <span class="Identifier">editMode</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Value box control for float values
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L563" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L563" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L569" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L569" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1703,13 +1722,13 @@
 </div>
 <div id="windowBox-procs-all">
   <div id="windowBox,Rectangle,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#windowBox%2CRectangle%2Cstring"><span class="Identifier">windowBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int32</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#windowBox%2CRectangle%2Cstring"><span class="Identifier">windowBox</span></a><span class="Other">(</span><span class="Identifier">bounds</span><span class="Other">:</span> <span class="Identifier">Rectangle</span><span class="Other">;</span> <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Window Box control, shows a window that can be closed
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L499" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L499" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L505" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L505" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1725,7 +1744,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-10-29 21:12:27 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-11-02 11:26:44 UTC</small>
       </div>
     </div>
   </div>
