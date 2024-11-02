@@ -17,7 +17,7 @@ proc memFree(`ptr`: pointer) {.importc: "RAYGUI_FREE", sideEffect.}
 
 proc listView*(bounds: Rectangle, text: TextArray, scrollIndex: var int32, active: var int32, focus: var int32) =
   ## List View with extended parameters
-  listViewImpl(bounds, toConstCStringArray(text.data), text.count, addr scrollIndex, addr active, addr focus)
+  discard listViewImpl(bounds, toConstCStringArray(text.data), text.count, addr scrollIndex, addr active, addr focus)
 
 proc tabBar*(bounds: Rectangle, text: TextArray, active: var int32): int32 =
   ## Tab Bar control, returns TAB to be closed or -1
@@ -39,10 +39,10 @@ template setupTextBox(call: untyped): untyped =
   if result.int32 == 1:
     text.setLen(text.cstring.len)
 
-proc textBox*(bounds: Rectangle, text: var string, editMode: bool): BoolInt =
+proc textBox*(bounds: Rectangle, text: var string, editMode: bool): bool =
   ## Text Box control, updates input text
   setupTextBox:
-    textBoxImpl(bounds, text.cstring, text.capacity.int32 + 1, editMode)
+    textBoxImpl(bounds, text.cstring, text.capacity.int32 + 1, editMode) != 0
 
 proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: string, text: var string, secretViewActive: var bool): int32 =
   ## Text Input Box control, ask for text, supports secret.

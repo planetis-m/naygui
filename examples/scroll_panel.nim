@@ -38,10 +38,10 @@ proc drawStyleEditControls() =
   guiSetStyle(Slider, ScrollSliderPadding, style)
 
   # Slider width control
-  style = guiGetStyle(Scrollbar, SliderWidth)
+  style = guiGetStyle(Slider, SliderWidth)
   label(Rectangle(x: 555, y: 350, width: 110, height: 10), "SLIDER_WIDTH")
   discard spinner(Rectangle(x: 670, y: 345, width: 90, height: 20), "", style, 2, 100, false)
-  guiSetStyle(Scrollbar, SliderWidth, style)
+  guiSetStyle(Slider, SliderWidth, style)
 
   # Scrollbar side toggle
   let text = if guiGetStyle(ListView, ScrollbarSide) == ScrollbarLeftSide:

@@ -16,6 +16,7 @@ type
     ignoredSymbols*: HashSet[SymbolPair]
     openArrayParameters*: HashSet[SymbolPair]
     discardReturn*: HashSet[string]
+    boolReturn*: HashSet[string]
     wrappedFuncs*: HashSet[string]
     functionOverloads*: HashSet[string]
     noSideEffectsFuncs*: HashSet[string]
@@ -62,6 +63,8 @@ proc processKeyWithoutValue(config: var ConfigData; section: string, key: string
     config.openArrayParameters.incl(sp)
   of "DiscardReturn":
     config.discardReturn.incl(key)
+  of "BoolReturn":
+    config.boolReturn.incl(key)
   of "WrappedFuncs":
     config.wrappedFuncs.incl(key)
   of "FunctionOverloads":
