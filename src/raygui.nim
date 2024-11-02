@@ -570,10 +570,6 @@ proc valueBoxFloat*(bounds: Rectangle, text: string, textValue: string, value: v
   ## Value box control for float values
   valueBoxFloatImpl(bounds, if text.len == 0: nil else: text.cstring, textValue.cstring, addr value, editMode) != 0
 
-proc textBox*(bounds: Rectangle, text: cstring, textSize: int32, editMode: bool): bool =
-  ## Text Box control, updates input text
-  textBoxImpl(bounds, text, textSize, editMode) != 0
-
 proc slider*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): bool =
   ## Slider control
   sliderImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue) != 0
@@ -601,10 +597,6 @@ proc grid*(bounds: Rectangle, text: string, spacing: float32, subdivs: int32, mo
 proc listView*(bounds: Rectangle, text: string, scrollIndex: var int32, active: var int32) =
   ## List View control
   discard listViewImpl(bounds, if text.len == 0: nil else: text.cstring, addr scrollIndex, addr active)
-
-proc listView*(bounds: Rectangle, text: ConstCstringArray, count: int32, scrollIndex: ptr int32, active: ptr int32, focus: ptr int32) =
-  ## List View with extended parameters
-  discard listViewImpl(bounds, text, count, scrollIndex, active, focus)
 
 proc messageBox*(bounds: Rectangle, title: string, message: string, buttons: string): int32 =
   ## Message Box control, displays a message
