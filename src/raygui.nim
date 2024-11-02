@@ -426,6 +426,8 @@ proc guiIsLocked*(): bool {.importc: "GuiIsLocked", sideEffect.}
   ## Check if gui is locked (global state)
 proc guiSetAlpha*(alpha: float32) {.importc: "GuiSetAlpha", sideEffect.}
   ## Set gui controls alpha (global state), alpha goes from 0.0f to 1.0f
+proc guiGetAlpha*(): float32 {.importc: "GuiGetAlpha", sideEffect.}
+  ## Get gui controls alpha global state
 proc guiSetState*(state: GuiState) {.importc: "GuiSetState", sideEffect.}
   ## Set gui state (global state)
 proc guiGetState*(): GuiState {.importc: "GuiGetState", sideEffect.}

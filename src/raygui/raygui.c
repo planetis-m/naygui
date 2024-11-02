@@ -820,6 +820,9 @@ void GuiSetAlpha(float alpha)
     guiAlpha = alpha;
 }
 
+// Get gui controls alpha global state
+float GuiGetAlpha(void) { return guiAlpha; }
+
 // Set gui state (global state)
 void GuiSetState(int state) { guiState = (GuiState)state; }
 

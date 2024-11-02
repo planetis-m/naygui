@@ -2199,6 +2199,11 @@
       ]
     },
     {
+      "name": "GuiGetAlpha",
+      "description": "Get gui controls alpha global state",
+      "returnType": "int"
+    },
+    {
       "name": "GuiSetState",
       "description": "Set gui state (global state)",
       "returnType": "void",
