@@ -55,20 +55,18 @@ proc textInputBox*(bounds: Rectangle, title: string, message: string, buttons: s
     textInputBoxImpl(bounds, title.cstring, if message.len == 0: nil else: message.cstring, buttons.cstring, text.cstring, text.capacity.int32 + 1, nil)
 
 type
-  GuiStyleProperty = ControlProperty|DefaultProperty|ToggleProperty|SliderProperty|
-                     ProgressBarProperty|ScrollBarProperty|CheckBoxProperty|
-                     ComboBoxProperty|DropdownBoxProperty|TextBoxProperty|
-                     SpinnerProperty|ListViewProperty|ColorPickerProperty
+  GuiStyleProperty* = ControlProperty|DefaultProperty|ToggleProperty|SliderProperty|
+                      ProgressBarProperty|ScrollBarProperty|CheckBoxProperty|
+                      ComboBoxProperty|DropdownBoxProperty|TextBoxProperty|
+                      SpinnerProperty|ListViewProperty|ColorPickerProperty
 
-  GuiStyleValue = GuiState|GuiTextAlignment|GuiTextAlignmentVertical|
-                  GuiTextWrapMode|GuiControl|int32|bool
+  GuiStyleValue* = GuiState|GuiTextAlignment|GuiTextAlignmentVertical|
+                   GuiTextWrapMode|GuiControl|int32|bool
 
-proc guiSetStyle*[P: GuiStyleProperty, V: GuiStyleValue](
-    control: GuiControl, property: P, value: V) =
+proc guiSetStyle*[P: GuiStyleProperty, V: GuiStyleValue](control: GuiControl, property: P, value: V) =
   ## Set one style property
   guiSetStyleImpl(control, property.int32, value.int32)
 
-proc guiGetStyle*[P: GuiStyleProperty](
-    control: GuiControl, property: P): int32 =
+proc guiGetStyle*[P: GuiStyleProperty](control: GuiControl, property: P): int32 =
   ## Get one style property
   guiGetStyleImpl(control, property.int32)

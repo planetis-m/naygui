@@ -45,7 +45,6 @@ type
 
 const
   MaxDirectoryFiles = 2048
-  MaxIconPathLength = 512
 
 var dirFilesIcon: seq[FileInfo]
 
