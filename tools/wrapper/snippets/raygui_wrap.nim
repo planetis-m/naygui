@@ -63,10 +63,40 @@ type
   GuiStyleValue* = GuiState|GuiTextAlignment|GuiTextAlignmentVertical|
                    GuiTextWrapMode|GuiControl|int32|bool
 
-proc guiSetStyle*[P: GuiStyleProperty, V: GuiStyleValue](control: GuiControl, property: P, value: V) =
+template validatePropertyControlMapping(control, property: untyped) =
+  when property is ControlProperty:
+    discard "ControlProperty applies to all controls"
+  elif property is DefaultProperty:
+    assert control == Default, "DefaultProperty should match Default control"
+  elif property is ToggleProperty:
+    assert control == Toggle, "ToggleProperty should match Toggle control"
+  elif property is SliderProperty:
+    assert control == Slider, "SliderProperty should match Slider control"
+  elif property is ProgressBarProperty:
+    assert control == Progressbar, "ProgressBarProperty should match Progressbar control"
+  elif property is ScrollBarProperty:
+    assert control == Scrollbar, "ScrollBarProperty should match Scrollbar control"
+  elif property is CheckBoxProperty:
+    assert control == Checkbox, "CheckBoxProperty should match Checkbox control"
+  elif property is ComboBoxProperty:
+    assert control == Combobox, "ComboBoxProperty should match Combobox control"
+  elif property is DropdownBoxProperty:
+    assert control == Dropdownbox, "DropdownBoxProperty should match Dropdownbox control"
+  elif property is TextBoxProperty:
+    assert control == Textbox, "TextBoxProperty should match Textbox control"
+  elif property is SpinnerProperty:
+    assert control == Spinner, "SpinnerProperty should match Spinner control"
+  elif property is ListViewProperty:
+    assert control == Listview, "ListViewProperty should match Listview control"
+  elif property is ColorPickerProperty:
+    assert control == Colorpicker, "ColorPickerProperty should match Colorpicker control"
+
+proc guiSetStyle*[P: GuiStyleProperty, V: GuiStyleValue](control: static[GuiControl], property: P, value: V) =
   ## Set one style property
+  static: validatePropertyControlMapping(control, P)
   guiSetStyleImpl(control, property.int32, value.int32)
 
-proc guiGetStyle*[P: GuiStyleProperty](control: GuiControl, property: P): int32 =
+proc guiGetStyle*[P: GuiStyleProperty](control: static[GuiControl], property: P): int32 =
   ## Get one style property
+  static: validatePropertyControlMapping(control, P)
   guiGetStyleImpl(control, property.int32)

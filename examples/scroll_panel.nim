@@ -32,10 +32,10 @@ proc drawStyleEditControls() =
   guiSetStyle(Scrollbar, ArrowsVisible, scrollBarArrows)
 
   # Additional slider padding control
-  style = guiGetStyle(Slider, ScrollSliderPadding)
+  style = guiGetStyle(Scrollbar, ScrollSliderPadding)
   label(Rectangle(x: 555, y: 325, width: 110, height: 10), "SLIDER_PADDING")
   discard spinner(Rectangle(x: 670, y: 320, width: 90, height: 20), "", style, 0, 14, false)
-  guiSetStyle(Slider, ScrollSliderPadding, style)
+  guiSetStyle(Scrollbar, ScrollSliderPadding, style)
 
   # Slider width control
   style = guiGetStyle(Slider, SliderWidth)
@@ -60,10 +60,10 @@ proc drawStyleEditControls() =
   discard spinner(Rectangle(x: 670, y: 30, width: 90, height: 20), "", style, 6, 30, false)
   guiSetStyle(ListView, ScrollbarWidth, style)
 
-  style = guiGetStyle(Default, BorderWidth)
+  style = guiGetStyle(GuiControl.Default, BorderWidth)
   label(Rectangle(x: 555, y: 60, width: 110, height: 10), "BORDER_WIDTH")
   discard spinner(Rectangle(x: 670, y: 55, width: 90, height: 20), "", style, 0, 20, false)
-  guiSetStyle(Default, BorderWidth, style)
+  guiSetStyle(GuiControl.Default, BorderWidth, style)
 
 proc main() =
   # Initialization

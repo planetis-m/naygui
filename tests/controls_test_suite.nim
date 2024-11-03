@@ -142,7 +142,7 @@ proc main =
       guiSetStyle(Label, TextAlignment, GuiTextAlignment.Left)
       prevVisualStyleActive = visualStyleActive
     beginDrawing()
-    clearBackground(getColor(guiGetStyle(Default, BackgroundColor).uint32))
+    clearBackground(getColor(guiGetStyle(GuiControl.Default, BackgroundColor).uint32))
     # raygui: controls drawing
     # ------------------------------------------------------------------------------------
     # Check all possible events that require GuiLock
