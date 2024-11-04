@@ -720,12 +720,12 @@ template validatePropertyControlMapping(control, property: untyped) =
   elif property is ColorPickerProperty:
     assert control == Colorpicker, "ColorPickerProperty should match Colorpicker control"
 
-proc guiSetStyle*[P: GuiStyleProperty, V: GuiStyleValue](control: static[GuiControl], property: P, value: V) =
+proc guiSetStyle*[P: GuiStyleProperty, V: GuiStyleValue](control: GuiControl, property: P, value: V) =
   ## Set one style property
-  static: validatePropertyControlMapping(control, P)
+  validatePropertyControlMapping(control, P)
   guiSetStyleImpl(control, property.int32, value.int32)
 
-proc guiGetStyle*[P: GuiStyleProperty](control: static[GuiControl], property: P): int32 =
+proc guiGetStyle*[P: GuiStyleProperty](control: GuiControl, property: P): int32 =
   ## Get one style property
-  static: validatePropertyControlMapping(control, P)
+  validatePropertyControlMapping(control, P)
   guiGetStyleImpl(control, property.int32)
