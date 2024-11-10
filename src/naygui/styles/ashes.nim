@@ -1,7 +1,6 @@
-import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"../../raygui/styles/ashes"
+import common
 
-{.passC: "-I" & rayguiDir.string.}
+{.passC: "-I" & getRayguiStyleDir("ashes").}
 
 proc guiLoadStyleAshes*() {.importc: "GuiLoadStyleAshes", cdecl, header: "style_ashes.h".}
   ## Load style ashes over global style

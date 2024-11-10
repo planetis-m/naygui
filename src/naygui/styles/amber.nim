@@ -1,7 +1,6 @@
-import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"../../raygui/styles/amber"
+import common
 
-{.passC: "-I" & rayguiDir.string.}
+{.passC: "-I" & getRayguiStyleDir("amber").}
 
 proc guiLoadStyleAmber*() {.importc: "GuiLoadStyleAmber", cdecl, header: "style_amber.h".}
   ## Load style amber over global style

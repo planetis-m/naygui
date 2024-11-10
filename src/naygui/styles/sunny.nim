@@ -1,7 +1,6 @@
-import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"../../raygui/styles/sunny"
+import common
 
-{.passC: "-I" & rayguiDir.string.}
+{.passC: "-I" & getRayguiStyleDir("sunny").}
 
 proc guiLoadStyleSunny*() {.importc: "GuiLoadStyleSunny", cdecl, header: "style_sunny.h".}
   ## Load style sunny over global style

@@ -2,6 +2,7 @@ from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphIn
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
 import std/[assertions, paths]
+from std/strutils import align
 const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui"
 
 # {.passC: "-DRAYGUI_IMPLEMENTATION".}

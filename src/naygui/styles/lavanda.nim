@@ -1,7 +1,6 @@
-import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"../../raygui/styles/lavanda"
+import common
 
-{.passC: "-I" & rayguiDir.string.}
+{.passC: "-I" & getRayguiStyleDir("lavanda").}
 
 proc guiLoadStyleLavanda*() {.importc: "GuiLoadStyleLavanda", cdecl, header: "style_lavanda.h".}
   ## Load style lavanda over global style

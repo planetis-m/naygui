@@ -1,7 +1,6 @@
-import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"../../raygui/styles/enefete"
+import common
 
-{.passC: "-I" & rayguiDir.string.}
+{.passC: "-I" & getRayguiStyleDir("enefete").}
 
 proc guiLoadStyleEnefete*() {.importc: "GuiLoadStyleEnefete", cdecl, header: "style_enefete.h".}
   ## Load style enefete over global style

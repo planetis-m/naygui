@@ -1,7 +1,6 @@
-import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"../../raygui/styles/candy"
+import common
 
-{.passC: "-I" & rayguiDir.string.}
+{.passC: "-I" & getRayguiStyleDir("candy").}
 
 proc guiLoadStyleCandy*() {.importc: "GuiLoadStyleCandy", cdecl, header: "style_candy.h".}
   ## Load style candy over global style

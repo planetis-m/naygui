@@ -2,6 +2,7 @@ from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphIn
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
 import std/[assertions, paths]
+from std/strutils import align
 const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui"
 
 # {.passC: "-DRAYGUI_IMPLEMENTATION".}
@@ -500,10 +501,6 @@ proc setTooltip*(tooltip: string) =
   ## Set tooltip string
   setTooltipImpl(if tooltip.len == 0: nil else: tooltip.cstring)
 
-proc iconText*(iconId: GuiIconName, text: string): string =
-  ## Get text with icon id prepended (if supported)
-  $iconTextImpl(iconId, if text.len == 0: nil else: text.cstring)
-
 proc windowBox*(bounds: Rectangle, title: string): bool =
   ## Window Box control, shows a window that can be closed
   windowBoxImpl(bounds, title.cstring) != 0
@@ -729,3 +726,12 @@ proc guiGetStyle*[P: GuiStyleProperty](control: GuiControl, property: P): int32 
   ## Get one style property
   validatePropertyControlMapping(control, P)
   guiGetStyleImpl(control, property.int32)
+
+proc iconText*(iconId: GuiIconName, text: string = ""): string =
+  ## Get text with icon id prepended (if supported)
+  when defined(NayguiNoIcons):
+    result = ""
+  else:
+    result = "#" & align($iconId.ord, 3, '0') & "#"
+    if text.len > 0:
+      result = result & text

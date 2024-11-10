@@ -100,3 +100,12 @@ proc guiGetStyle*[P: GuiStyleProperty](control: GuiControl, property: P): int32 
   ## Get one style property
   validatePropertyControlMapping(control, P)
   guiGetStyleImpl(control, property.int32)
+
+proc iconText*(iconId: GuiIconName, text: string = ""): string =
+  ## Get text with icon id prepended (if supported)
+  when defined(NayguiNoIcons):
+    result = ""
+  else:
+    result = "#" & align($iconId.ord, 3, '0') & "#"
+    if text.len > 0:
+      result = result & text

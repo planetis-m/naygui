@@ -1,7 +1,6 @@
-import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"../../raygui/styles/terminal"
+import common
 
-{.passC: "-I" & rayguiDir.string.}
+{.passC: "-I" & getRayguiStyleDir("terminal").}
 
 proc guiLoadStyleTerminal*() {.importc: "GuiLoadStyleTerminal", cdecl, header: "style_terminal.h".}
   ## Load style terminal over global style

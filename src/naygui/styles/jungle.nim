@@ -1,7 +1,6 @@
-import std/paths
-const rayguiDir = currentSourcePath().Path.parentDir / Path"../../raygui/styles/jungle"
+import common
 
-{.passC: "-I" & rayguiDir.string.}
+{.passC: "-I" & getRayguiStyleDir("jungle").}
 
 proc guiLoadStyleJungle*() {.importc: "GuiLoadStyleJungle", cdecl, header: "style_jungle.h".}
   ## Load style jungle over global style
