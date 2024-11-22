@@ -45,7 +45,7 @@ proc uncapitalizeAscii*(s: string): string =
   if s.len == 0: result = ""
   else: result = toLowerAscii(s[0]) & substr(s, 1)
 
-proc isSnakeCase*(s: string): bool =
+proc isScreamingSnakeCaseAscii*(s: string): bool =
   result = true
   if s.len == 0 or s[0] == '_' or s[s.high] == '_':
     return false
