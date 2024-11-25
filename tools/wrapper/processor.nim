@@ -76,6 +76,9 @@ proc checkCstringType(fnc: FunctionInfo, kind: string, config: ConfigData): bool
 proc isOpenArrayParameter(x, y: string, config: ConfigData): bool =
   (x, y) in config.openArrayParameters
 
+proc isHiddenRefParameter(x, y: string, config: ConfigData): bool =
+  (x, y) in config.hiddenRefParameters
+
 proc isVarargsParam(param: ParamInfo): bool =
   param.name == "args" and param.`type` == "..."
 
@@ -194,11 +197,16 @@ proc processParameters(fnc: var FunctionInfo, config: ConfigData) =
   for i, param in enumerate(fnc.params.mitems):
     if isArray(fnc.name, param.name, config):
       param.flags.incl isPtArray
+    if isWrappedFunc notin fnc.flags and
+        contains(param.`type`, '*') and
+        isHiddenRefParameter(fnc.name, param.name, config):
+      param.flags.incl isHiddenRefParam
     let pointerType =
       if isPtArray in param.flags: ptArray
       elif isOutParameter(fnc.name, param.name, config): ptOut
-      elif isPrivate notin fnc.flags: ptVar
-      else: ptPtr
+      elif isHiddenRefParam in param.flags: ptHidden
+      elif isPrivate in fnc.flags: ptPtr
+      else: ptVar
     let paramType = convertType(param.`type`, config.namespacePrefix, pointerType)
     if checkCstringType(fnc, paramType, config):
       param.flags.incl isString
@@ -212,6 +220,8 @@ proc processParameters(fnc: var FunctionInfo, config: ConfigData) =
       param.flags.incl isNilIfEmpty
     if paramType.startsWith("var "):
       param.flags.incl isVarParam
+      param.dirty = paramType
+    if isHiddenRefParam in param.flags:
       param.dirty = paramType
 
 proc processReturnType(fnc: var FunctionInfo, config: ConfigData) =
@@ -234,8 +244,9 @@ proc updateParameterTypes(fnc: var FunctionInfo, config: ConfigData) =
     let pointerType =
       if isPtArray in param.flags: ptArray
       elif isOutParameter(fnc.name, param.name, config): ptOut
-      elif isPrivate notin fnc.flags: ptVar
-      else: ptPtr
+      elif isPrivate in fnc.flags: ptPtr
+      elif isHiddenRefParam in param.flags: ptHidden
+      else: ptVar
     updateType(param.`type`, fnc.name, param.name, pointerType, config)
 
 proc updateReturnType(fnc: var FunctionInfo, config: ConfigData) =
@@ -254,6 +265,10 @@ proc generateNames(fnc: var FunctionInfo, config: ConfigData) =
     result = name
     if shouldRemoveNamespacePrefix(name, config):
       result.removePrefix(config.namespacePrefix)
+    for prefix in config.typePrefixes:
+      if result.startsWith(prefix) and not isDigit(result[prefix.len]):
+        result.removePrefix(prefix)
+        break
     if shouldRemoveSuffix(name, config):
       for suffix in config.funcOverloadSuffixes:
         if result.endsWith(suffix):
