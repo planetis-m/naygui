@@ -41,7 +41,7 @@ import raylib, raygui, std/[strutils, strformat]
 # raygui embedded styles
 
 import
-  naygui/styles/[cyber, jungle, lavanda, dark, bluish, terminal]
+  naygui/styles/[cyber, jungle, lavanda, dark, bluish, terminal, rltech]
 
 const
   screenWidth = 700
@@ -137,6 +137,8 @@ proc main =
         guiLoadStyleCyber()
       of 6:
         guiLoadStyleTerminal()
+      of 7:
+        guiLoadStyleRLtech()
       else:
         discard
       guiSetStyle(Label, TextAlignment, GuiTextAlignment.Left)
@@ -179,7 +181,7 @@ proc main =
     guiSetState(Normal)
     # guiUnlock()
     comboBox(Rectangle(x: 25, y: 470, width: 125, height: 30),
-        "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal", visualStyleActive)
+        "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal;RLtech", visualStyleActive)
     # NOTE: GuiDropdownBox must draw after any other control that can be covered on unfolding
     guiUnlock()
     guiSetStyle(Dropdownbox, TextAlignment, Left)
