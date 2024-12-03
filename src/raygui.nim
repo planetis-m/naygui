@@ -447,7 +447,6 @@ proc enableTooltip*() {.importc: "GuiEnableTooltip", sideEffect.}
 proc disableTooltip*() {.importc: "GuiDisableTooltip", sideEffect.}
   ## Disable gui tooltips (global state)
 proc setTooltipImpl(tooltip: cstring) {.importc: "GuiSetTooltip", sideEffect.}
-proc iconTextImpl(iconId: GuiIconName, text: cstring): cstring {.importc: "GuiIconText", sideEffect.}
 proc setIconScale*(scale: int32) {.importc: "GuiSetIconScale", sideEffect.}
   ## Set default icon drawing size
 proc getIcons*(): var uint32 {.importc: "GuiGetIcons", sideEffect.}
