@@ -687,7 +687,7 @@ type
   GuiStyleProperty* = ControlProperty|DefaultProperty|ToggleProperty|SliderProperty|
                       ProgressBarProperty|ScrollBarProperty|CheckBoxProperty|
                       ComboBoxProperty|DropdownBoxProperty|TextBoxProperty|
-                      SpinnerProperty|ListViewProperty|ColorPickerProperty
+                      ValueBoxProperty|ListViewProperty|ColorPickerProperty
 
   GuiStyleValue* = GuiState|GuiTextAlignment|GuiTextAlignmentVertical|
                    GuiTextWrapMode|GuiControl|int32|bool
@@ -713,8 +713,8 @@ template validatePropertyControlMapping(control, property: untyped) =
     assert control == Dropdownbox, "DropdownBoxProperty should match Dropdownbox control"
   elif property is TextBoxProperty:
     assert control == Textbox, "TextBoxProperty should match Textbox control"
-  elif property is SpinnerProperty:
-    assert control == Spinner, "SpinnerProperty should match Spinner control"
+  elif property is ValueBoxProperty:
+    assert control in {Control11, Spinner}, "ValueBoxProperty should match ValueBox control"
   elif property is ListViewProperty:
     assert control == Listview, "ListViewProperty should match Listview control"
   elif property is ColorPickerProperty:
