@@ -27,7 +27,7 @@
     {
       "name": "RAYGUI_VERSION",
       "type": "STRING",
-      "value": "4.5-dev",
+      "value": "5.0-dev",
       "description": ""
     },
     {
@@ -508,9 +508,9 @@
           "description": ""
         },
         {
-          "name": "SPINNER",
+          "name": "CONTROL11",
           "value": 11,
-          "description": "Uses: BUTTON, VALUEBOX"
+          "description": ""
         },
         {
           "name": "LISTVIEW",
@@ -795,16 +795,16 @@
       ]
     },
     {
-      "name": "GuiSpinnerProperty",
-      "description": "Spinner",
+      "name": "GuiValueBoxProperty",
+      "description": "ValueBox/Spinner",
       "values": [
         {
-          "name": "SPIN_BUTTON_WIDTH",
+          "name": "SPINNER_BUTTON_WIDTH",
           "value": 16,
           "description": "Spinner left/right buttons width"
         },
         {
-          "name": "SPIN_BUTTON_SPACING",
+          "name": "SPINNER_BUTTON_SPACING",
           "value": 17,
           "description": "Spinner buttons separation"
         }
@@ -835,8 +835,13 @@
           "description": "ListView scrollbar side (0-SCROLLBAR_LEFT_SIDE, 1-SCROLLBAR_RIGHT_SIDE)"
         },
         {
-          "name": "LIST_ITEMS_BORDER_WIDTH",
+          "name": "LIST_ITEMS_BORDER_NORMAL",
           "value": 20,
+          "description": "ListView items border enabled in normal state"
+        },
+        {
+          "name": "LIST_ITEMS_BORDER_WIDTH",
+          "value": 21,
           "description": "ListView items border width"
         }
       ]
@@ -2787,6 +2792,41 @@
         {
           "type": "float",
           "name": "maxValue"
+        }
+      ]
+    },
+    {
+      "name": "GuiSliderPro",
+      "description": "Slider control with extended parameters",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "Rectangle",
+          "name": "bounds"
+        },
+        {
+          "type": "const char *",
+          "name": "textLeft"
+        },
+        {
+          "type": "const char *",
+          "name": "textRight"
+        },
+        {
+          "type": "float *",
+          "name": "value"
+        },
+        {
+          "type": "float",
+          "name": "minValue"
+        },
+        {
+          "type": "float",
+          "name": "maxValue"
+        },
+        {
+          "type": "int",
+          "name": "sliderWidth"
         }
       ]
     },

@@ -141,12 +141,16 @@
 *           Draw text bounds rectangles for debug
 *
 *   VERSIONS HISTORY:
-*       4.5-dev (Sep-2024)    Current dev version...
+*       5.0-dev (2025)    Current dev version...
 *                         ADDED: guiControlExclusiveMode and guiControlExclusiveRec for exclusive modes
 *                         ADDED: GuiValueBoxFloat()
 *                         ADDED: GuiDropdonwBox() properties: DROPDOWN_ARROW_HIDDEN, DROPDOWN_ROLL_UP
 *                         ADDED: GuiListView() property: LIST_ITEMS_BORDER_WIDTH
+*                         ADDED: GuiLoadIconsFromMemory()
 *                         ADDED: Multiple new icons
+*                         REMOVED: GuiSpinner() from controls list, using BUTTON + VALUEBOX properties
+*                         REVIEWED: Controls using text labels to use LABEL properties
+*                         REVIEWED: Replaced sprintf() by snprintf() for more safety
 *                         REVIEWED: GuiTabBar(), close tab with mouse middle button
 *                         REVIEWED: GuiScrollPanel(), scroll speed proportional to content
 *                         REVIEWED: GuiDropdownBox(), support roll up and hidden arrow
@@ -156,6 +160,8 @@
 *                         REVIEWED: GuiIconText(), increase buffer size and reviewed padding
 *                         REVIEWED: GuiDrawText(), improved wrap mode drawing
 *                         REVIEWED: GuiScrollBar(), minor tweaks
+*                         REVIEWED: GuiProgressBar(), improved borders computing
+*                         REVIEWED: GuiTextBox(), multiple improvements: autocursor and more
 *                         REVIEWED: Functions descriptions, removed wrong return value reference
 *                         REDESIGNED: GuiColorPanel(), improved HSV <-> RGBA convertion
 *
@@ -309,7 +315,7 @@
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2014-2024 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2014-2025 Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -334,7 +340,7 @@
 #define RAYGUI_VERSION_MAJOR 4
 #define RAYGUI_VERSION_MINOR 5
 #define RAYGUI_VERSION_PATCH 0
-#define RAYGUI_VERSION  "4.5-dev"
+#define RAYGUI_VERSION  "5.0-dev"
 
 #if !defined(RAYGUI_STANDALONE)
     #include "raylib.h"
@@ -527,7 +533,7 @@ typedef enum {
     DROPDOWNBOX,
     TEXTBOX,        // Used also for: TEXTBOXMULTI
     VALUEBOX,
-    SPINNER,        // Uses: BUTTON, VALUEBOX
+    CONTROL11,
     LISTVIEW,
     COLORPICKER,
     SCROLLBAR,
@@ -549,12 +555,12 @@ typedef enum {
     BORDER_COLOR_DISABLED,      // Control border color in STATE_DISABLED
     BASE_COLOR_DISABLED,        // Control base color in STATE_DISABLED
     TEXT_COLOR_DISABLED,        // Control text color in STATE_DISABLED
-    BORDER_WIDTH,               // Control border size, 0 for no border
+    BORDER_WIDTH = 12,          // Control border size, 0 for no border
     //TEXT_SIZE,                  // Control text size (glyphs max height) -> GLOBAL for all controls
     //TEXT_SPACING,               // Control text spacing between glyphs -> GLOBAL for all controls
-    //TEXT_LINE_SPACING           // Control text spacing between lines -> GLOBAL for all controls
-    TEXT_PADDING,               // Control text padding, not considering border
-    TEXT_ALIGNMENT,             // Control text horizontal alignment inside control text bound (after border and padding)
+    //TEXT_LINE_SPACING,          // Control text spacing between lines -> GLOBAL for all controls
+    TEXT_PADDING = 13,          // Control text padding, not considering border
+    TEXT_ALIGNMENT = 14,        // Control text horizontal alignment inside control text bound (after border and padding)
     //TEXT_WRAP_MODE              // Control text wrap-mode inside text bounds -> GLOBAL for all controls
 } GuiControlProperty;
 
@@ -641,11 +647,14 @@ typedef enum {
     TEXT_READONLY = 16,         // TextBox in read-only mode: 0-text editable, 1-text no-editable
 } GuiTextBoxProperty;
 
-// Spinner
+// ValueBox/Spinner
 typedef enum {
-    SPIN_BUTTON_WIDTH = 16,     // Spinner left/right buttons width
-    SPIN_BUTTON_SPACING,        // Spinner buttons separation
-} GuiSpinnerProperty;
+    SPINNER_BUTTON_WIDTH = 16,  // Spinner left/right buttons width
+    SPINNER_BUTTON_SPACING,     // Spinner buttons separation
+} GuiValueBoxProperty;
+
+// Control11
+//typedef enum { } GuiControl11Property;
 
 // ListView
 typedef enum {
@@ -653,6 +662,7 @@ typedef enum {
     LIST_ITEMS_SPACING,         // ListView items separation
     SCROLLBAR_WIDTH,            // ListView scrollbar size (usually width)
     SCROLLBAR_SIDE,             // ListView scrollbar side (0-SCROLLBAR_LEFT_SIDE, 1-SCROLLBAR_RIGHT_SIDE)
+    LIST_ITEMS_BORDER_NORMAL,   // ListView items border enabled in normal state
     LIST_ITEMS_BORDER_WIDTH     // ListView items border width
 } GuiListViewProperty;
 
@@ -744,6 +754,7 @@ RAYGUIAPI int GuiValueBoxFloat(rlRectangle bounds, const char *text, char *textV
 RAYGUIAPI int GuiTextBox(rlRectangle bounds, char *text, int textSize, bool editMode);                   // Text Box control, updates input text
 
 RAYGUIAPI int GuiSlider(rlRectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Slider control
+RAYGUIAPI int GuiSliderPro(rlRectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue, int sliderWidth); // Slider control with extended parameters
 RAYGUIAPI int GuiSliderBar(rlRectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Slider Bar control
 RAYGUIAPI int GuiProgressBar(rlRectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Progress Bar control
 RAYGUIAPI int GuiStatusBar(rlRectangle bounds, const char *text);                                        // Status Bar control, shows info text

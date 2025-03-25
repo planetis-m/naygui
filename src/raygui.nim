@@ -52,7 +52,7 @@ type
     Dropdownbox
     Textbox ## Used also for: TEXTBOXMULTI
     Valuebox
-    Spinner ## Uses: BUTTON, VALUEBOX
+    Control11
     Listview
     Colorpicker
     Scrollbar
@@ -118,15 +118,16 @@ type
   TextBoxProperty* {.size: sizeof(int32).} = enum ## TextBox/TextBoxMulti/ValueBox/Spinner
     TextReadonly = 16 ## TextBox in read-only mode: 0-text editable, 1-text no-editable
 
-  SpinnerProperty* {.size: sizeof(int32).} = enum ## Spinner
-    SpinButtonWidth = 16 ## Spinner left/right buttons width
-    SpinButtonSpacing ## Spinner buttons separation
+  ValueBoxProperty* {.size: sizeof(int32).} = enum ## ValueBox/Spinner
+    SpinnerButtonWidth = 16 ## Spinner left/right buttons width
+    SpinnerButtonSpacing ## Spinner buttons separation
 
   ListViewProperty* {.size: sizeof(int32).} = enum ## ListView
     ListItemsHeight = 16 ## ListView items height
     ListItemsSpacing ## ListView items separation
     ScrollbarWidth ## ListView scrollbar size (usually width)
     ScrollbarSide ## ListView scrollbar side (0-SCROLLBAR_LEFT_SIDE, 1-SCROLLBAR_RIGHT_SIDE)
+    ListItemsBorderNormal ## ListView items border enabled in normal state
     ListItemsBorderWidth ## ListView items border width
 
   ColorPickerProperty* {.size: sizeof(int32).} = enum ## ColorPicker
@@ -472,6 +473,7 @@ proc valueBoxImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: 
 proc valueBoxFloatImpl(bounds: Rectangle, text: cstring, textValue: cstring, value: ptr float32, editMode: bool): int32 {.importc: "GuiValueBoxFloat", sideEffect.}
 proc textBoxImpl(bounds: Rectangle, text: cstring, textSize: int32, editMode: bool): int32 {.importc: "GuiTextBox", sideEffect.}
 proc sliderImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSlider", sideEffect.}
+proc sliderProImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32, sliderWidth: int32): int32 {.importc: "GuiSliderPro", sideEffect.}
 proc sliderBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSliderBar", sideEffect.}
 proc progressBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiProgressBar", sideEffect.}
 proc statusBarImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiStatusBar", sideEffect.}
@@ -569,6 +571,10 @@ proc valueBoxFloat*(bounds: Rectangle, text: string, textValue: string, value: v
 proc slider*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): bool =
   ## Slider control
   sliderImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue) != 0
+
+proc sliderPro*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32, sliderWidth: int32): int32 =
+  ## Slider control with extended parameters
+  sliderProImpl(bounds, textLeft.cstring, textRight.cstring, addr value, minValue, maxValue, sliderWidth)
 
 proc sliderBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): bool =
   ## Slider Bar control
