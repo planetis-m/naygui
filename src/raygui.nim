@@ -1,4 +1,4 @@
-from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
+from raylib import Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font, buildOSPath
 export Vector2, Vector3, Color, Rectangle, Texture2D, Image, GlyphInfo, Font
 
 import std/[assertions, paths]
@@ -6,8 +6,8 @@ from std/strutils import align
 const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui"
 
 # {.passC: "-DRAYGUI_IMPLEMENTATION".}
-{.passC: "-I" & rayguiDir.string.}
-{.compile: rayguiDir / Path"raygui.c".}
+{.passC: "-I" & buildOSPath(rayguiDir).}
+{.compile: buildOSPath(rayguiDir / Path"raygui.c").}
 
 const
   RayguiVersion* = (4, 5, 0)
