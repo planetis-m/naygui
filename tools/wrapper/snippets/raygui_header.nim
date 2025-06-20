@@ -5,9 +5,16 @@ import std/[assertions, paths]
 from std/strutils import align
 const rayguiDir = currentSourcePath().Path.parentDir / Path"raygui"
 
+when defined(mingw):
+  import std/private/globs
+  from std/private/ospaths2 import joinPath
+  func `/`(head, tail: Path): Path {.inline.} =
+    joinPath(head.string, tail.string).nativeToUnixPath.Path
+  {.passC: "-I/usr/x86_64-w64-mingw32/include".}
+
 # {.passC: "-DRAYGUI_IMPLEMENTATION".}
 {.passC: "-I" & rayguiDir.string.}
-{.compile: rayguiDir / Path"raygui.c".}
+{.compile: string(rayguiDir / Path"raygui.c").}
 
 const
   RayguiVersion* = (4, 5, 0)

@@ -16,10 +16,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="nimdoc.out.css?v=2.2.1">
+<link rel="stylesheet" type="text/css" href="nimdoc.out.css?v=2.3.1">
 
 <!-- JS -->
-<script type="text/javascript" src="dochack.js?v=2.2.1"></script>
+<script type="text/javascript" src="dochack.js?v=2.3.1"></script>
 </head>
 <body>
   <div class="document" id="documentId">
@@ -99,8 +99,7 @@
   Button, Toggle,           ## Used also for: TOGGLEGROUP
   Slider,                   ## Used also for: SLIDERBAR, TOGGLESLIDER
   Progressbar, Checkbox, Combobox, Dropdownbox, Textbox, ## Used also for: TEXTBOXMULTI
-  Valuebox, Spinner,        ## Uses: BUTTON, VALUEBOX
-  Listview, Colorpicker, Scrollbar, Statusbar">GuiControl</a></li>
+  Valuebox, Control11, Listview, Colorpicker, Scrollbar, Statusbar">GuiControl</a></li>
 <li><a class="reference" href="#GuiIconName" title="GuiIconName {.size: 4.} = enum
   None, FolderFileOpen, FileSaveClassic, FolderOpen, FolderSave, FileOpen,
   FileSave, FileExport, FileAdd, FileDelete, FiletypeText, FiletypeAudio,
@@ -136,7 +135,7 @@
   Shield, FileNew, FolderAdd, Alarm, Cpu, Rom, StepOver, StepInto, StepOut,
   Restart, BreakpointOn, BreakpointOff, BurgerMenu, CaseSensitive, RegExp,
   Folder, File, SandTimer, Warning, HelpBox, InfoBox, Priority, LayersIso,
-  Layers2, Mlayers, Maps, Hot, Icon229, Icon230, Icon231, Icon232, Icon233,
+  Layers2, Mlayers, Maps, Hot, Label, NameId, Slicing, ManualControl, Collision,
   Icon234, Icon235, Icon236, Icon237, Icon238, Icon239, Icon240, Icon241,
   Icon242, Icon243, Icon244, Icon245, Icon246, Icon247, Icon248, Icon249,
   Icon250, Icon251, Icon252, Icon253, Icon254, Icon255">GuiIconName</a></li>
@@ -150,7 +149,7 @@
     ComboBoxProperty |
     DropdownBoxProperty |
     TextBoxProperty |
-    SpinnerProperty |
+    ValueBoxProperty |
     ListViewProperty |
     ColorPickerProperty">GuiStyleProperty</a></li>
 <li><a class="reference" href="#GuiStyleValue" title="GuiStyleValue = GuiState | GuiTextAlignment | GuiTextAlignmentVertical |
@@ -169,6 +168,7 @@
   ListItemsSpacing,         ## ListView items separation
   ScrollbarWidth,           ## ListView scrollbar size (usually width)
   ScrollbarSide,            ## ListView scrollbar side (0-SCROLLBAR_LEFT_SIDE, 1-SCROLLBAR_RIGHT_SIDE)
+  ListItemsBorderNormal,    ## ListView items border enabled in normal state
   ListItemsBorderWidth       ## ListView items border width">ListViewProperty</a></li>
 <li><a class="reference" href="#ProgressBarProperty" title="ProgressBarProperty {.size: 4.} = enum
   ProgressPadding = 16       ## ProgressBar internal padding">ProgressBarProperty</a></li>
@@ -182,9 +182,6 @@
 <li><a class="reference" href="#SliderProperty" title="SliderProperty {.size: 4.} = enum
   SliderWidth = 16,         ## Slider size of internal bar
   SliderPadding              ## Slider/SliderBar internal bar padding">SliderProperty</a></li>
-<li><a class="reference" href="#SpinnerProperty" title="SpinnerProperty {.size: 4.} = enum
-  SpinButtonWidth = 16,     ## Spinner left/right buttons width
-  SpinButtonSpacing          ## Spinner buttons separation">SpinnerProperty</a></li>
 <li><a class="reference" href="#StyleProp" title="StyleProp {.importc: &quot;GuiStyleProp&quot;, header: &quot;raygui.h&quot;, completeStruct, bycopy.} = object
   controlId*: uint16         ## Control identifier
   propertyId*: uint16        ## Property identifier
@@ -201,6 +198,9 @@
   padding*: int32">TextStyle</a></li>
 <li><a class="reference" href="#ToggleProperty" title="ToggleProperty {.size: 4.} = enum
   GroupPadding = 16          ## ToggleGroup separation between toggles">ToggleProperty</a></li>
+<li><a class="reference" href="#ValueBoxProperty" title="ValueBoxProperty {.size: 4.} = enum
+  SpinnerButtonWidth = 16,  ## Spinner left/right buttons width
+  SpinnerButtonSpacing       ## Spinner buttons separation">ValueBoxProperty</a></li>
 
     </ul>
   </details>
@@ -312,10 +312,6 @@
   <li><a class="reference" href="#guiEnable" title="guiEnable()">guiEnable()</a></li>
 
 </ul>
-<ul class="simple nested-toc-section">guiGetAlpha
-  <li><a class="reference" href="#guiGetAlpha" title="guiGetAlpha(): float32">guiGetAlpha(): float32</a></li>
-
-</ul>
 <ul class="simple nested-toc-section">guiGetFont
   <li><a class="reference" href="#guiGetFont" title="guiGetFont(): Font">guiGetFont(): Font</a></li>
 
@@ -367,7 +363,7 @@
 
 </ul>
 <ul class="simple nested-toc-section">iconText
-  <li><a class="reference" href="#iconText%2CGuiIconName%2Cstring" title="iconText(iconId: GuiIconName; text: string): string">iconText(iconId: GuiIconName; text: string): string</a></li>
+  <li><a class="reference" href="#iconText%2CGuiIconName%2Cstring" title="iconText(iconId: GuiIconName; text: string = &quot;&quot;): string">iconText(iconId: GuiIconName; text: string = &quot;&quot;): string</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">label
@@ -518,8 +514,8 @@
   <dd>
     
     CheckBox
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L104" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L104" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L112" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L112" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -532,8 +528,8 @@
   <dd>
     
     ColorPicker
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L131" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L131" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L140" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L140" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -544,8 +540,8 @@
   <dd>
     
     ComboBox
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L107" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L107" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L115" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L115" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -569,8 +565,8 @@
   <dd>
     
     Gui base properties for every control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L60" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L60" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L68" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L68" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -586,8 +582,8 @@
   <dd>
     
     DEFAULT extended properties
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L77" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L77" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L85" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L85" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -600,8 +596,8 @@
   <dd>
     
     DropdownBox
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L111" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L111" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L119" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L119" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -611,13 +607,12 @@
   <span class="Identifier">Button</span><span class="Other">,</span> <span class="Identifier">Toggle</span><span class="Other">,</span>           <span class="Comment">## Used also for: TOGGLEGROUP</span>
   <span class="Identifier">Slider</span><span class="Other">,</span>                   <span class="Comment">## Used also for: SLIDERBAR, TOGGLESLIDER</span>
   <span class="Identifier">Progressbar</span><span class="Other">,</span> <span class="Identifier">Checkbox</span><span class="Other">,</span> <span class="Identifier">Combobox</span><span class="Other">,</span> <span class="Identifier">Dropdownbox</span><span class="Other">,</span> <span class="Identifier">Textbox</span><span class="Other">,</span> <span class="Comment">## Used also for: TEXTBOXMULTI</span>
-  <span class="Identifier">Valuebox</span><span class="Other">,</span> <span class="Identifier">Spinner</span><span class="Other">,</span>        <span class="Comment">## Uses: BUTTON, VALUEBOX</span>
-  <span class="Identifier">Listview</span><span class="Other">,</span> <span class="Identifier">Colorpicker</span><span class="Other">,</span> <span class="Identifier">Scrollbar</span><span class="Other">,</span> <span class="Identifier">Statusbar</span></pre></dt>
+  <span class="Identifier">Valuebox</span><span class="Other">,</span> <span class="Identifier">Control11</span><span class="Other">,</span> <span class="Identifier">Listview</span><span class="Other">,</span> <span class="Identifier">Colorpicker</span><span class="Other">,</span> <span class="Identifier">Scrollbar</span><span class="Other">,</span> <span class="Identifier">Statusbar</span></pre></dt>
   <dd>
     
     Gui controls
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L42" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L42" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L50" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L50" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -657,15 +652,15 @@
   <span class="Identifier">Shield</span><span class="Other">,</span> <span class="Identifier">FileNew</span><span class="Other">,</span> <span class="Identifier">FolderAdd</span><span class="Other">,</span> <span class="Identifier">Alarm</span><span class="Other">,</span> <span class="Identifier">Cpu</span><span class="Other">,</span> <span class="Identifier">Rom</span><span class="Other">,</span> <span class="Identifier">StepOver</span><span class="Other">,</span> <span class="Identifier">StepInto</span><span class="Other">,</span> <span class="Identifier">StepOut</span><span class="Other">,</span>
   <span class="Identifier">Restart</span><span class="Other">,</span> <span class="Identifier">BreakpointOn</span><span class="Other">,</span> <span class="Identifier">BreakpointOff</span><span class="Other">,</span> <span class="Identifier">BurgerMenu</span><span class="Other">,</span> <span class="Identifier">CaseSensitive</span><span class="Other">,</span> <span class="Identifier">RegExp</span><span class="Other">,</span>
   <span class="Identifier">Folder</span><span class="Other">,</span> <span class="Identifier">File</span><span class="Other">,</span> <span class="Identifier">SandTimer</span><span class="Other">,</span> <span class="Identifier">Warning</span><span class="Other">,</span> <span class="Identifier">HelpBox</span><span class="Other">,</span> <span class="Identifier">InfoBox</span><span class="Other">,</span> <span class="Identifier">Priority</span><span class="Other">,</span> <span class="Identifier">LayersIso</span><span class="Other">,</span>
-  <span class="Identifier">Layers2</span><span class="Other">,</span> <span class="Identifier">Mlayers</span><span class="Other">,</span> <span class="Identifier">Maps</span><span class="Other">,</span> <span class="Identifier">Hot</span><span class="Other">,</span> <span class="Identifier">Icon229</span><span class="Other">,</span> <span class="Identifier">Icon230</span><span class="Other">,</span> <span class="Identifier">Icon231</span><span class="Other">,</span> <span class="Identifier">Icon232</span><span class="Other">,</span> <span class="Identifier">Icon233</span><span class="Other">,</span>
+  <span class="Identifier">Layers2</span><span class="Other">,</span> <span class="Identifier">Mlayers</span><span class="Other">,</span> <span class="Identifier">Maps</span><span class="Other">,</span> <span class="Identifier">Hot</span><span class="Other">,</span> <span class="Identifier">Label</span><span class="Other">,</span> <span class="Identifier">NameId</span><span class="Other">,</span> <span class="Identifier">Slicing</span><span class="Other">,</span> <span class="Identifier">ManualControl</span><span class="Other">,</span> <span class="Identifier">Collision</span><span class="Other">,</span>
   <span class="Identifier">Icon234</span><span class="Other">,</span> <span class="Identifier">Icon235</span><span class="Other">,</span> <span class="Identifier">Icon236</span><span class="Other">,</span> <span class="Identifier">Icon237</span><span class="Other">,</span> <span class="Identifier">Icon238</span><span class="Other">,</span> <span class="Identifier">Icon239</span><span class="Other">,</span> <span class="Identifier">Icon240</span><span class="Other">,</span> <span class="Identifier">Icon241</span><span class="Other">,</span>
   <span class="Identifier">Icon242</span><span class="Other">,</span> <span class="Identifier">Icon243</span><span class="Other">,</span> <span class="Identifier">Icon244</span><span class="Other">,</span> <span class="Identifier">Icon245</span><span class="Other">,</span> <span class="Identifier">Icon246</span><span class="Other">,</span> <span class="Identifier">Icon247</span><span class="Other">,</span> <span class="Identifier">Icon248</span><span class="Other">,</span> <span class="Identifier">Icon249</span><span class="Other">,</span>
   <span class="Identifier">Icon250</span><span class="Other">,</span> <span class="Identifier">Icon251</span><span class="Other">,</span> <span class="Identifier">Icon252</span><span class="Other">,</span> <span class="Identifier">Icon253</span><span class="Other">,</span> <span class="Identifier">Icon254</span><span class="Other">,</span> <span class="Identifier">Icon255</span></pre></dt>
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L138" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L138" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L147" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L147" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -675,8 +670,8 @@
   <dd>
     
     Gui control state
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L21" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L21" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L29" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L29" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -689,14 +684,14 @@
     <a href="raygui.html#ComboBoxProperty"><span class="Identifier">ComboBoxProperty</span></a> <span class="Operator">|</span>
     <a href="raygui.html#DropdownBoxProperty"><span class="Identifier">DropdownBoxProperty</span></a> <span class="Operator">|</span>
     <a href="raygui.html#TextBoxProperty"><span class="Identifier">TextBoxProperty</span></a> <span class="Operator">|</span>
-    <a href="raygui.html#SpinnerProperty"><span class="Identifier">SpinnerProperty</span></a> <span class="Operator">|</span>
+    <a href="raygui.html#ValueBoxProperty"><span class="Identifier">ValueBoxProperty</span></a> <span class="Operator">|</span>
     <a href="raygui.html#ListViewProperty"><span class="Identifier">ListViewProperty</span></a> <span class="Operator">|</span>
     <a href="raygui.html#ColorPickerProperty"><span class="Identifier">ColorPickerProperty</span></a></pre></dt>
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L687" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L687" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L689" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L689" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -709,8 +704,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L692" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L692" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L694" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L694" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -720,8 +715,8 @@
   <dd>
     
     Gui control text alignment
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L27" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L27" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L35" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L35" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -731,8 +726,8 @@
   <dd>
     
     Gui control text alignment vertical
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L32" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L32" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L40" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L40" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -742,8 +737,8 @@
   <dd>
     
     Gui control text wrap mode
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L37" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L37" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L45" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L45" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -753,12 +748,13 @@
   <span class="Identifier">ListItemsSpacing</span><span class="Other">,</span>         <span class="Comment">## ListView items separation</span>
   <span class="Identifier">ScrollbarWidth</span><span class="Other">,</span>           <span class="Comment">## ListView scrollbar size (usually width)</span>
   <span class="Identifier">ScrollbarSide</span><span class="Other">,</span>            <span class="Comment">## ListView scrollbar side (0-SCROLLBAR_LEFT_SIDE, 1-SCROLLBAR_RIGHT_SIDE)</span>
+  <span class="Identifier">ListItemsBorderNormal</span><span class="Other">,</span>    <span class="Comment">## ListView items border enabled in normal state</span>
   <span class="Identifier">ListItemsBorderWidth</span>       <span class="Comment">## ListView items border width</span></pre></dt>
   <dd>
     
     ListView
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L124" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L124" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L132" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L132" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -768,8 +764,8 @@
   <dd>
     
     ProgressBar
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L93" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L93" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L101" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L101" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -784,8 +780,8 @@
   <dd>
     
     ScrollBar
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L96" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L96" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L104" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L104" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -796,20 +792,8 @@
   <dd>
     
     Slider/SliderBar
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L89" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L89" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
-
-  </dd>
-</div>
-<div id="SpinnerProperty">
-  <dt><pre><a href="raygui.html#SpinnerProperty"><span class="Identifier">SpinnerProperty</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">SpinButtonWidth</span> <span class="Other">=</span> <span class="DecNumber">16</span><span class="Other">,</span>     <span class="Comment">## Spinner left/right buttons width</span>
-  <span class="Identifier">SpinButtonSpacing</span>          <span class="Comment">## Spinner buttons separation</span></pre></dt>
-  <dd>
-    
-    Spinner
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L120" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L120" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L97" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L97" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -821,8 +805,8 @@
   <dd>
     
     NOTE: Used when exporting style as code for convenience
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L401" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L401" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L410" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L410" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -831,8 +815,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L632" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L632" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L634" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L634" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -842,8 +826,8 @@
   <dd>
     
     TextBox/TextBoxMulti/ValueBox/Spinner
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L117" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L117" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L125" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L125" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -858,8 +842,8 @@
   <dd>
     
     NOTE: Text style is defined by control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L406" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L406" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L415" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L415" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -869,8 +853,20 @@
   <dd>
     
     Toggle/ToggleGroup
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L86" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L86" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L94" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L94" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+
+  </dd>
+</div>
+<div id="ValueBoxProperty">
+  <dt><pre><a href="raygui.html#ValueBoxProperty"><span class="Identifier">ValueBoxProperty</span></a> {.<span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">SpinnerButtonWidth</span> <span class="Other">=</span> <span class="DecNumber">16</span><span class="Other">,</span>  <span class="Comment">## Spinner left/right buttons width</span>
+  <span class="Identifier">SpinnerButtonSpacing</span>       <span class="Comment">## Spinner buttons separation</span></pre></dt>
+  <dd>
+    
+    ValueBox/Spinner
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L128" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L128" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -885,8 +881,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L12" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L12" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L20" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L20" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -895,8 +891,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L397" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L397" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L406" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L406" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -905,8 +901,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L398" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L398" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L407" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L407" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -922,8 +918,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L640" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L640" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L642" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L642" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -935,8 +931,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L636" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L636" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L638" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L638" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -948,8 +944,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L639" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L639" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L641" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L641" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -962,8 +958,8 @@
   <dd>
     
     Button control, returns true when clicked
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L531" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L531" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L533" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L533" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -976,8 +972,8 @@
   <dd>
     
     Check Box control, returns true when active
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L551" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L551" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L553" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L553" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -990,8 +986,8 @@
   <dd>
     
     Color Bar Alpha control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L615" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L615" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L617" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L617" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1004,8 +1000,8 @@
   <dd>
     
     Color Bar Hue control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L619" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L619" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L621" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L621" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1018,8 +1014,8 @@
   <dd>
     
     Color Panel control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L611" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L611" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L613" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L613" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1032,8 +1028,8 @@
   <dd>
     
     Color Panel control that updates Hue-Saturation-Value color value, used by GuiColorPickerHSV()
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L627" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L627" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L629" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L629" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1046,8 +1042,8 @@
   <dd>
     
     Color Picker control (multiple color controls)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L607" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L607" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L609" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L609" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1060,8 +1056,8 @@
   <dd>
     
     Color Picker control that avoids conversion to RGB on each call (multiple color controls)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L623" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L623" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L625" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L625" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1074,8 +1070,8 @@
   <dd>
     
     Combo Box control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L555" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L555" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L557" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L557" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1088,8 +1084,8 @@
   <dd>
     
     Disable gui tooltips (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L446" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L446" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L453" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L453" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1104,8 +1100,8 @@
   <dd>
     
     Draw icon using pixel size at specified position
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L455" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L455" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L461" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L461" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1118,8 +1114,8 @@
   <dd>
     
     Dropdown Box control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L559" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L559" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L561" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L561" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1132,8 +1128,8 @@
   <dd>
     
     Dummy control for placeholders
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L591" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L591" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L593" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L593" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1146,8 +1142,8 @@
   <dd>
     
     Enable gui tooltips (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L444" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L444" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L451" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L451" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1161,8 +1157,8 @@
   <dd>
     
     Get raygui icons data pointer
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L452" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L452" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L458" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L458" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1175,8 +1171,8 @@
   <dd>
     
     Grid control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L595" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L595" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L597" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L597" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1189,8 +1185,8 @@
   <dd>
     
     Group Box control with text name
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L511" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L511" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L513" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L513" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1203,8 +1199,8 @@
   <dd>
     
     Disable gui controls (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L419" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L419" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L428" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L428" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1217,23 +1213,8 @@
   <dd>
     
     Enable gui controls (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L417" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L417" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
-
-  </dd>
-</div>
-
-</div>
-<div id="guiGetAlpha-procs-all">
-  <div id="guiGetAlpha">
-  <dt><pre><span class="Keyword">proc</span> <a href="#guiGetAlpha"><span class="Identifier">guiGetAlpha</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float32</span> {.<span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GuiGetAlpha&quot;</span><span class="Other">,</span> <span class="Identifier">sideEffect</span><span class="Other">,</span>
-                              <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;raygui.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-                              <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-  <dd>
-    
-    Get gui controls alpha global state
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L429" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L429" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L426" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L426" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1246,8 +1227,8 @@
   <dd>
     
     Get gui custom font (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L437" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L437" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L444" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L444" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1261,8 +1242,8 @@
   <dd>
     
     Get gui state (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L433" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L433" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L440" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L440" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1274,8 +1255,8 @@
   <dd>
     
     Get one style property
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L699" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L699" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L730" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L730" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1288,8 +1269,8 @@
   <dd>
     
     Check if gui is locked (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L425" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L425" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L434" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L434" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1301,8 +1282,8 @@
   <dd>
     
     Load style file over global style variable (.rgs)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L495" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L495" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L501" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L501" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1316,8 +1297,8 @@
   <dd>
     
     Load style default over global style
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L442" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L442" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L449" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L449" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1330,8 +1311,8 @@
   <dd>
     
     Lock gui controls (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L421" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L421" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L430" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L430" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1345,8 +1326,8 @@
   <dd>
     
     Set gui controls alpha (global state), alpha goes from 0.0f to 1.0f
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L427" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L427" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L436" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L436" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1360,8 +1341,8 @@
   <dd>
     
     Set gui custom font (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L435" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L435" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L442" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L442" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1375,8 +1356,8 @@
   <dd>
     
     Set gui state (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L431" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L431" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L438" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L438" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1389,8 +1370,8 @@
   <dd>
     
     Set one style property
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L695" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L695" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L725" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L725" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1403,8 +1384,8 @@
   <dd>
     
     Unlock gui controls (global state)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L423" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L423" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L432" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L432" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1412,13 +1393,13 @@
 </div>
 <div id="iconText-procs-all">
   <div id="iconText,GuiIconName,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#iconText%2CGuiIconName%2Cstring"><span class="Identifier">iconText</span></a><span class="Other">(</span><span class="Identifier">iconId</span><span class="Other">:</span> <a href="raygui.html#GuiIconName"><span class="Identifier">GuiIconName</span></a><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#iconText%2CGuiIconName%2Cstring"><span class="Identifier">iconText</span></a><span class="Other">(</span><span class="Identifier">iconId</span><span class="Other">:</span> <a href="raygui.html#GuiIconName"><span class="Identifier">GuiIconName</span></a><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Get text with icon id prepended (if supported)
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L503" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L503" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L735" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L735" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1430,8 +1411,8 @@
   <dd>
     
     Label control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L527" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L527" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L529" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L529" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1444,8 +1425,8 @@
   <dd>
     
     Label button control, returns true when clicked
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L535" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L535" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L537" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L537" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1457,8 +1438,8 @@
   <dd>
     
     Line separator control, could contain text
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L515" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L515" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L517" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L517" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1471,8 +1452,8 @@
   <dd>
     
     List View control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L599" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L599" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L601" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L601" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1483,8 +1464,8 @@
   <dd>
     
     List View with extended parameters
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L647" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L647" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L649" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L649" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1497,8 +1478,8 @@
   <dd>
     
     Load raygui icons file (.rgi) into internal icons data
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L655" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L655" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L657" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L657" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1511,8 +1492,8 @@
   <dd>
     
     Message Box control, displays a message
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L603" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L603" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L605" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L605" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1524,8 +1505,8 @@
   <dd>
     
     Panel control, useful to group controls
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L519" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L519" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L521" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L521" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1539,8 +1520,8 @@
   <dd>
     
     Progress Bar control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L583" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L583" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L585" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L585" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1554,8 +1535,8 @@
   <dd>
     
     Scroll Panel control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L523" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L523" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L525" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L525" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1569,8 +1550,8 @@
   <dd>
     
     Set default icon drawing size
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L450" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L450" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L456" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L456" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1582,8 +1563,8 @@
   <dd>
     
     Set tooltip string
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L499" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L499" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L505" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L505" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1597,8 +1578,8 @@
   <dd>
     
     Slider control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L575" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L575" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L577" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L577" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1612,8 +1593,8 @@
   <dd>
     
     Slider Bar control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L579" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L579" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L581" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L581" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1627,8 +1608,8 @@
   <dd>
     
     Spinner control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L563" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L563" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L565" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L565" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1641,8 +1622,8 @@
   <dd>
     
     Status Bar control, shows info text
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L587" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L587" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L589" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L589" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1655,8 +1636,8 @@
   <dd>
     
     Tab Bar control, returns TAB to be closed or -1
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L651" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L651" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L653" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L653" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1669,8 +1650,8 @@
   <dd>
     
     Text Box control, updates input text
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L671" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L671" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L673" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L673" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1684,8 +1665,8 @@
   <dd>
     
     Text Input Box control, ask for text, without secret.
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L681" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L681" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L683" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L683" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1696,8 +1677,8 @@
   <dd>
     
     Text Input Box control, ask for text, supports secret.
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L676" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L676" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L678" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L678" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1710,8 +1691,8 @@
   <dd>
     
     Toggle Button control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L539" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L539" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L541" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L541" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1724,8 +1705,8 @@
   <dd>
     
     Toggle Group control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L543" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L543" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L545" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L545" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1738,8 +1719,8 @@
   <dd>
     
     Toggle Slider control
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L547" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L547" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L549" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L549" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1752,8 +1733,8 @@
   <dd>
     
     
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L642" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L642" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L644" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L644" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1767,8 +1748,8 @@
   <dd>
     
     Value Box control, updates input text with numbers
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L567" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L567" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L569" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L569" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1782,8 +1763,8 @@
   <dd>
     
     Value box control for float values
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L571" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L571" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L573" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L573" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1796,8 +1777,8 @@
   <dd>
     
     Window Box control, shows a window that can be closed
-    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L507" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L507" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/planetis-m/naygui/tree/master/src/raygui.nim#L509" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/planetis-m/naygui/edit/master/src/raygui.nim#L509" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -1813,7 +1794,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-11-03 01:50:37 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2025-06-20 21:43:31 UTC</small>
       </div>
     </div>
   </div>
