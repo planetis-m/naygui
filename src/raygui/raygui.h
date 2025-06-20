@@ -149,6 +149,7 @@
 *                         ADDED: GuiLoadIconsFromMemory()
 *                         ADDED: Multiple new icons
 *                         REMOVED: GuiSpinner() from controls list, using BUTTON + VALUEBOX properties
+*                         REMOVED: GuiSliderPro(), functionality was redundant
 *                         REVIEWED: Controls using text labels to use LABEL properties
 *                         REVIEWED: Replaced sprintf() by snprintf() for more safety
 *                         REVIEWED: GuiTabBar(), close tab with mouse middle button
@@ -754,7 +755,6 @@ RAYGUIAPI int GuiValueBoxFloat(rlRectangle bounds, const char *text, char *textV
 RAYGUIAPI int GuiTextBox(rlRectangle bounds, char *text, int textSize, bool editMode);                   // Text Box control, updates input text
 
 RAYGUIAPI int GuiSlider(rlRectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Slider control
-RAYGUIAPI int GuiSliderPro(rlRectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue, int sliderWidth); // Slider control with extended parameters
 RAYGUIAPI int GuiSliderBar(rlRectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Slider Bar control
 RAYGUIAPI int GuiProgressBar(rlRectangle bounds, const char *textLeft, const char *textRight, float *value, float minValue, float maxValue); // Progress Bar control
 RAYGUIAPI int GuiStatusBar(rlRectangle bounds, const char *text);                                        // Status Bar control, shows info text
@@ -1010,11 +1010,11 @@ typedef enum {
     ICON_MLAYERS                  = 226,
     ICON_MAPS                     = 227,
     ICON_HOT                      = 228,
-    ICON_229                      = 229,
-    ICON_230                      = 230,
-    ICON_231                      = 231,
-    ICON_232                      = 232,
-    ICON_233                      = 233,
+    ICON_LABEL                    = 229,
+    ICON_NAME_ID                  = 230,
+    ICON_SLICING                  = 231,
+    ICON_MANUAL_CONTROL           = 232,
+    ICON_COLLISION                = 233,
     ICON_234                      = 234,
     ICON_235                      = 235,
     ICON_236                      = 236,

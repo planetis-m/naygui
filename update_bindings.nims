@@ -5,7 +5,7 @@ const
   PkgDir = thisDir()
   RayguiDir = PkgDir / "raygui"
   RayguiGit = "https://github.com/raysan5/raygui.git"
-  RayLatestCommit = "1536ae35c7b42d863135f4181fd2a225e531f68b"
+  RayLatestCommit = "99b37e4d4fdc19e7bf73844d6b9f177cbb27ce24"
   DocsDir = PkgDir / "docs"
   ToolsDir = PkgDir / "tools"
   ApiDir = ToolsDir / "wrapper/api"

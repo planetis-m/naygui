@@ -40,7 +40,7 @@ import raylib, raygui, std/[strutils, strformat]
 
 # raygui embedded styles
 
-import naygui/styles/[amber, ashes, bluish, candy, cherry, cyber, dark, enefete, jungle,
+import naygui/styles/[amber, ashes, bluish, candy, cherry, cyber, dark, enefete, jungle, genesis,
   lavanda, rltech, sunny, terminal]
 
 const
@@ -151,6 +151,8 @@ proc main =
         guiLoadStyleEnefete()
       of 13:
         guiLoadStyleSunny()
+      of 14:
+        guiLoadStyleGenesis()
       else:
         discard
       guiSetStyle(Label, TextAlignment, GuiTextAlignment.Left)
@@ -193,7 +195,7 @@ proc main =
     guiSetState(Normal)
     # guiUnlock()
     comboBox(Rectangle(x: 25, y: 470, width: 125, height: 30),
-        "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal;RLtech;Amber;Ashes;Candy;Cherry;Enefete;Sunny", visualStyleActive)
+        "default;Jungle;Lavanda;Dark;Bluish;Cyber;Terminal;RLtech;Amber;Ashes;Candy;Cherry;Enefete;Sunny;Genesis", visualStyleActive)
     # NOTE: GuiDropdownBox must draw after any other control that can be covered on unfolding
     guiUnlock()
     guiSetStyle(Dropdownbox, TextAlignment, Left)

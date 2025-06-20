@@ -367,11 +367,11 @@ type
     Mlayers
     Maps
     Hot
-    Icon229
-    Icon230
-    Icon231
-    Icon232
-    Icon233
+    Label
+    NameId
+    Slicing
+    ManualControl
+    Collision
     Icon234
     Icon235
     Icon236
@@ -473,7 +473,6 @@ proc valueBoxImpl(bounds: Rectangle, text: cstring, value: ptr int32, minValue: 
 proc valueBoxFloatImpl(bounds: Rectangle, text: cstring, textValue: cstring, value: ptr float32, editMode: bool): int32 {.importc: "GuiValueBoxFloat", sideEffect.}
 proc textBoxImpl(bounds: Rectangle, text: cstring, textSize: int32, editMode: bool): int32 {.importc: "GuiTextBox", sideEffect.}
 proc sliderImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSlider", sideEffect.}
-proc sliderProImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32, sliderWidth: int32): int32 {.importc: "GuiSliderPro", sideEffect.}
 proc sliderBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiSliderBar", sideEffect.}
 proc progressBarImpl(bounds: Rectangle, textLeft: cstring, textRight: cstring, value: ptr float32, minValue: float32, maxValue: float32): int32 {.importc: "GuiProgressBar", sideEffect.}
 proc statusBarImpl(bounds: Rectangle, text: cstring): int32 {.importc: "GuiStatusBar", sideEffect.}
@@ -571,10 +570,6 @@ proc valueBoxFloat*(bounds: Rectangle, text: string, textValue: string, value: v
 proc slider*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): bool =
   ## Slider control
   sliderImpl(bounds, if textLeft.len == 0: nil else: textLeft.cstring, if textRight.len == 0: nil else: textRight.cstring, addr value, minValue, maxValue) != 0
-
-proc sliderPro*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32, sliderWidth: int32): int32 =
-  ## Slider control with extended parameters
-  sliderProImpl(bounds, textLeft.cstring, textRight.cstring, addr value, minValue, maxValue, sliderWidth)
 
 proc sliderBar*(bounds: Rectangle, textLeft: string, textRight: string, value: var float32, minValue: float32, maxValue: float32): bool =
   ## Slider Bar control
